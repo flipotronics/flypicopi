@@ -8,9 +8,9 @@ Pico Pi based synthesizer
 - Midi Control using Midi Breakout Board: https://www.hobbytronics.co.uk/audio-midi/midi-breakout
 - Uses low cost Pico Pi https://www.raspberrypi.org/documentation/rp2040/getting-started/
 - Store custom patches on SD card
-- Low latency, low jitter, faster than a Linux based system can be
+- Low latency, low jitter, a micro ist faster than a Linux based system can be
 - Hexler Touch OSC UI on IoS:  https://hexler.net/products/touchosc
-- Patch Builder on Mac OS
+- Patch Builder on Mac OS (Swift)
 
 
 Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk with Visuasl Studio Code
