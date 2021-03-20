@@ -14,6 +14,6 @@ Pico Pi based synthesizer
 
 Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk with Visuasl Studio Code
 
-Fritzing Wiring diagram https://fritzing.org/ is coming soon
+Fritzing Wiring diagram https://fritzing.org/ is coming soon...
 
 
