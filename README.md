@@ -2,7 +2,7 @@
 Pico Pi based synthesizer
 
 - Digital Oscillator (DCO)
-- Analog Filter (VCF) control
+- Analog Filter (VCF) control (I use filter in my EuroRack, next i will try to build a filter based on CEM3340, examples:  https://electricdruid.net/cem3320-filter-designs/
 - Pico Audio Pack from: https://shop.pimoroni.com/products/pico-audio-pack
 - 12 Bit DAC MPC 4725 to create CV Control Voltages  to drivea Filter : https://www.adafruit.com/product/935
 - Midi Control using a Midi Beakout Board: https://www.hobbytronics.co.uk/audio-midi/midi-breakout
