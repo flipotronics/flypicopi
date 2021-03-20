@@ -18,6 +18,6 @@ Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk with Visuas
 Fritzing Wiring diagram https://fritzing.org/ is coming soon...
 
 <img src="img/testsetup.png" />
-<img src="imgui.png" />
+<img src="img/ui.png" />
 
 
