@@ -1,4 +1,4 @@
-# flypicopi
+# Fly Pico Pi
 Pico Pi based synthesizer
 
 - Digital Oscillator (DCO) using wavetables
