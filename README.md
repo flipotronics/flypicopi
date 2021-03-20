@@ -12,7 +12,7 @@ Pico Pi based synthesizer
 - Low latency, low jitter, faster than a Linux based system
 
 
-Needs setting up a Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk
+Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk with Visuasl Studio Code
 
 Fritzing Wiring diagram https://fritzing.org/ is coming soon
 
