@@ -8,10 +8,12 @@ Pico Pi based synthesizer
 - Midi Control using a Midi Beakout Board: https://www.hobbytronics.co.uk/audio-midi/midi-breakout
 - Hexler Touch OSC UI on IoS:  https://hexler.net/products/touchosc
 - Uses low cost Pico Pi 
+- Store custom patches on SD card
 - Low latency, low jitter, faster than a Linux based system
 
-Seup Pico Pii c++ build environment: https://github.com/raspberrypi/pico-sdk
 
-Frixing Wiring diagram is coming
+Needs setting up a Pico Pi C build environment: https://github.com/raspberrypi/pico-sdk
+
+Fritzing Wiring diagram https://fritzing.org/ is coming soon
 
 
