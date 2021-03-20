@@ -1,7 +1,7 @@
 # flypicopi
 Pico Pi based synthesizer
 
-- Digital Oscillator (DCO)
+- Digital Oscillator (DCO) using wavetables, 
 - Analog Filter (VCF) control (I use filter in my EuroRack, next i will try to build a filter based on CEM3340, examples:  https://electricdruid.net/cem3320-filter-designs/
 - Pico Audio Pack from: https://shop.pimoroni.com/products/pico-audio-pack
 - 12 Bit DAC MPC 4725 to create CV Control Voltages  to drivea Filter : https://www.adafruit.com/product/935
