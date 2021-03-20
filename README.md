@@ -1,13 +1,16 @@
 # flypicopi
 Pico Pi based synthesizer
 
-Digital DCO, Analog Filter VCF
-
+- Digital Oscillator (DCO)
+- Analog Filter (VCF) control
 - Pico Audio Pack from: https://shop.pimoroni.com/products/pico-audio-pack
 - 12 Bit DAC MPC 4725 to create CV Control Voltages  to drivea Filter : https://www.adafruit.com/product/935
-- Midi Control
+- Midi Control using a Midi Beakout Board: https://www.hobbytronics.co.uk/audio-midi/midi-breakout
 - Hexler Touch OSC UI on IoS:  https://hexler.net/products/touchosc
+- Uses Pico Pi for low latency
 
 Seup Pico Pii c++ build environment: https://github.com/raspberrypi/pico-sdk
+
+Frixing Wiring diagram is coming
 
 
