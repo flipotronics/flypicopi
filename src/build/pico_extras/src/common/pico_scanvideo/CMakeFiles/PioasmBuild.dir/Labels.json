@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/CMakeFiles/PioasmBuild"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/CMakeFiles/PioasmBuild.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/CMakeFiles/PioasmBuild-complete.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule"
+		},
+		{
+			"file" : "/Users/mdietric/flypicopi/src/build/pico_extras/src/common/pico_scanvideo/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"PioasmBuild"
+		],
+		"name" : "PioasmBuild"
+	}
+}
