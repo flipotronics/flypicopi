@@ -7,16 +7,16 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .ARM.attributes 00000022  00000000  00000000  00001ff0  2**0
                   CONTENTS, READONLY
-  2 .debug_line   0000019d  00000000  00000000  00002012  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  3 .debug_info   00000026  00000000  00000000  000021af  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  4 .debug_abbrev 00000014  00000000  00000000  000021d5  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000020  00000000  00000000  000021f0  2**3
-                  CONTENTS, READONLY, DEBUGGING
-  6 .debug_str    0000007d  00000000  00000000  00002210  2**0
-                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_line   000001a9  00000000  00000000  00002012  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  3 .debug_info   00000026  00000000  00000000  000021bb  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  4 .debug_abbrev 00000014  00000000  00000000  000021e1  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  5 .debug_aranges 00000020  00000000  00000000  000021f8  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_str    000000b0  00000000  00000000  00002218  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
 
 bs2_default.elf:     file format elf32-littlearm
 

@@ -10,7 +10,7 @@ include(pico_extras_import.cmake)
 project(FlyPicoPi C CXX)
  
 # Link the Project to a source file (step 4.6)
-add_executable(FlyPicoPi main.c)
+add_executable(FlyPicoPi main.cpp)
  
 # Link the Project to an extra library (pico_stdlib)
 
