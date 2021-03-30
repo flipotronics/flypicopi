@@ -2,7 +2,7 @@
 //  Voice.hpp
 //  TestLib
 //
-//  Created by Mathias Dietrich on 02.03.21.
+//  author: mat@flipotronics.com
 //
 
 #ifndef Voice_hpp

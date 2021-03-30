@@ -1,3 +1,5 @@
+// author: mat@flipotronics.com
+
 #ifndef Def_h
 #define Def_h
 

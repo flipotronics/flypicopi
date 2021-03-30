@@ -1,5 +1,11 @@
 /**
- * author: mathias.dietrich@gmail.com
+ * author: mat@flipotronics.com
+
+
+
+ minicom -b 115200 -o -D /dev/ttyACM0
+ 
+
  */
 
 #include <stdio.h>
@@ -63,6 +69,12 @@ const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGE
 #define MCP4725_CMD_WRITEDAC (0x40)    ///< Writes data to the DAC
 #define MCP4725_CMD_WRITEDACEEPROM (0x60)
 #define PMP_DAC_DEVICE i2c0
+
+#define SWITCH_PIN 22 
+#define ENCOCDER_PIN_1 17
+#define ENCOCDER_PIN_2 16
+
+
 
 uint8_t buf[3];
 uint16_t mpc_voltages[128];
@@ -371,11 +383,25 @@ void setupVoltageTable(){
 }
 
 int main() {
+
     stdio_init_all();
 
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
-   
+
+    gpio_init(SWITCH_PIN);
+    gpio_set_dir(SWITCH_PIN, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN);
+
+    gpio_init(ENCOCDER_PIN_1);
+    gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_1);
+
+    gpio_init(ENCOCDER_PIN_2);
+    gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_2);
+    
+
     // Midi UART
     uart_init(UART_ID, BAUD_RATE);
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
@@ -405,8 +431,10 @@ int main() {
     bi_decl(bi_2pins_with_func(0, 1, GPIO_FUNC_I2C));
     sendCutoff = 127;
     sendCutoff = false;
+
     //i2c_write_byte( (int)lastCutOff * 32); 
-    //tusb_init();
+   // tusb_init();
+
 
     for (int i = 0; i < SINE_WAVE_TABLE_LEN; i++) {
         sine_wave_table[i] = 32767.0 * cosf(i * 2.0 * (float) (M_PI / SINE_WAVE_TABLE_LEN));
@@ -424,19 +452,63 @@ int main() {
 
     // Init Audio
     struct audio_buffer_pool *ap = init_audio();
-    printf("audio instance %i", ap);
+
     // LED on
     gpio_put(LED_PIN, 1);
 
     float counter = 0.0;
-  
+
+    bool isSwitchPressed;
+    bool isSEnc_a;
+    bool isSEnc_b;
+
 // Main Loop ===========================================================================================
     while (true) {
         absolute_time_t tStart = get_absolute_time();
         //tud_task(); // tinyusb device task
 
-        isMidiMounted =  tud_mounted();
-        
+        //isMidiMounted =  tud_mounted();
+
+  
+        bool isPressedNow = gpio_get(SWITCH_PIN);
+        if(isSwitchPressed && !isPressedNow){
+            printf("Button fires \n");
+        }
+        isSwitchPressed = isPressedNow;
+        bool a = gpio_get(ENCOCDER_PIN_1);
+        bool b = gpio_get(ENCOCDER_PIN_2);
+
+        bool haveMove = false;
+        if(isSEnc_a && !a){
+           // printf("isSEnc_a fires \n");
+           // printf("a is: %d b is: %d\n", a, b);
+            haveMove = true;
+        }
+
+        if(isSEnc_b && !b){
+           // printf("isSEnc_b fires \n");
+           //printf("a is: %d b is: %d\n", a, b);
+            haveMove = true;
+        }
+        if(haveMove&& a==0 && b==0){
+            haveMove = false;
+           // printf("a is: %d b is: %d\n", a, b);
+            //printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
+
+            if(isSEnc_a){
+                if(lastCutOff < 127){
+                    lastCutOff++;
+                }
+            }
+            if(isSEnc_b && lastCutOff>0){
+                lastCutOff--;
+            }
+             i2c_write_byte(mpc_voltages[lastCutOff]); 
+            printf("Cutoff is: %d\n", lastCutOff);
+        }
+        isSEnc_a = a;
+        isSEnc_b = b;
+
         // Scan keyboard
         int c = getchar_timeout_us(0);
         if (c >= 0) {
@@ -508,9 +580,8 @@ int main() {
         give_audio_buffer(ap, buffer);
 
         absolute_time_t tEnd = get_absolute_time();
-       taken = tEnd - tStart;
+        taken = tEnd - tStart;
     }
     puts("\n");
     return 0;
 }
-

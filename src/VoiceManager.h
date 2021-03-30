@@ -2,7 +2,7 @@
 //  VoiceMaster.hpp
 //  TestLib
 //
-//  Created by Mathias Dietrich on 02.03.21.
+//  author: mat@flipotronics.com
 //
 
 #ifndef VoiceManager_hpp
@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ostream>
-#include  <iostream>
+#include <iostream>
 
 #include "Def.h"
 #include "Renderer.h"
