@@ -24,8 +24,9 @@ hardware_i2c
 
 target_compile_definitions(FlyPicoPi PRIVATE
 # compile time configuration of I2S
-PICO_AUDIO_I2S_MONO_INPUT=0
+
 PICO_AUDIO_I2S_MONO_OUTPUT=0
+PICO_AUDIO_I2S_MONO_INPUT=0
 
 #define for our example code
 USE_AUDIO_I2S=1

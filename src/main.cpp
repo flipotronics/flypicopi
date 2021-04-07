@@ -1,11 +1,6 @@
 /**
  * author: mat@flipotronics.com
-
-
-
  minicom -b 115200 -o -D /dev/ttyACM0
- 
-
  */
 
 #include <stdio.h>
@@ -13,13 +8,12 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "hardware/clocks.h"
-#include "hardware/structs/clocks.h"
-
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
 #include "bsp/board.h"
 #include "tusb.h"
+#include "hardware/clocks.h"
+#include "hardware/structs/clocks.h"
 #include "hardware/uart.h"
 #include "hardware/irq.h"
 #include "hardware/flash.h"
@@ -28,11 +22,12 @@
 #include "pico/binary_info.h"
 
 const uint LED_PIN = 25;
+const uint LED_PIN_MIDI = 28;
 
 #define SYNTH_VERSION 2
 
-#define I2C_DATAPIN 9
-#define I2C_CLOCKPIN 10
+//#define I2C_DATAPIN 9
+//#define I2C_CLOCKPIN 10
 
 #define MPC0_ID 0x60    // ADA 0x62 or 0x63   - Sparkfun 0x60   
 #define MPC1_ID 0x61
@@ -50,8 +45,8 @@ const uint LED_PIN = 25;
 
 #define SINE_WAVE_TABLE_LEN 2048
 #define SAMPLES_PER_BUFFER 256
-static float sine_wave_table[SINE_WAVE_TABLE_LEN];
-static float saw_wave_table[SINE_WAVE_TABLE_LEN];
+static int sine_wave_table[SINE_WAVE_TABLE_LEN];
+static int saw_wave_table[SINE_WAVE_TABLE_LEN];
 
 absolute_time_t taken;
 int lastNote;
@@ -66,27 +61,66 @@ int lastNote;
 const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
 
 #define MCP4725_I2CADDR_DEFAULT (0x60) ///< Default i2c address
+#define MCP4725_I2CADDR_2 (0x61)
 #define MCP4725_CMD_WRITEDAC (0x40)    ///< Writes data to the DAC
 #define MCP4725_CMD_WRITEDACEEPROM (0x60)
 #define PMP_DAC_DEVICE i2c0
 
 #define SWITCH_PIN 22 
+#define SWITCH_PIN2 21
+
+#define GATE_PIN1 20
+#define GATE_PIN2 19
+#define SD_INSERT_PIN 18
 #define ENCOCDER_PIN_1 17
 #define ENCOCDER_PIN_2 16
 
-
+#define DSIPLAY_ADDR 0x3C
 
 uint8_t buf[3];
 uint16_t mpc_voltages[128];
 
 uint8_t lastCutOff = 127;
 
-void i2c_write_byte(uint16_t val) {
+bool audioOk = false;
+uint32_t step ;
+uint vol = 64;
+const int multi = 1 << 16;
+float tuning = 440.0;
+int bcount = 0;
+uint8_t b0;
+uint8_t b1;
+uint8_t b2;
+
+// RX interrupt handler
+static int chars_rxed = 0;
+bool isOn;
+bool sendCutoff = false;
+bool isSwitchPressed;
+bool isSwitchPressed2;
+bool isSEnc_a;
+bool isSEnc_b;
+bool isMidiLight;
+
+bool isGate1;
+bool isGate2;
+
+int midiLightCounter = 0;
+
+void i2c_writeDac1(uint16_t val) {
     printf ("Sending cutoff %i \n" ,val);
     buf[0] = MCP4725_CMD_WRITEDAC;
     buf[1] = val / 16;
     buf[2] = (val % 16) << 4 ;
     i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_DEFAULT, buf, 3, false);
+}
+
+void i2c_writeDac2(uint16_t val) {
+    printf ("Sending adsr %i \n" ,val);
+    buf[0] = MCP4725_CMD_WRITEDAC;
+    buf[1] = val / 16;
+    buf[2] = (val % 16) << 4 ;
+    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_2, buf, 3, false);
 }
 
 const  uint16_t DACLookup_FullSine_9Bit[512] =
@@ -197,9 +231,6 @@ void checkFlash(){
         printf("Programming successful!\n");
 }
 
-bool audioOk = false;
-
-
 struct audio_buffer_pool *init_audio() {
     static audio_format_t audio_format = {
             .sample_freq = SAMPLERATE, 
@@ -217,8 +248,8 @@ struct audio_buffer_pool *init_audio() {
     bool __unused ok;
     
     struct audio_i2s_config config = {
-            .data_pin = 9,
-            .clock_pin_base = 10,
+            .data_pin = 9, //9
+            .clock_pin_base = 10,//10
             .dma_channel = 1,
             .pio_sm = 0,
     };
@@ -237,11 +268,6 @@ struct audio_buffer_pool *init_audio() {
     audio_i2s_set_enabled(true);
     return producer_pool;
 }
-
-uint32_t step ;
-uint vol = 64;
-const int multi = 1 << 16;
-float tuning = 440.0;
 
 uint32_t calcStep(float freq){
     int multi = 1 << 16;
@@ -270,14 +296,6 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
-int bcount = 0;
-uint8_t b0;
-uint8_t b1;
-uint8_t b2;
-// RX interrupt handler
-static int chars_rxed = 0;
-bool isOn;
-
 float freqFromNoteNumber(uint8_t number, float tuning){
     float d = (number-69) / 12.0;
     return pow(2, d) * tuning;
@@ -289,6 +307,7 @@ void noteOn(uint8_t midiNote, uint8_t velocity){
     step = calcStep(freq);
     isOn = true;
     lastNote = midiNote;
+    midiLightCounter = 100;
 }
 
 void noteOff(uint8_t midiNote){
@@ -296,13 +315,12 @@ void noteOff(uint8_t midiNote){
         isOn = false;
     }
     printf("note Off %i  \n",midiNote);
+    midiLightCounter = 100;
 }
-
-bool sendCutoff = false;
 
 void control(uint8_t cc, uint8_t value){
     printf("Control  %i %i \n",cc, value);
-
+    midiLightCounter = 100;
     // Volume
     if(cc==7){
         vol = value;
@@ -312,7 +330,7 @@ void control(uint8_t cc, uint8_t value){
     if(cc==74){
         if(lastCutOff != value){
             lastCutOff = value;
-             i2c_write_byte(mpc_voltages[value]); 
+             i2c_writeDac2(mpc_voltages[value]); 
         }
     }
 }
@@ -389,9 +407,21 @@ int main() {
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
 
+    gpio_init(LED_PIN_MIDI);
+    gpio_set_dir(LED_PIN_MIDI, GPIO_OUT);
+
     gpio_init(SWITCH_PIN);
     gpio_set_dir(SWITCH_PIN, GPIO_IN);
     gpio_pull_up(SWITCH_PIN);
+
+    gpio_init(SWITCH_PIN2);
+    gpio_set_dir(SWITCH_PIN2, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN2);
+
+    gpio_init(SD_INSERT_PIN);
+    gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
+    gpio_pull_up(SD_INSERT_PIN);
+    
 
     gpio_init(ENCOCDER_PIN_1);
     gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
@@ -400,7 +430,14 @@ int main() {
     gpio_init(ENCOCDER_PIN_2);
     gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
     gpio_pull_up(ENCOCDER_PIN_2);
-    
+
+    gpio_init(GATE_PIN1);
+    gpio_set_dir(GATE_PIN1, GPIO_OUT);
+    gpio_pull_up(GATE_PIN1);
+
+    gpio_init(GATE_PIN2);
+    gpio_set_dir(GATE_PIN2, GPIO_OUT);
+    gpio_pull_up(GATE_PIN2);
 
     // Midi UART
     uart_init(UART_ID, BAUD_RATE);
@@ -432,6 +469,9 @@ int main() {
     sendCutoff = 127;
     sendCutoff = false;
 
+    isGate1 = true;
+    isGate2 = true;
+
     //i2c_write_byte( (int)lastCutOff * 32); 
    // tusb_init();
 
@@ -458,9 +498,13 @@ int main() {
 
     float counter = 0.0;
 
-    bool isSwitchPressed;
-    bool isSEnc_a;
-    bool isSEnc_b;
+
+    isGate1 = true;
+    isGate2 = true;
+
+    lastCutOff = 127;
+     i2c_writeDac2(mpc_voltages[lastCutOff]); 
+
 
 // Main Loop ===========================================================================================
     while (true) {
@@ -469,12 +513,31 @@ int main() {
 
         //isMidiMounted =  tud_mounted();
 
-  
+        isMidiLight = false;
+        if(midiLightCounter > 0){
+            midiLightCounter--;
+            isMidiLight = true;
+        }
+
+        gpio_put(LED_PIN_MIDI, isMidiLight);
+        gpio_put(GATE_PIN1, isGate1);
+        gpio_put(GATE_PIN2, isGate2);
+
         bool isPressedNow = gpio_get(SWITCH_PIN);
         if(isSwitchPressed && !isPressedNow){
-            printf("Button fires \n");
+            printf("Switch1 fires \n");
+            isMidiLight = true;
         }
         isSwitchPressed = isPressedNow;
+
+        isPressedNow = gpio_get(SWITCH_PIN2);
+        if(isSwitchPressed2 && !isPressedNow){
+            printf("Switch2 fires \n");
+             isMidiLight = false;
+        }
+        isSwitchPressed2 = isPressedNow;
+
+
         bool a = gpio_get(ENCOCDER_PIN_1);
         bool b = gpio_get(ENCOCDER_PIN_2);
 
@@ -492,8 +555,8 @@ int main() {
         }
         if(haveMove&& a==0 && b==0){
             haveMove = false;
-           // printf("a is: %d b is: %d\n", a, b);
-            //printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
+            printf("a is: %d b is: %d\n", a, b);
+            printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
 
             if(isSEnc_a){
                 if(lastCutOff < 127){
@@ -503,7 +566,7 @@ int main() {
             if(isSEnc_b && lastCutOff>0){
                 lastCutOff--;
             }
-             i2c_write_byte(mpc_voltages[lastCutOff]); 
+            i2c_writeDac2(mpc_voltages[lastCutOff]); 
             printf("Cutoff is: %d\n", lastCutOff);
         }
         isSEnc_a = a;
@@ -564,14 +627,18 @@ int main() {
         int noOfSc = 2;
         int v = vol / noOfSc;
 
+        //step = 0x100000 / 4;
+ 
+
         // AUDIO LOOP
         for (uint i = 0; i < buffer->max_sample_count ; i++) {
             if(isOn){
-               samples[i] = (v * ((int)sine_wave_table[pos >> 16u])) >> 7u; 
-               int r = (v * ((int)saw_wave_table[pos >> 16u]))  >> 7u;
+               samples[i] = (v * (int)sine_wave_table[pos >> 16u]) >> 9u; 
+               //samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+               int r = (v * ((int)saw_wave_table[pos >> 16u]))  >> 9u;
                samples[i] += r;
             }else{
-                samples[i] = 0;
+                samples[i] = 2048 >> 8u; 
             }
             pos += step;
             if (pos >= pos_max) pos -= pos_max;

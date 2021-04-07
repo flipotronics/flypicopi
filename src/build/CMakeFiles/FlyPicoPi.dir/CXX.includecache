@@ -641,10 +641,6 @@ sys/stat.h
 -
 fcntl.h
 -
-hardware/clocks.h
-/home/mdietric/flypicopi/src/hardware/clocks.h
-hardware/structs/clocks.h
-/home/mdietric/flypicopi/src/hardware/structs/clocks.h
 pico/stdlib.h
 /home/mdietric/flypicopi/src/pico/stdlib.h
 pico/audio_i2s.h
@@ -653,6 +649,10 @@ bsp/board.h
 /home/mdietric/flypicopi/src/bsp/board.h
 tusb.h
 /home/mdietric/flypicopi/src/tusb.h
+hardware/clocks.h
+/home/mdietric/flypicopi/src/hardware/clocks.h
+hardware/structs/clocks.h
+/home/mdietric/flypicopi/src/hardware/structs/clocks.h
 hardware/uart.h
 /home/mdietric/flypicopi/src/hardware/uart.h
 hardware/irq.h
