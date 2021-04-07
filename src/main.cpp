@@ -1,6 +1,8 @@
 /**
  * author: mat@flipotronics.com
  minicom -b 115200 -o -D /dev/ttyACM0
+
+ // making updae as board complete
  */
 
 #include <stdio.h>
@@ -24,7 +26,7 @@
 const uint LED_PIN = 25;
 const uint LED_PIN_MIDI = 28;
 
-#define SYNTH_VERSION 2
+#define SYNTH_VERSION 3
 
 //#define I2C_DATAPIN 9
 //#define I2C_CLOCKPIN 10
