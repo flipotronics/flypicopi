@@ -157,6 +157,127 @@ CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.o
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
  pico_extras/src/rp2_common/pico_audio_i2s/audio_i2s.pio.h
+CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+ ../pico-extras/src/common/pico_sd_card/include/pico/sd_card.h
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h
+ ../pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h
+ ../pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h
+ ../pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h
+ ../pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h
+ ../pico-sdk/src/common/pico_time/include/pico/time.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h
+ ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
+ ../pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h
+ ../pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h
+ ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
+ ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+ /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/crc-itu-t.h
+ /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/crc7.h
+ /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
+ pico_extras/src/rp2_common/pico_sd_card/sd_card.pio.h
+CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
+ ../pico-sdk/lib/tinyusb/src/class/audio/audio.h
+ ../pico-sdk/lib/tinyusb/src/class/audio/audio_device.h
+ ../pico-sdk/lib/tinyusb/src/class/bth/bth_device.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc_host.h
+ ../pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid_device.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid_host.h
+ ../pico-sdk/lib/tinyusb/src/class/midi/midi.h
+ ../pico-sdk/lib/tinyusb/src/class/midi/midi_device.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc_host.h
+ ../pico-sdk/lib/tinyusb/src/class/net/net_device.h
+ ../pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc.h
+ ../pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.h
+ ../pico-sdk/lib/tinyusb/src/class/vendor/vendor_host.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_common.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_compiler.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_error.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_fifo.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_timeout.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_types.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_verify.h
+ ../pico-sdk/lib/tinyusb/src/device/usbd.h
+ ../pico-sdk/lib/tinyusb/src/host/hcd.h
+ ../pico-sdk/lib/tinyusb/src/host/usbh.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_freertos.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_mynewt.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_none.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_pico.h
+ ../pico-sdk/lib/tinyusb/src/tusb.h
+ ../pico-sdk/lib/tinyusb/src/tusb_option.h
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h
+ ../pico-sdk/src/common/pico_sync/include/pico/critical_section.h
+ ../pico-sdk/src/common/pico_sync/include/pico/lock_core.h
+ ../pico-sdk/src/common/pico_sync/include/pico/mutex.h
+ ../pico-sdk/src/common/pico_sync/include/pico/sem.h
+ ../pico-sdk/src/common/pico_time/include/pico/time.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
+ ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+ ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
+ ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
+ /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/hw/bsp/ansi_escape.h
+ /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/hw/bsp/board.h
+ /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
  ../pico-sdk/lib/tinyusb/src/class/audio/audio.h
  ../pico-sdk/lib/tinyusb/src/common/tusb_common.h
@@ -1042,6 +1163,32 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj
  /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_util/queue.c
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
+ ../pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
+ ../pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/adc.c
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
  ../pico-sdk/src/common/pico_base/include/pico.h
  ../pico-sdk/src/common/pico_base/include/pico/assert.h
@@ -1489,6 +1636,50 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
  /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h
+ ../pico-sdk/src/common/pico_sync/include/pico/critical_section.h
+ ../pico-sdk/src/common/pico_sync/include/pico/lock_core.h
+ ../pico-sdk/src/common/pico_sync/include/pico/mutex.h
+ ../pico-sdk/src/common/pico_sync/include/pico/sem.h
+ ../pico-sdk/src/common/pico_sync/include/pico/sync.h
+ ../pico-sdk/src/common/pico_time/include/pico/time.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/psm.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_claim/include/hardware/claim.h
+ ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
+ ../pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h
+ ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+ ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
+ ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h
+ ../pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ ../pico-sdk/src/rp2_common/pico_runtime/include/pico/runtime.h
+ ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
  ../pico-sdk/src/common/pico_base/include/pico.h
  ../pico-sdk/src/common/pico_base/include/pico/assert.h
@@ -1842,8 +2033,75 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
  /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
+CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.obj
+ ../pico-sdk/lib/tinyusb/src/class/audio/audio.h
+ ../pico-sdk/lib/tinyusb/src/class/audio/audio_device.h
+ ../pico-sdk/lib/tinyusb/src/class/bth/bth_device.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/cdc/cdc_host.h
+ ../pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid_device.h
+ ../pico-sdk/lib/tinyusb/src/class/hid/hid_host.h
+ ../pico-sdk/lib/tinyusb/src/class/midi/midi.h
+ ../pico-sdk/lib/tinyusb/src/class/midi/midi_device.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/msc/msc_host.h
+ ../pico-sdk/lib/tinyusb/src/class/net/net_device.h
+ ../pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc.h
+ ../pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.h
+ ../pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.h
+ ../pico-sdk/lib/tinyusb/src/class/vendor/vendor_host.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_common.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_compiler.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_error.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_fifo.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_timeout.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_types.h
+ ../pico-sdk/lib/tinyusb/src/common/tusb_verify.h
+ ../pico-sdk/lib/tinyusb/src/device/usbd.h
+ ../pico-sdk/lib/tinyusb/src/host/hcd.h
+ ../pico-sdk/lib/tinyusb/src/host/usbh.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_freertos.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_mynewt.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_none.h
+ ../pico-sdk/lib/tinyusb/src/osal/osal_pico.h
+ ../pico-sdk/lib/tinyusb/src/tusb.h
+ ../pico-sdk/lib/tinyusb/src/tusb_option.h
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/common/pico_sync/include/pico/critical_section.h
+ ../pico-sdk/src/common/pico_sync/include/pico/lock_core.h
+ ../pico-sdk/src/common/pico_sync/include/pico/mutex.h
+ ../pico-sdk/src/common/pico_sync/include/pico/sem.h
+ ../pico-sdk/src/common/pico_time/include/pico/time.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+ ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ /home/mdietric/flypicopi/src/usb_descriptors.c
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
+CMakeFiles/FlyPicoPi.dir/font.cc.obj
+ /home/mdietric/flypicopi/src/font.cc
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-extras/src/common/pico_audio/include/pico/audio.h
+ ../pico-extras/src/common/pico_sd_card/include/pico/sd_card.h
  ../pico-extras/src/common/pico_util_buffer/include/pico/util/buffer.h
  ../pico-extras/src/rp2_common/pico_audio_i2s/include/pico/audio_i2s.h
  ../pico-sdk/lib/tinyusb/hw/bsp/ansi_escape.h
@@ -1899,10 +2157,14 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/common/pico_sync/include/pico/lock_core.h
  ../pico-sdk/src/common/pico_sync/include/pico/mutex.h
  ../pico-sdk/src/common/pico_sync/include/pico/sem.h
+ ../pico-sdk/src/common/pico_sync/include/pico/sync.h
  ../pico-sdk/src/common/pico_time/include/pico/time.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/i2c.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h
@@ -1911,7 +2173,9 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/usb.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/i2c.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
@@ -1919,8 +2183,10 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h
  ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/usb.h
+ ../pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h
  ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
  ../pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h
+ ../pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h
  ../pico-sdk/src/rp2_common/hardware_flash/include/hardware/flash.h
  ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
  ../pico-sdk/src/rp2_common/hardware_i2c/include/hardware/i2c.h
@@ -1928,6 +2194,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
  ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
  ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h
+ ../pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h
  ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
  ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
  ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
@@ -1937,6 +2204,41 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  /home/mdietric/flypicopi/src/Voice.h
  /home/mdietric/flypicopi/src/VoiceManager.h
  /home/mdietric/flypicopi/src/main.cpp
+ /home/mdietric/flypicopi/src/oled.h
+ /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ generated/pico_base/pico/config_autogen.h
+ generated/pico_base/pico/version.h
+CMakeFiles/FlyPicoPi.dir/oled.cc.obj
+ ../pico-sdk/src/common/pico_base/include/pico.h
+ ../pico-sdk/src/common/pico_base/include/pico/assert.h
+ ../pico-sdk/src/common/pico_base/include/pico/config.h
+ ../pico-sdk/src/common/pico_base/include/pico/error.h
+ ../pico-sdk/src/common/pico_base/include/pico/types.h
+ ../pico-sdk/src/common/pico_stdlib/include/pico/stdlib.h
+ ../pico-sdk/src/common/pico_time/include/pico/time.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/i2c.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
+ ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/i2c.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
+ ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h
+ ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
+ ../pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h
+ ../pico-sdk/src/rp2_common/hardware_i2c/include/hardware/i2c.h
+ ../pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h
+ ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h
+ ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
+ ../pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h
+ ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+ /home/mdietric/flypicopi/src/oled.cc
+ /home/mdietric/flypicopi/src/oled.h
  /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
@@ -1963,3 +2265,5 @@ CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj
  generated/pico_base/pico/version.h
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
  /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp
+CMakeFiles/FlyPicoPi.dir/splash.cc.obj
+ /home/mdietric/flypicopi/src/splash.cc

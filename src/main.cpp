@@ -10,18 +10,29 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "pico/stdlib.h"
-#include "pico/audio_i2s.h"
-#include "bsp/board.h"
-#include "tusb.h"
 #include "hardware/clocks.h"
 #include "hardware/structs/clocks.h"
 #include "hardware/uart.h"
 #include "hardware/irq.h"
 #include "hardware/flash.h"
 #include "hardware/i2c.h"
-#include "VoiceManager.h"
+#include "hardware/adc.h"
+#include "hardware/dma.h"
+
+
+#include "pico/stdlib.h"
+#include "pico/audio_i2s.h"
+#include "pico/multicore.h"
 #include "pico/binary_info.h"
+#include "pico/sd_card.h"
+#include "bsp/board.h"
+
+#include "oled.h"
+#include "tusb.h"
+
+#include "VoiceManager.h"
+
+extern "C" const uint8_t splash1_data[];
 
 const uint LED_PIN = 25;
 const uint LED_PIN_MIDI = 28;
@@ -45,6 +56,15 @@ const uint LED_PIN_MIDI = 28;
 #define DATA_BITS 8
 #define STOP_BITS 1
 
+// SD Card Pins
+#define SPI_BUS 1  // 1
+#define PICO_SD_CLK_PIN 14 // CLK
+#define PICO_SD_DATI_PIN  15 // MOSI
+#define PICO_SD_DAT0_PIN 12  // MISO
+#define PICO_SD_CMD_PIN 13 // CS
+#define SD_INSERT_PIN 18 // CD
+
+
 #define SINE_WAVE_TABLE_LEN 2048
 #define SAMPLES_PER_BUFFER 256
 static int sine_wave_table[SINE_WAVE_TABLE_LEN];
@@ -67,18 +87,18 @@ const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGE
 #define MCP4725_CMD_WRITEDAC (0x40)    ///< Writes data to the DAC
 #define MCP4725_CMD_WRITEDACEEPROM (0x60)
 #define PMP_DAC_DEVICE i2c0
+#define DSIPLAY_ADDR 0x3C
 
 #define SWITCH_PIN 22 
 #define SWITCH_PIN2 21
 
 #define GATE_PIN1 20
 #define GATE_PIN2 19
-#define SD_INSERT_PIN 18
+
 #define ENCOCDER_PIN_1 17
 #define ENCOCDER_PIN_2 16
 
-#define DSIPLAY_ADDR 0x3C
-
+uint8_t midibuffer[32];
 uint8_t buf[3];
 uint16_t mpc_voltages[128];
 
@@ -108,6 +128,7 @@ bool isGate1;
 bool isGate2;
 
 int midiLightCounter = 0;
+
 
 void i2c_writeDac1(uint16_t val) {
     printf ("Sending cutoff %i \n" ,val);
@@ -336,32 +357,29 @@ void control(uint8_t cc, uint8_t value){
         }
     }
 }
-
-void on_uart_rx() {
-    chars_rxed++;
-    while (uart_is_readable(UART_ID)) {
-        uint8_t ch = uart_getc(UART_ID);
+void handleMidiByte(u_int8_t ch){
+        chars_rxed++;
         printf("UART %i \n ", ch);
         if(ch==144){
             bcount = 1;
             b0 = ch;
-             continue;
+             return;
         }
         if(ch==128){
             bcount = 1;
             b0 = ch;
-            continue;
+            return;
         }
         if(ch==176){
             bcount = 1;
             b0 = ch;
-            continue;
+            return;
         }
 
         if(bcount==1){
             b1 = ch;
             bcount = 2;
-             continue;
+             return;
         }
 
         if(bcount==2){
@@ -370,20 +388,25 @@ void on_uart_rx() {
             if(b0==144){
                 if(b2 == 0){
                     noteOff(b1);
-                    continue;
+                    return;
                 }
                 noteOn(b1,b2);
             }
             if(b0==128){
                 noteOff(b1);
-                 continue;
+                 return;
             }
             if(b0==176){
                 control(b1,b2);
-                 continue;
+                 return;
             }
         }
-        chars_rxed++;
+}
+
+void on_uart_rx() {
+    while (uart_is_readable(UART_ID)) {
+        uint8_t ch = uart_getc(UART_ID);
+        handleMidiByte(ch);
     }
 }
 
@@ -401,6 +424,45 @@ void setupVoltageTable(){
         printf( "%i \n", mpc_voltages[i]);
     }
 }
+
+void testScreen(){
+
+	int h = 64;
+	init_display(h);
+
+    const char * welcome = "Fly Pico Pi\nMicro Synthesizer\nFliptronics V1.0\nMade with Love\nFrankurt/M\n1 Another line\n2 Another line\n3 Another line";
+
+	ssd1306_print(welcome,1); // demonstrate some text
+	show_scr();
+
+    
+	//sleep_ms(2000);
+	//fill_scr(0); // empty the screen
+
+	//drawBitmap(0, 0, splash1_data, 128, 64, 1);
+	//show_scr();
+/*
+	sleep_ms(2000);
+	fill_scr(0);
+	setCursorx(0);
+	setCursory(0);
+	ssd1306_print("Testing cursor");
+	show_scr();
+	sleep_ms(2000);
+	setCursorx(0);
+	ssd1306_print("Overwritten   ");
+	show_scr();
+    */
+}
+
+void testSD(){
+    if (sd_init_1pin() < 0) {
+      printf("error");
+    } else {
+        printf("cool");
+    }
+}
+
 
 int main() {
 
@@ -424,7 +486,6 @@ int main() {
     gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
     gpio_pull_up(SD_INSERT_PIN);
     
-
     gpio_init(ENCOCDER_PIN_1);
     gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
     gpio_pull_up(ENCOCDER_PIN_1);
@@ -474,10 +535,6 @@ int main() {
     isGate1 = true;
     isGate2 = true;
 
-    //i2c_write_byte( (int)lastCutOff * 32); 
-   // tusb_init();
-
-
     for (int i = 0; i < SINE_WAVE_TABLE_LEN; i++) {
         sine_wave_table[i] = 32767.0 * cosf(i * 2.0 * (float) (M_PI / SINE_WAVE_TABLE_LEN));
         saw_wave_table[i] = -32767.0 + i * 32767 / SINE_WAVE_TABLE_LEN;
@@ -500,20 +557,31 @@ int main() {
 
     float counter = 0.0;
 
-
     isGate1 = true;
     isGate2 = true;
 
     lastCutOff = 127;
-     i2c_writeDac2(mpc_voltages[lastCutOff]); 
+    i2c_writeDac2(mpc_voltages[lastCutOff]); 
 
+    testScreen();
+
+    //testSD();
+
+    board_init();
+
+    printf("Starting USB init");
+    tusb_init();
+    printf("Done USB init");
+    tud_connect();
+    bool isMidiConnected;
 
 // Main Loop ===========================================================================================
     while (true) {
         absolute_time_t tStart = get_absolute_time();
-        //tud_task(); // tinyusb device task
 
-        //isMidiMounted =  tud_mounted();
+        tud_task(); // tinyusb device task
+        isMidiMounted =  tud_mounted();
+      //  isMidiConnected =  tud_cdc_connected();
 
         isMidiLight = false;
         if(midiLightCounter > 0){
@@ -614,10 +682,12 @@ int main() {
                 printf("Version: %i \n", SYNTH_VERSION );
                 printf("Audio Setup %d \n", audioOk);
                 printf("vol = %d, step = %i  \n", vol, step);
-                printf("Midi Mounted = %i \n", isMidiMounted);
+               
                 printf("UART Received = %i \n", chars_rxed);
                 printf("Time taken  = %u \n", us_to_ms(taken));
-                setupVoltageTable();
+                printf("Midi Mounted = %i \n", isMidiMounted);
+                printf("Midi isMidiConnected = %i \n", isMidiConnected);
+                //setupVoltageTable();
             }
         }else{
             // lastNote = -1;
@@ -630,6 +700,17 @@ int main() {
         int v = vol / noOfSc;
 
         //step = 0x100000 / 4;
+     
+        int bytCount = tud_midi_available ();
+        if(bytCount > 0){
+            int count = tud_midi_read(midibuffer, 32);
+            if(count>0){
+                midiLightCounter = 100;
+                for(int i =0; i < count;++i){
+                    handleMidiByte(midibuffer[i]);
+                }
+            }
+        }
  
 
         // AUDIO LOOP

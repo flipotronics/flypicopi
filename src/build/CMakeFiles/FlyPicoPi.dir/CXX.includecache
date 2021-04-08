@@ -14,6 +14,10 @@ pico/util/buffer.h
 hardware/sync.h
 ../pico-extras/src/common/pico_audio/include/pico/hardware/sync.h
 
+../pico-extras/src/common/pico_sd_card/include/pico/sd_card.h
+pico.h
+../pico-extras/src/common/pico_sd_card/include/pico/pico.h
+
 ../pico-extras/src/common/pico_util_buffer/include/pico/util/buffer.h
 pico/types.h
 ../pico-extras/src/common/pico_util_buffer/include/pico/util/pico/types.h
@@ -428,6 +432,14 @@ pico/lock_core.h
 pico/lock_core.h
 ../pico-sdk/src/common/pico_sync/include/pico/pico/lock_core.h
 
+../pico-sdk/src/common/pico_sync/include/pico/sync.h
+pico/sem.h
+../pico-sdk/src/common/pico_sync/include/pico/pico/sem.h
+pico/mutex.h
+../pico-sdk/src/common/pico_sync/include/pico/pico/mutex.h
+pico/critical_section.h
+../pico-sdk/src/common/pico_sync/include/pico/pico/critical_section.h
+
 ../pico-sdk/src/common/pico_time/include/pico/time.h
 pico.h
 ../pico-sdk/src/common/pico_time/include/pico/pico.h
@@ -436,11 +448,17 @@ hardware/timer.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
 
+../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
+
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
 hardware/platform_defs.h
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/hardware/platform_defs.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h
+
+../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h
+
+../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/i2c.h
 
@@ -458,6 +476,12 @@ hardware/platform_defs.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/usb.h
 
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/adc.h
+hardware/address_mapped.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
+hardware/regs/adc.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/adc.h
+
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h
 hardware/address_mapped.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
@@ -465,6 +489,14 @@ hardware/platform_defs.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/platform_defs.h
 hardware/regs/clocks.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/clocks.h
+
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h
+hardware/address_mapped.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
+hardware/platform_defs.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/platform_defs.h
+hardware/regs/dma.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/dma.h
 
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/i2c.h
 hardware/address_mapped.h
@@ -516,6 +548,14 @@ hardware/address_mapped.h
 hardware/regs/usb.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/usb.h
 
+../pico-sdk/src/rp2_common/hardware_adc/include/hardware/adc.h
+pico.h
+../pico-sdk/src/rp2_common/hardware_adc/include/hardware/pico.h
+hardware/structs/adc.h
+../pico-sdk/src/rp2_common/hardware_adc/include/hardware/hardware/structs/adc.h
+hardware/gpio.h
+../pico-sdk/src/rp2_common/hardware_adc/include/hardware/hardware/gpio.h
+
 ../pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h
 pico.h
 ../pico-sdk/src/rp2_common/hardware_base/include/hardware/pico.h
@@ -527,6 +567,16 @@ pico.h
 ../pico-sdk/src/rp2_common/hardware_clocks/include/hardware/pico.h
 hardware/structs/clocks.h
 ../pico-sdk/src/rp2_common/hardware_clocks/include/hardware/hardware/structs/clocks.h
+
+../pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h
+pico.h
+../pico-sdk/src/rp2_common/hardware_dma/include/hardware/pico.h
+hardware/structs/dma.h
+../pico-sdk/src/rp2_common/hardware_dma/include/hardware/hardware/structs/dma.h
+hardware/regs/dreq.h
+../pico-sdk/src/rp2_common/hardware_dma/include/hardware/hardware/regs/dreq.h
+pico/assert.h
+../pico-sdk/src/rp2_common/hardware_dma/include/hardware/pico/assert.h
 
 ../pico-sdk/src/rp2_common/hardware_flash/include/hardware/flash.h
 pico.h
@@ -577,6 +627,14 @@ pico.h
 ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/pico.h
 hardware/structs/uart.h
 ../pico-sdk/src/rp2_common/hardware_uart/include/hardware/hardware/structs/uart.h
+
+../pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h
+pico/types.h
+../pico-sdk/src/rp2_common/pico_multicore/include/pico/pico/types.h
+pico/sync.h
+../pico-sdk/src/rp2_common/pico_multicore/include/pico/pico/sync.h
+hardware/structs/sio.h
+../pico-sdk/src/rp2_common/pico_multicore/include/pico/hardware/structs/sio.h
 
 ../pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h
 sys/cdefs.h
@@ -641,14 +699,6 @@ sys/stat.h
 -
 fcntl.h
 -
-pico/stdlib.h
-/home/mdietric/flypicopi/src/pico/stdlib.h
-pico/audio_i2s.h
-/home/mdietric/flypicopi/src/pico/audio_i2s.h
-bsp/board.h
-/home/mdietric/flypicopi/src/bsp/board.h
-tusb.h
-/home/mdietric/flypicopi/src/tusb.h
 hardware/clocks.h
 /home/mdietric/flypicopi/src/hardware/clocks.h
 hardware/structs/clocks.h
@@ -661,10 +711,32 @@ hardware/flash.h
 /home/mdietric/flypicopi/src/hardware/flash.h
 hardware/i2c.h
 /home/mdietric/flypicopi/src/hardware/i2c.h
-VoiceManager.h
-/home/mdietric/flypicopi/src/VoiceManager.h
+hardware/adc.h
+/home/mdietric/flypicopi/src/hardware/adc.h
+hardware/dma.h
+/home/mdietric/flypicopi/src/hardware/dma.h
+pico/stdlib.h
+/home/mdietric/flypicopi/src/pico/stdlib.h
+pico/audio_i2s.h
+/home/mdietric/flypicopi/src/pico/audio_i2s.h
+pico/multicore.h
+/home/mdietric/flypicopi/src/pico/multicore.h
 pico/binary_info.h
 /home/mdietric/flypicopi/src/pico/binary_info.h
+pico/sd_card.h
+/home/mdietric/flypicopi/src/pico/sd_card.h
+bsp/board.h
+/home/mdietric/flypicopi/src/bsp/board.h
+oled.h
+/home/mdietric/flypicopi/src/oled.h
+tusb.h
+/home/mdietric/flypicopi/src/tusb.h
+VoiceManager.h
+/home/mdietric/flypicopi/src/VoiceManager.h
+
+/home/mdietric/flypicopi/src/oled.h
+stdint.h
+-
 
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
 

@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named flash
+
+# Build rule for target.
+flash: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 flash
+.PHONY : flash
+
+# fast build rule for target.
+flash/fast:
+	$(MAKE) -f CMakeFiles/flash.dir/build.make CMakeFiles/flash.dir/build
+.PHONY : flash/fast
+
+#=============================================================================
 # Target rules for targets named ELF2UF2Build
 
 # Build rule for target.
@@ -266,6 +279,33 @@ pico_scanvideo_dpi_timing_pio_h/fast:
 	$(MAKE) -f pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build.make pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build
 .PHONY : pico_scanvideo_dpi_timing_pio_h/fast
 
+font.obj: font.cc.obj
+
+.PHONY : font.obj
+
+# target to build an object file
+font.cc.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/font.cc.obj
+.PHONY : font.cc.obj
+
+font.i: font.cc.i
+
+.PHONY : font.i
+
+# target to preprocess a source file
+font.cc.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/font.cc.i
+.PHONY : font.cc.i
+
+font.s: font.cc.s
+
+.PHONY : font.s
+
+# target to generate assembly for a file
+font.cc.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/font.cc.s
+.PHONY : font.cc.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -292,6 +332,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+oled.obj: oled.cc.obj
+
+.PHONY : oled.obj
+
+# target to build an object file
+oled.cc.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/oled.cc.obj
+.PHONY : oled.cc.obj
+
+oled.i: oled.cc.i
+
+.PHONY : oled.i
+
+# target to preprocess a source file
+oled.cc.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/oled.cc.i
+.PHONY : oled.cc.i
+
+oled.s: oled.cc.s
+
+.PHONY : oled.s
+
+# target to generate assembly for a file
+oled.cc.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/oled.cc.s
+.PHONY : oled.cc.s
 
 pico-extras/src/common/pico_audio/audio.obj: pico-extras/src/common/pico_audio/audio.cpp.obj
 
@@ -382,6 +449,60 @@ pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.s: pico-extras/src/rp2_commo
 pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.s
 .PHONY : pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.s
+
+pico-extras/src/rp2_common/pico_sd_card/sd_card.obj: pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.obj
+
+# target to build an object file
+pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
+
+pico-extras/src/rp2_common/pico_sd_card/sd_card.i: pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.i
+
+# target to preprocess a source file
+pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
+
+pico-extras/src/rp2_common/pico_sd_card/sd_card.s: pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.s
+
+# target to generate assembly for a file
+pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+.PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
+
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
+
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj
+
+# target to build an object file
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
+
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
+
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i
+
+# target to preprocess a source file
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
+
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
+
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s
+
+# target to generate assembly for a file
+pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
+.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
 
 pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj: pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
 
@@ -1030,6 +1151,33 @@ pico-sdk/src/common/pico_util/queue.s: pico-sdk/src/common/pico_util/queue.c.s
 pico-sdk/src/common/pico_util/queue.c.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : pico-sdk/src/common/pico_util/queue.c.s
+
+pico-sdk/src/rp2_common/hardware_adc/adc.obj: pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.obj
+
+# target to build an object file
+pico-sdk/src/rp2_common/hardware_adc/adc.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+
+pico-sdk/src/rp2_common/hardware_adc/adc.i: pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.i
+
+# target to preprocess a source file
+pico-sdk/src/rp2_common/hardware_adc/adc.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+
+pico-sdk/src/rp2_common/hardware_adc/adc.s: pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.s
+
+# target to generate assembly for a file
+pico-sdk/src/rp2_common/hardware_adc/adc.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+.PHONY : pico-sdk/src/rp2_common/hardware_adc/adc.c.s
 
 pico-sdk/src/rp2_common/hardware_claim/claim.obj: pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 
@@ -1715,6 +1863,33 @@ pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 .PHONY : pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 
+pico-sdk/src/rp2_common/pico_multicore/multicore.obj: pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.obj
+
+# target to build an object file
+pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+
+pico-sdk/src/rp2_common/pico_multicore/multicore.i: pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.i
+
+# target to preprocess a source file
+pico-sdk/src/rp2_common/pico_multicore/multicore.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+pico-sdk/src/rp2_common/pico_multicore/multicore.s: pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.s
+
+# target to generate assembly for a file
+pico-sdk/src/rp2_common/pico_multicore/multicore.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+.PHONY : pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
 pico-sdk/src/rp2_common/pico_platform/platform.obj: pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 
 .PHONY : pico-sdk/src/rp2_common/pico_platform/platform.obj
@@ -1994,6 +2169,60 @@ pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
+splash.obj: splash.cc.obj
+
+.PHONY : splash.obj
+
+# target to build an object file
+splash.cc.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/splash.cc.obj
+.PHONY : splash.cc.obj
+
+splash.i: splash.cc.i
+
+.PHONY : splash.i
+
+# target to preprocess a source file
+splash.cc.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/splash.cc.i
+.PHONY : splash.cc.i
+
+splash.s: splash.cc.s
+
+.PHONY : splash.s
+
+# target to generate assembly for a file
+splash.cc.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/splash.cc.s
+.PHONY : splash.cc.s
+
+usb_descriptors.obj: usb_descriptors.c.obj
+
+.PHONY : usb_descriptors.obj
+
+# target to build an object file
+usb_descriptors.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.obj
+.PHONY : usb_descriptors.c.obj
+
+usb_descriptors.i: usb_descriptors.c.i
+
+.PHONY : usb_descriptors.i
+
+# target to preprocess a source file
+usb_descriptors.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.i
+.PHONY : usb_descriptors.c.i
+
+usb_descriptors.s: usb_descriptors.c.s
+
+.PHONY : usb_descriptors.s
+
+# target to generate assembly for a file
+usb_descriptors.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.s
+.PHONY : usb_descriptors.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2002,6 +2231,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... flash"
 	@echo "... ELF2UF2Build"
 	@echo "... FlyPicoPi"
 	@echo "... bs2_default_padded_checksummed_asm"
@@ -2014,9 +2244,15 @@ help:
 	@echo "... pico_audio_spdif_audio_spdif_pio_h"
 	@echo "... pico_sd_card_sd_card_pio_h"
 	@echo "... pico_scanvideo_dpi_timing_pio_h"
+	@echo "... font.obj"
+	@echo "... font.i"
+	@echo "... font.s"
 	@echo "... main.obj"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... oled.obj"
+	@echo "... oled.i"
+	@echo "... oled.s"
 	@echo "... pico-extras/src/common/pico_audio/audio.obj"
 	@echo "... pico-extras/src/common/pico_audio/audio.i"
 	@echo "... pico-extras/src/common/pico_audio/audio.s"
@@ -2027,6 +2263,12 @@ help:
 	@echo "... pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.obj"
 	@echo "... pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.i"
 	@echo "... pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.s"
+	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.obj"
+	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.i"
+	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.s"
+	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj"
+	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i"
+	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"
@@ -2099,6 +2341,9 @@ help:
 	@echo "... pico-sdk/src/common/pico_util/queue.obj"
 	@echo "... pico-sdk/src/common/pico_util/queue.i"
 	@echo "... pico-sdk/src/common/pico_util/queue.s"
+	@echo "... pico-sdk/src/rp2_common/hardware_adc/adc.obj"
+	@echo "... pico-sdk/src/rp2_common/hardware_adc/adc.i"
+	@echo "... pico-sdk/src/rp2_common/hardware_adc/adc.s"
 	@echo "... pico-sdk/src/rp2_common/hardware_claim/claim.obj"
 	@echo "... pico-sdk/src/rp2_common/hardware_claim/claim.i"
 	@echo "... pico-sdk/src/rp2_common/hardware_claim/claim.s"
@@ -2175,6 +2420,9 @@ help:
 	@echo "... pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i"
 	@echo "... pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s"
 	@echo "... pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj"
+	@echo "... pico-sdk/src/rp2_common/pico_multicore/multicore.obj"
+	@echo "... pico-sdk/src/rp2_common/pico_multicore/multicore.i"
+	@echo "... pico-sdk/src/rp2_common/pico_multicore/multicore.s"
 	@echo "... pico-sdk/src/rp2_common/pico_platform/platform.obj"
 	@echo "... pico-sdk/src/rp2_common/pico_platform/platform.i"
 	@echo "... pico-sdk/src/rp2_common/pico_platform/platform.s"
@@ -2206,6 +2454,12 @@ help:
 	@echo "... pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj"
 	@echo "... pico-sdk/src/rp2_common/pico_stdlib/stdlib.i"
 	@echo "... pico-sdk/src/rp2_common/pico_stdlib/stdlib.s"
+	@echo "... splash.obj"
+	@echo "... splash.i"
+	@echo "... splash.s"
+	@echo "... usb_descriptors.obj"
+	@echo "... usb_descriptors.i"
+	@echo "... usb_descriptors.s"
 .PHONY : help
 
 
