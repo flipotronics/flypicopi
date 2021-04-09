@@ -665,10 +665,6 @@ Def.h
 /home/mdietric/flypicopi/src/Voice.h
 stdio.h
 -
-ostream
--
-iostream
--
 Def.h
 /home/mdietric/flypicopi/src/Def.h
 Renderer.h

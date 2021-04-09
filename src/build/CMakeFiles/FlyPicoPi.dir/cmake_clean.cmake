@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"
-  "CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
@@ -78,7 +77,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
   "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
   "CMakeFiles/FlyPicoPi.dir/splash.cc.obj"
-  "CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.obj"
   "FlyPicoPi.elf"
   "FlyPicoPi.pdb"
 )

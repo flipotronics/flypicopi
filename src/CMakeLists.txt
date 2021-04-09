@@ -13,8 +13,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
  
 # Link the Project to a source file (step 4.6)
-add_executable(FlyPicoPi main.cpp font.cc oled.cc splash.cc usb_descriptors.c)
- 
+#add_executable(FlyPicoPi main.cpp font.cc oled.cc splash.cc usb_descriptors.c)
+add_executable(FlyPicoPi main.cpp font.cc oled.cc splash.cc )
 # Link the Project to an extra library (pico_stdlib)
 
 target_link_libraries(FlyPicoPi PRIVATE
@@ -29,8 +29,8 @@ hardware_i2c
 hardware_adc 
 hardware_dma 
 
-tinyusb_device 
-tinyusb_board
+#tinyusb_device 
+#tinyusb_board
 )
 
 target_compile_definitions(FlyPicoPi PRIVATE

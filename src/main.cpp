@@ -19,7 +19,6 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 
-
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
 #include "pico/multicore.h"
@@ -38,9 +37,6 @@ const uint LED_PIN = 25;
 const uint LED_PIN_MIDI = 28;
 
 #define SYNTH_VERSION 3
-
-//#define I2C_DATAPIN 9
-//#define I2C_CLOCKPIN 10
 
 #define MPC0_ID 0x60    // ADA 0x62 or 0x63   - Sparkfun 0x60   
 #define MPC1_ID 0x61
@@ -64,16 +60,7 @@ const uint LED_PIN_MIDI = 28;
 #define PICO_SD_CMD_PIN 13 // CS
 #define SD_INSERT_PIN 18 // CD
 
-
-#define SINE_WAVE_TABLE_LEN 2048
-#define SAMPLES_PER_BUFFER 256
-static int sine_wave_table[SINE_WAVE_TABLE_LEN];
-static int saw_wave_table[SINE_WAVE_TABLE_LEN];
-
 absolute_time_t taken;
-int lastNote;
-
-#define SAMPLERATE 96000
 
 #define FLASH_TARGET_OFFSET (256 * 1024)
   
@@ -104,10 +91,6 @@ uint16_t mpc_voltages[128];
 
 uint8_t lastCutOff = 127;
 
-bool audioOk = false;
-uint32_t step ;
-uint vol = 64;
-const int multi = 1 << 16;
 float tuning = 440.0;
 int bcount = 0;
 uint8_t b0;
@@ -116,7 +99,7 @@ uint8_t b2;
 
 // RX interrupt handler
 static int chars_rxed = 0;
-bool isOn;
+
 bool sendCutoff = false;
 bool isSwitchPressed;
 bool isSwitchPressed2;
@@ -128,7 +111,6 @@ bool isGate1;
 bool isGate2;
 
 int midiLightCounter = 0;
-
 
 void i2c_writeDac1(uint16_t val) {
     printf ("Sending cutoff %i \n" ,val);
@@ -254,49 +236,6 @@ void checkFlash(){
         printf("Programming successful!\n");
 }
 
-struct audio_buffer_pool *init_audio() {
-    static audio_format_t audio_format = {
-            .sample_freq = SAMPLERATE, 
-            .format = AUDIO_BUFFER_FORMAT_PCM_S16,
-            .channel_count = 2
-    };
-
-    static struct audio_buffer_format producer_format = {
-            .format = &audio_format,
-            .sample_stride = 4
-    };
-
-    struct audio_buffer_pool *producer_pool = audio_new_producer_pool(&producer_format, 6,SAMPLES_PER_BUFFER); // todo correct size
-    //struct audio_buffer_pool *producer_pool = audio_new_producer_pool(&producer_format, 0,0); // todo correct size
-    bool __unused ok;
-    
-    struct audio_i2s_config config = {
-            .data_pin = 9, //9
-            .clock_pin_base = 10,//10
-            .dma_channel = 1,
-            .pio_sm = 0,
-    };
-
-    const struct audio_format *output_format;
-    output_format = audio_i2s_setup(&audio_format, &config);
-    if (!output_format) {
-        printf("Audio setup failed");
-        panic("PicoAudio: Unable to open audio device.\n");
-    }
-
-    ok = audio_i2s_connect(producer_pool);
-    assert(ok);
-    printf("Audio setup ok");
-    audioOk = true;
-    audio_i2s_set_enabled(true);
-    return producer_pool;
-}
-
-uint32_t calcStep(float freq){
-    int multi = 1 << 16;
-    return ( multi * freq * (float)SINE_WAVE_TABLE_LEN / (float)SAMPLERATE);
-}
-
 void tud_mount_cb(void) {
   printf("tud_mount_cb");
 }
@@ -319,34 +258,12 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
-float freqFromNoteNumber(uint8_t number, float tuning){
-    float d = (number-69) / 12.0;
-    return pow(2, d) * tuning;
-}
-
-void noteOn(uint8_t midiNote, uint8_t velocity){
-    printf("note On %i %i  \n",midiNote, velocity);
-    float freq = freqFromNoteNumber(midiNote, 440.0);
-    step = calcStep(freq);
-    isOn = true;
-    lastNote = midiNote;
-    midiLightCounter = 100;
-}
-
-void noteOff(uint8_t midiNote){
-    if(midiNote==lastNote){
-        isOn = false;
-    }
-    printf("note Off %i  \n",midiNote);
-    midiLightCounter = 100;
-}
-
 void control(uint8_t cc, uint8_t value){
     printf("Control  %i %i \n",cc, value);
     midiLightCounter = 100;
     // Volume
     if(cc==7){
-        vol = value;
+        volume = value;
     }
 
     // Cutoff Freq
@@ -358,6 +275,7 @@ void control(uint8_t cc, uint8_t value){
     }
 }
 void handleMidiByte(u_int8_t ch){
+        midiLightCounter = 100;
         chars_rxed++;
         printf("UART %i \n ", ch);
         if(ch==144){
@@ -466,6 +384,8 @@ void testSD(){
 
 int main() {
 
+    setupWavetable();
+
     stdio_init_all();
 
     gpio_init(LED_PIN);
@@ -520,7 +440,6 @@ int main() {
 
     // Now enable the UART to send interrupts - RX only
     uart_set_irq_enables(UART_ID, true, false);
-    step = calcStep(440);
     
    // second dac for CV
     i2c_init(PMP_DAC_DEVICE, 400 * 1000);
@@ -535,22 +454,9 @@ int main() {
     isGate1 = true;
     isGate2 = true;
 
-    for (int i = 0; i < SINE_WAVE_TABLE_LEN; i++) {
-        sine_wave_table[i] = 32767.0 * cosf(i * 2.0 * (float) (M_PI / SINE_WAVE_TABLE_LEN));
-        saw_wave_table[i] = -32767.0 + i * 32767 / SINE_WAVE_TABLE_LEN;
-    }
-
-    int multi = 1 << 16;
-    int pos = 0;
-    uint32_t pos_max = 0x10000 * SINE_WAVE_TABLE_LEN;
-
-    int lastNote = 0;
     bool isMidiMounted = false;
     // sets table for the MPC DAC
     setupVoltageTable();
-
-    // Init Audio
-    struct audio_buffer_pool *ap = init_audio();
 
     // LED on
     gpio_put(LED_PIN, 1);
@@ -559,7 +465,6 @@ int main() {
 
     isGate1 = true;
     isGate2 = true;
-
     lastCutOff = 127;
     i2c_writeDac2(mpc_voltages[lastCutOff]); 
 
@@ -567,20 +472,20 @@ int main() {
 
     //testSD();
 
-    board_init();
+//    board_init();
 
-    printf("Starting USB init");
-    tusb_init();
-    printf("Done USB init");
-    tud_connect();
+   // printf("Starting USB init");
+   // tusb_init();
+  //  printf("Done USB init");
+   // tud_connect();
     bool isMidiConnected;
 
 // Main Loop ===========================================================================================
     while (true) {
         absolute_time_t tStart = get_absolute_time();
 
-        tud_task(); // tinyusb device task
-        isMidiMounted =  tud_mounted();
+       // tud_task(); // tinyusb device task
+        //isMidiMounted =  tud_mounted();
       //  isMidiConnected =  tud_cdc_connected();
 
         isMidiLight = false;
@@ -645,19 +550,6 @@ int main() {
         // Scan keyboard
         int c = getchar_timeout_us(0);
         if (c >= 0) {
-            if (c == '1' ) lastNote = 1;
-            if (c == '2' ) lastNote = 2;
-            if (c == '3' ) lastNote = 3;
-            if (c == '4' ) lastNote = 4;
-            if (c == '5' ) lastNote = 5;
-            if (c == '6' ) lastNote = 6;
-            if (c == '7' ) lastNote = 7;
-            if (c == '8' ) lastNote = 8;
-            if (c == '9' ) lastNote = 9;
-            if (c == '-' && vol) vol -= 1;
-            if ((c == '=' || c == '+') && vol < 127) vol += 1;
-            if (c == 'a' && step > 0x10000) step -= 0x10000;
-            if (c == 's' && step < (SINE_WAVE_TABLE_LEN / 16) * 0x20000) step += 0x10000;
             if (c == 'q') {
                 gpio_put(LED_PIN, 0);
                 break;
@@ -681,7 +573,7 @@ int main() {
                 printf("==========================================\n");
                 printf("Version: %i \n", SYNTH_VERSION );
                 printf("Audio Setup %d \n", audioOk);
-                printf("vol = %d, step = %i  \n", vol, step);
+                printf("vol = %d \n", volume);
                
                 printf("UART Received = %i \n", chars_rxed);
                 printf("Time taken  = %u \n", us_to_ms(taken));
@@ -693,14 +585,9 @@ int main() {
             // lastNote = -1;
         }
 
-        uint8_t packet[4];
-        struct audio_buffer *buffer = take_audio_buffer(ap, true);
-        int32_t *samples = (int32_t *) buffer->buffer->bytes;
-        int noOfSc = 2;
-        int v = vol / noOfSc;
-
-        //step = 0x100000 / 4;
-     
+        // Render All Audio
+        renderAudio();
+     /*
         int bytCount = tud_midi_available ();
         if(bytCount > 0){
             int count = tud_midi_read(midibuffer, 32);
@@ -711,24 +598,7 @@ int main() {
                 }
             }
         }
- 
-
-        // AUDIO LOOP
-        for (uint i = 0; i < buffer->max_sample_count ; i++) {
-            if(isOn){
-               samples[i] = (v * (int)sine_wave_table[pos >> 16u]) >> 9u; 
-               //samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
-               int r = (v * ((int)saw_wave_table[pos >> 16u]))  >> 9u;
-               samples[i] += r;
-            }else{
-                samples[i] = 2048 >> 8u; 
-            }
-            pos += step;
-            if (pos >= pos_max) pos -= pos_max;
-        }
-        buffer->sample_count = buffer->max_sample_count;
-        give_audio_buffer(ap, buffer);
-
+        */
         absolute_time_t tEnd = get_absolute_time();
         taken = tEnd - tStart;
     }

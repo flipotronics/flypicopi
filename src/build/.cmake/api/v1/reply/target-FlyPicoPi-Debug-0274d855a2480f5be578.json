@@ -38,7 +38,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
@@ -293,14 +293,6 @@
 					"define" : "PICO_USE_BLOCKED_RAM=0"
 				},
 				{
-					"backtrace" : 2,
-					"define" : "RP2040_USB_DEVICE_MODE=1"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "TINYUSB_DEVICE_LINKED=1"
-				},
-				{
 					"backtrace" : 17,
 					"define" : "USE_AUDIO_I2S=1"
 				}
@@ -527,8 +519,8 @@
 				1,
 				2,
 				3,
-				46,
-				71
+				45,
+				70
 			]
 		},
 		{
@@ -670,14 +662,6 @@
 				{
 					"backtrace" : 2,
 					"define" : "PICO_USE_BLOCKED_RAM=0"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "RP2040_USB_DEVICE_MODE=1"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "TINYUSB_DEVICE_LINKED=1"
 				},
 				{
 					"backtrace" : 17,
@@ -908,7 +892,7 @@
 				7,
 				8,
 				9,
-				10,
+				11,
 				12,
 				13,
 				14,
@@ -925,14 +909,14 @@
 				25,
 				26,
 				27,
-				28,
-				30,
-				32,
+				29,
+				31,
+				34,
 				35,
-				36,
+				39,
 				40,
-				41,
-				43,
+				42,
+				46,
 				47,
 				48,
 				49,
@@ -956,14 +940,12 @@
 				67,
 				68,
 				69,
-				70,
+				72,
 				73,
 				74,
 				75,
 				76,
-				77,
-				78,
-				79
+				77
 			]
 		},
 		{
@@ -1102,14 +1084,6 @@
 				{
 					"backtrace" : 2,
 					"define" : "PICO_USE_BLOCKED_RAM=0"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "RP2040_USB_DEVICE_MODE=1"
-				},
-				{
-					"backtrace" : 2,
-					"define" : "TINYUSB_DEVICE_LINKED=1"
 				},
 				{
 					"backtrace" : 17,
@@ -1334,18 +1308,18 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				11,
-				29,
-				31,
+				10,
+				28,
+				30,
+				32,
 				33,
-				34,
+				36,
 				37,
 				38,
-				39,
-				42,
+				41,
+				43,
 				44,
-				45,
-				72
+				71
 			]
 		}
 	],
@@ -2211,7 +2185,7 @@
 				7,
 				8,
 				9,
-				10,
+				11,
 				12,
 				13,
 				14,
@@ -2228,14 +2202,14 @@
 				25,
 				26,
 				27,
-				28,
-				30,
-				32,
+				29,
+				31,
+				34,
 				35,
-				36,
+				39,
 				40,
-				41,
-				43,
+				42,
+				45,
 				46,
 				47,
 				48,
@@ -2261,32 +2235,30 @@
 				68,
 				69,
 				70,
-				71,
+				72,
 				73,
 				74,
 				75,
 				76,
-				77,
-				78,
-				79
+				77
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				11,
-				29,
-				31,
+				10,
+				28,
+				30,
+				32,
 				33,
-				34,
+				36,
 				37,
 				38,
-				39,
-				42,
+				41,
+				43,
 				44,
-				45,
-				72
+				71
 			]
 		}
 	],
@@ -2314,12 +2286,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "splash.cc",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 1,
-			"path" : "usb_descriptors.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -2764,12 +2730,6 @@
 			"backtrace" : 2,
 			"compileGroupIndex" : 1,
 			"path" : "pico-sdk/src/rp2_common/hardware_adc/adc.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 2,
-			"compileGroupIndex" : 1,
-			"path" : "pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c",
 			"sourceGroupIndex" : 0
 		}
 	],

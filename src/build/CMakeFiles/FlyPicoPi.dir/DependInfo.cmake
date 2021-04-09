@@ -52,8 +52,6 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
   "PICO_STDIO_USB=1"
   "PICO_TARGET_NAME=\"FlyPicoPi\""
   "PICO_USE_BLOCKED_RAM=0"
-  "RP2040_USB_DEVICE_MODE=1"
-  "TINYUSB_DEVICE_LINKED=1"
   "USE_AUDIO_I2S=1"
   )
 
@@ -117,7 +115,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_util_buffer/buffer.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"
-  "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
@@ -175,7 +172,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
-  "/home/mdietric/flypicopi/src/usb_descriptors.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -211,8 +207,6 @@ set(CMAKE_TARGET_DEFINITIONS_C
   "PICO_STDIO_USB=1"
   "PICO_TARGET_NAME=\"FlyPicoPi\""
   "PICO_USE_BLOCKED_RAM=0"
-  "RP2040_USB_DEVICE_MODE=1"
-  "TINYUSB_DEVICE_LINKED=1"
   "USE_AUDIO_I2S=1"
   )
 
@@ -314,8 +308,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "PICO_STDIO_USB=1"
   "PICO_TARGET_NAME=\"FlyPicoPi\""
   "PICO_USE_BLOCKED_RAM=0"
-  "RP2040_USB_DEVICE_MODE=1"
-  "TINYUSB_DEVICE_LINKED=1"
   "USE_AUDIO_I2S=1"
   )
 

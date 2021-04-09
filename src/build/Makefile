@@ -477,33 +477,6 @@ pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
 .PHONY : pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
 
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
-
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj
-
-# target to build an object file
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.obj
-
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
-
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i
-
-# target to preprocess a source file
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.i
-
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s: pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
-
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s
-
-# target to generate assembly for a file
-pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
-.PHONY : pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.c.s
-
 pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj: pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
 
 .PHONY : pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj
@@ -2196,33 +2169,6 @@ splash.cc.s:
 	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/splash.cc.s
 .PHONY : splash.cc.s
 
-usb_descriptors.obj: usb_descriptors.c.obj
-
-.PHONY : usb_descriptors.obj
-
-# target to build an object file
-usb_descriptors.c.obj:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.obj
-.PHONY : usb_descriptors.c.obj
-
-usb_descriptors.i: usb_descriptors.c.i
-
-.PHONY : usb_descriptors.i
-
-# target to preprocess a source file
-usb_descriptors.c.i:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.i
-.PHONY : usb_descriptors.c.i
-
-usb_descriptors.s: usb_descriptors.c.s
-
-.PHONY : usb_descriptors.s
-
-# target to generate assembly for a file
-usb_descriptors.c.s:
-	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/usb_descriptors.c.s
-.PHONY : usb_descriptors.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2266,9 +2212,6 @@ help:
 	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.obj"
 	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.i"
 	@echo "... pico-extras/src/rp2_common/pico_sd_card/sd_card.s"
-	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.obj"
-	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.i"
-	@echo "... pico-sdk/lib/tinyusb/hw/bsp/raspberry_pi_pico/board_raspberry_pi_pico.s"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.obj"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"
@@ -2457,9 +2400,6 @@ help:
 	@echo "... splash.obj"
 	@echo "... splash.i"
 	@echo "... splash.s"
-	@echo "... usb_descriptors.obj"
-	@echo "... usb_descriptors.i"
-	@echo "... usb_descriptors.s"
 .PHONY : help
 
 

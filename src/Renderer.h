@@ -12,7 +12,7 @@
 
 class Renderer{
 public:
-    virtual void render(SAMPLE *l, SAMPLE *r, int noOfSamples) = 0;
+    virtual void render(SAMPLE *l,  uint32_t noOfSamples) = 0;
 };
 
 #endif /* Renderer_h */
