@@ -658,19 +658,7 @@ pico/stdio_usb.h
 
 /home/mdietric/flypicopi/src/Def.h
 
-/home/mdietric/flypicopi/src/Renderer.h
-Def.h
-/home/mdietric/flypicopi/src/Def.h
-
-/home/mdietric/flypicopi/src/Voice.h
-stdio.h
--
-Def.h
-/home/mdietric/flypicopi/src/Def.h
-Renderer.h
-/home/mdietric/flypicopi/src/Renderer.h
-
-/home/mdietric/flypicopi/src/VoiceManager.h
+/home/mdietric/flypicopi/src/Engine.h
 stdio.h
 -
 string.h
@@ -683,8 +671,10 @@ Def.h
 /home/mdietric/flypicopi/src/Def.h
 Renderer.h
 /home/mdietric/flypicopi/src/Renderer.h
-Voice.h
-/home/mdietric/flypicopi/src/Voice.h
+
+/home/mdietric/flypicopi/src/Renderer.h
+Def.h
+/home/mdietric/flypicopi/src/Def.h
 
 /home/mdietric/flypicopi/src/main.cpp
 stdio.h
@@ -727,8 +717,8 @@ oled.h
 /home/mdietric/flypicopi/src/oled.h
 tusb.h
 /home/mdietric/flypicopi/src/tusb.h
-VoiceManager.h
-/home/mdietric/flypicopi/src/VoiceManager.h
+Engine.h
+/home/mdietric/flypicopi/src/Engine.h
 
 /home/mdietric/flypicopi/src/oled.h
 stdint.h

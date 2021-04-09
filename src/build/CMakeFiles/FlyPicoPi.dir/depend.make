@@ -2060,9 +2060,8 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio/inc
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Def.h
+CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Engine.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Renderer.h
-CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Voice.h
-CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../VoiceManager.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../oled.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/boards/include/boards/pico.h

@@ -1,8 +1,6 @@
 /**
  * author: mat@flipotronics.com
  minicom -b 115200 -o -D /dev/ttyACM0
-
- // making updae as board complete
  */
 
 #include <stdio.h>
@@ -28,14 +26,9 @@
 
 #include "oled.h"
 #include "tusb.h"
+#include "Engine.h"
 
-#include "VoiceManager.h"
-
-extern "C" const uint8_t splash1_data[];
-
-const uint LED_PIN = 25;
-const uint LED_PIN_MIDI = 28;
-
+// ================================================ DEFINE =========================================================================
 #define SYNTH_VERSION 3
 
 #define MPC0_ID 0x60    // ADA 0x62 or 0x63   - Sparkfun 0x60   
@@ -60,14 +53,10 @@ const uint LED_PIN_MIDI = 28;
 #define PICO_SD_CMD_PIN 13 // CS
 #define SD_INSERT_PIN 18 // CD
 
-absolute_time_t taken;
-
 #define FLASH_TARGET_OFFSET (256 * 1024)
-  
- #define FLASH_PAGE_SIZE (1u << 8)
- #define FLASH_SECTOR_SIZE (1u << 12)
- #define FLASH_BLOCK_SIZE (1u << 16)
-const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
+#define FLASH_PAGE_SIZE (1u << 8)
+#define FLASH_SECTOR_SIZE (1u << 12)
+#define FLASH_BLOCK_SIZE (1u << 16)
 
 #define MCP4725_I2CADDR_DEFAULT (0x60) ///< Default i2c address
 #define MCP4725_I2CADDR_2 (0x61)
@@ -85,20 +74,27 @@ const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGE
 #define ENCOCDER_PIN_1 17
 #define ENCOCDER_PIN_2 16
 
-uint8_t midibuffer[32];
-uint8_t buf[3];
+// ================================================ Member =========================================================================
+
+extern "C" const uint8_t splash1_data[];
+const uint LED_PIN = 25;
+const uint LED_PIN_MIDI = 28;
+const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
+// RX interrupt handler
+static int chars_rxed = 0;
+
+absolute_time_t taken;
+
 uint16_t mpc_voltages[128];
 
+uint8_t midibuffer[32];
+uint8_t buf[3];
 uint8_t lastCutOff = 127;
-
-float tuning = 440.0;
-int bcount = 0;
+uint8_t bcount = 0;
 uint8_t b0;
 uint8_t b1;
 uint8_t b2;
-
-// RX interrupt handler
-static int chars_rxed = 0;
+uint8_t midiLightCounter = 0;
 
 bool sendCutoff = false;
 bool isSwitchPressed;
@@ -106,27 +102,9 @@ bool isSwitchPressed2;
 bool isSEnc_a;
 bool isSEnc_b;
 bool isMidiLight;
-
 bool isGate1;
 bool isGate2;
-
-int midiLightCounter = 0;
-
-void i2c_writeDac1(uint16_t val) {
-    printf ("Sending cutoff %i \n" ,val);
-    buf[0] = MCP4725_CMD_WRITEDAC;
-    buf[1] = val / 16;
-    buf[2] = (val % 16) << 4 ;
-    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_DEFAULT, buf, 3, false);
-}
-
-void i2c_writeDac2(uint16_t val) {
-    printf ("Sending adsr %i \n" ,val);
-    buf[0] = MCP4725_CMD_WRITEDAC;
-    buf[1] = val / 16;
-    buf[2] = (val % 16) << 4 ;
-    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_2, buf, 3, false);
-}
+bool audioOk = false;
 
 const  uint16_t DACLookup_FullSine_9Bit[512] =
 {
@@ -196,6 +174,23 @@ const  uint16_t DACLookup_FullSine_9Bit[512] =
   1847, 1872, 1897, 1922, 1948, 1973, 1998, 2023
 };
 
+//=========================== Methods ======================================================================================================
+void i2c_writeDac1(uint16_t val) {
+    printf ("Sending cutoff %i \n" ,val);
+    buf[0] = MCP4725_CMD_WRITEDAC;
+    buf[1] = val / 16;
+    buf[2] = (val % 16) << 4 ;
+    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_DEFAULT, buf, 3, false);
+}
+
+void i2c_writeDac2(uint16_t val) {
+    printf ("Sending adsr %i \n" ,val);
+    buf[0] = MCP4725_CMD_WRITEDAC;
+    buf[1] = val / 16;
+    buf[2] = (val % 16) << 4 ;
+    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_2, buf, 3, false);
+}
+
 void print_buf(const uint8_t *buf, size_t len) {
     for (size_t i = 0; i < len; ++i) {
         printf("%02x", buf[i]);
@@ -259,7 +254,6 @@ void tud_resume_cb(void){
 }
 
 void control(uint8_t cc, uint8_t value){
-    printf("Control  %i %i \n",cc, value);
     midiLightCounter = 100;
     // Volume
     if(cc==7){
@@ -274,68 +268,62 @@ void control(uint8_t cc, uint8_t value){
         }
     }
 }
+
 void handleMidiByte(u_int8_t ch){
-        midiLightCounter = 100;
-        chars_rxed++;
-        printf("UART %i \n ", ch);
-        if(ch==144){
-            bcount = 1;
-            b0 = ch;
-             return;
-        }
-        if(ch==128){
-            bcount = 1;
-            b0 = ch;
+    midiLightCounter = 100;
+    chars_rxed++;
+    if(ch==144){
+        bcount = 1;
+        b0 = ch;
             return;
-        }
-        if(ch==176){
-            bcount = 1;
-            b0 = ch;
+    }
+    if(ch==128){
+        bcount = 1;
+        b0 = ch;
+        return;
+    }
+    if(ch==176){
+        bcount = 1;
+        b0 = ch;
+        return;
+    }
+
+    if(bcount==1){
+        b1 = ch;
+        bcount = 2;
             return;
-        }
+    }
 
-        if(bcount==1){
-            b1 = ch;
-            bcount = 2;
-             return;
-        }
-
-        if(bcount==2){
-            b2 = ch;
-            bcount = 0;
-            if(b0==144){
-                if(b2 == 0){
-                    noteOff(b1);
-                    return;
-                }
-                noteOn(b1,b2);
-            }
-            if(b0==128){
+    if(bcount==2){
+        b2 = ch;
+        bcount = 0;
+        if(b0==144){
+            if(b2 == 0){
                 noteOff(b1);
-                 return;
+                return;
             }
-            if(b0==176){
-                control(b1,b2);
-                 return;
-            }
+            noteOn(b1,b2);
         }
+        if(b0==128){
+            noteOff(b1);
+                return;
+        }
+        if(b0==176){
+            control(b1,b2);
+                return;
+        }
+    }
 }
 
 void on_uart_rx() {
     while (uart_is_readable(UART_ID)) {
-        uint8_t ch = uart_getc(UART_ID);
-        handleMidiByte(ch);
+        handleMidiByte(uart_getc(UART_ID));
     }
 }
 
-float noteToFreq(int note) {
-    float a = 440.0; 
-    return 440.0 * pow(2.0, ( note - 69) / 12.0);
-}
-
 void setupVoltageTable(){
-    for(int i=0;i<128;i++){
-        float freq = noteToFreq(i + 36);
+    for(int i=0;i<128;i++) {
+        float freq = 440.0 * pow(2.0, ( (i + 36) - 69) / 12.0);
         printf( "note: %i \n", i);
         printf( "freq: %f \n", freq);
         mpc_voltages[i] = (uint16_t) (freq * 4096.0 / (8.0 * 12543.8539514160));
@@ -343,17 +331,12 @@ void setupVoltageTable(){
     }
 }
 
-void testScreen(){
-
+void testScreen() {
 	int h = 64;
 	init_display(h);
-
     const char * welcome = "Fly Pico Pi\nMicro Synthesizer\nFliptronics V1.0\nMade with Love\nFrankurt/M\n1 Another line\n2 Another line\n3 Another line";
-
 	ssd1306_print(welcome,1); // demonstrate some text
 	show_scr();
-
-    
 	//sleep_ms(2000);
 	//fill_scr(0); // empty the screen
 
@@ -375,16 +358,17 @@ void testScreen(){
 
 void testSD(){
     if (sd_init_1pin() < 0) {
-      printf("error");
+        printf("error");
     } else {
         printf("cool");
     }
 }
 
-
+// ================================================================== Main ================================================================================
 int main() {
 
     setupWavetable();
+    initVoices();
 
     stdio_init_all();
 
@@ -429,6 +413,7 @@ int main() {
     uart_set_hw_flow(UART_ID, false, false);
     uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
     uart_set_fifo_enabled(UART_ID, false);
+
      // Set up a RX interrupt
     // We need to set up the handler first
     // Select correct interrupt for the UART we are using
@@ -480,14 +465,15 @@ int main() {
    // tud_connect();
     bool isMidiConnected;
 
-// Main Loop ===========================================================================================
+    // Main Loop ===========================================================================================
     while (true) {
         absolute_time_t tStart = get_absolute_time();
 
-       // tud_task(); // tinyusb device task
-        //isMidiMounted =  tud_mounted();
-      //  isMidiConnected =  tud_cdc_connected();
+        // tud_task(); // tinyusb device task
+        // isMidiMounted =  tud_mounted();
+        // isMidiConnected =  tud_cdc_connected();
 
+        // setup LEDs
         isMidiLight = false;
         if(midiLightCounter > 0){
             midiLightCounter--;
@@ -498,6 +484,7 @@ int main() {
         gpio_put(GATE_PIN1, isGate1);
         gpio_put(GATE_PIN2, isGate2);
 
+        // scan the buttons
         bool isPressedNow = gpio_get(SWITCH_PIN);
         if(isSwitchPressed && !isPressedNow){
             printf("Switch1 fires \n");
@@ -512,7 +499,7 @@ int main() {
         }
         isSwitchPressed2 = isPressedNow;
 
-
+        // Scan the encoder
         bool a = gpio_get(ENCOCDER_PIN_1);
         bool b = gpio_get(ENCOCDER_PIN_2);
 
@@ -528,6 +515,7 @@ int main() {
            //printf("a is: %d b is: %d\n", a, b);
             haveMove = true;
         }
+
         if(haveMove&& a==0 && b==0){
             haveMove = false;
             printf("a is: %d b is: %d\n", a, b);
@@ -544,6 +532,7 @@ int main() {
             i2c_writeDac2(mpc_voltages[lastCutOff]); 
             printf("Cutoff is: %d\n", lastCutOff);
         }
+
         isSEnc_a = a;
         isSEnc_b = b;
 
@@ -555,7 +544,7 @@ int main() {
                 break;
             }
             if (c == 't') {
-                printf("ÜREP FLash Test T\n");
+                printf("FLash Test T\n");
                 checkFlash();
                 continue;
             }
@@ -581,13 +570,13 @@ int main() {
                 printf("Midi isMidiConnected = %i \n", isMidiConnected);
                 //setupVoltageTable();
             }
-        }else{
-            // lastNote = -1;
         }
 
         // Render All Audio
         renderAudio();
-     /*
+
+        // read USB Midi
+         /*
         int bytCount = tud_midi_available ();
         if(bytCount > 0){
             int count = tud_midi_read(midibuffer, 32);
@@ -599,9 +588,13 @@ int main() {
             }
         }
         */
+
+       // calculate time
         absolute_time_t tEnd = get_absolute_time();
         taken = tEnd - tStart;
     }
     puts("\n");
     return 0;
 }
+
+// ====================================================== END  ===============================================================================

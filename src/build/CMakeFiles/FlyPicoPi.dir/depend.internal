@@ -2061,9 +2061,8 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
  ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
  /home/mdietric/flypicopi/src/Def.h
+ /home/mdietric/flypicopi/src/Engine.h
  /home/mdietric/flypicopi/src/Renderer.h
- /home/mdietric/flypicopi/src/Voice.h
- /home/mdietric/flypicopi/src/VoiceManager.h
  /home/mdietric/flypicopi/src/main.cpp
  /home/mdietric/flypicopi/src/oled.h
  /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
