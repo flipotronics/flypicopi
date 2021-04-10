@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj"
   "CMakeFiles/FlyPicoPi.dir/font.cc.obj"
   "CMakeFiles/FlyPicoPi.dir/main.cpp.obj"
   "CMakeFiles/FlyPicoPi.dir/oled.cc.obj"

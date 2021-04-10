@@ -279,6 +279,33 @@ pico_scanvideo_dpi_timing_pio_h/fast:
 	$(MAKE) -f pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build.make pico_extras/src/rp2_common/pico_scanvideo_dpi/CMakeFiles/pico_scanvideo_dpi_timing_pio_h.dir/build
 .PHONY : pico_scanvideo_dpi_timing_pio_h/fast
 
+MidiParser.obj: MidiParser.c.obj
+
+.PHONY : MidiParser.obj
+
+# target to build an object file
+MidiParser.c.obj:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj
+.PHONY : MidiParser.c.obj
+
+MidiParser.i: MidiParser.c.i
+
+.PHONY : MidiParser.i
+
+# target to preprocess a source file
+MidiParser.c.i:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/MidiParser.c.i
+.PHONY : MidiParser.c.i
+
+MidiParser.s: MidiParser.c.s
+
+.PHONY : MidiParser.s
+
+# target to generate assembly for a file
+MidiParser.c.s:
+	$(MAKE) -f CMakeFiles/FlyPicoPi.dir/build.make CMakeFiles/FlyPicoPi.dir/MidiParser.c.s
+.PHONY : MidiParser.c.s
+
 font.obj: font.cc.obj
 
 .PHONY : font.obj
@@ -2190,6 +2217,9 @@ help:
 	@echo "... pico_audio_spdif_audio_spdif_pio_h"
 	@echo "... pico_sd_card_sd_card_pio_h"
 	@echo "... pico_scanvideo_dpi_timing_pio_h"
+	@echo "... MidiParser.obj"
+	@echo "... MidiParser.i"
+	@echo "... MidiParser.s"
 	@echo "... font.obj"
 	@echo "... font.i"
 	@echo "... font.s"

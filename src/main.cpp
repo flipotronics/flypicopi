@@ -16,6 +16,7 @@
 #include "hardware/i2c.h"
 #include "hardware/adc.h"
 #include "hardware/dma.h"
+#include "hardware/timer.h"
 
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
@@ -27,6 +28,7 @@
 #include "oled.h"
 #include "tusb.h"
 #include "Engine.h"
+#include "MidiParser.h"
 
 // ================================================ DEFINE =========================================================================
 #define SYNTH_VERSION 3
@@ -105,6 +107,8 @@ bool isMidiLight;
 bool isGate1;
 bool isGate2;
 bool audioOk = false;
+bool isMidiConnected;
+bool isMidiMounted;
 
 const  uint16_t DACLookup_FullSine_9Bit[512] =
 {
@@ -173,6 +177,9 @@ const  uint16_t DACLookup_FullSine_9Bit[512] =
   1648, 1673, 1698, 1723, 1747, 1772, 1797, 1822,
   1847, 1872, 1897, 1922, 1948, 1973, 1998, 2023
 };
+
+
+
 
 //=========================== Methods ======================================================================================================
 void i2c_writeDac1(uint16_t val) {
@@ -269,55 +276,72 @@ void control(uint8_t cc, uint8_t value){
     }
 }
 
-void handleMidiByte(u_int8_t ch){
+midi_message_parser_t *midiParser = new midi_message_parser_t();
+
+inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max)
+{
+    return (v >= min) && (v < max);
+};
+
+int midiTimeOut = 0;
+void handleMidiByte2(u_int8_t ch){
+    midiTimeOut = 0;
+
+
     midiLightCounter = 100;
     chars_rxed++;
-    if(ch==144){
-        bcount = 1;
+    printf("%i %i %i %i %i\n", ch, bcount, b0, b1, b2);
+    if(bcount==0){
         b0 = ch;
-            return;
-    }
-    if(ch==128){
         bcount = 1;
-        b0 = ch;
         return;
     }
-    if(ch==176){
-        bcount = 1;
-        b0 = ch;
-        return;
-    }
-
     if(bcount==1){
         b1 = ch;
         bcount = 2;
-            return;
+        return;
     }
-
     if(bcount==2){
+        bcount = 0;
+        if ( MIDIByteInRange(b0, 144, 160)) {
+            u_int8_t channel = b0 - 144 + 1;
+            noteOn(b1,b2);
+            return ;
+        }
+    
+        if (MIDIByteInRange(b0, 128, 144)) {
+            noteOff(b1);
+            return ;
+        }
+    /*
+
         b2 = ch;
         bcount = 0;
-        if(b0==144){
+        if(b0==128){
             if(b2 == 0){
                 noteOff(b1);
                 return;
             }
             noteOn(b1,b2);
+            return;
         }
-        if(b0==128){
+        if(b0==192){
             noteOff(b1);
-                return;
+            return;
         }
         if(b0==176){
             control(b1,b2);
-                return;
+            return;
         }
+        */
     }
+    bcount = 0; // reset state maschine
 }
 
 void on_uart_rx() {
     while (uart_is_readable(UART_ID)) {
-        handleMidiByte(uart_getc(UART_ID));
+        char b = uart_getc(UART_ID);
+        handleMidiByte2(b);
     }
 }
 
@@ -364,114 +388,16 @@ void testSD(){
     }
 }
 
-// ================================================================== Main ================================================================================
-int main() {
-
-    setupWavetable();
-    initVoices();
-
-    stdio_init_all();
-
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
-
-    gpio_init(LED_PIN_MIDI);
-    gpio_set_dir(LED_PIN_MIDI, GPIO_OUT);
-
-    gpio_init(SWITCH_PIN);
-    gpio_set_dir(SWITCH_PIN, GPIO_IN);
-    gpio_pull_up(SWITCH_PIN);
-
-    gpio_init(SWITCH_PIN2);
-    gpio_set_dir(SWITCH_PIN2, GPIO_IN);
-    gpio_pull_up(SWITCH_PIN2);
-
-    gpio_init(SD_INSERT_PIN);
-    gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
-    gpio_pull_up(SD_INSERT_PIN);
-    
-    gpio_init(ENCOCDER_PIN_1);
-    gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
-    gpio_pull_up(ENCOCDER_PIN_1);
-
-    gpio_init(ENCOCDER_PIN_2);
-    gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
-    gpio_pull_up(ENCOCDER_PIN_2);
-
-    gpio_init(GATE_PIN1);
-    gpio_set_dir(GATE_PIN1, GPIO_OUT);
-    gpio_pull_up(GATE_PIN1);
-
-    gpio_init(GATE_PIN2);
-    gpio_set_dir(GATE_PIN2, GPIO_OUT);
-    gpio_pull_up(GATE_PIN2);
-
-    // Midi UART
-    uart_init(UART_ID, BAUD_RATE);
-    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
-    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
-    uart_set_hw_flow(UART_ID, false, false);
-    uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
-    uart_set_fifo_enabled(UART_ID, false);
-
-     // Set up a RX interrupt
-    // We need to set up the handler first
-    // Select correct interrupt for the UART we are using
-    int UART_IRQ = UART_ID == uart0 ? UART0_IRQ : UART1_IRQ;
-
-    // And set up and enable the interrupt handlers
-    irq_set_exclusive_handler(UART_IRQ, on_uart_rx);
-    irq_set_enabled(UART_IRQ, true);
-
-    // Now enable the UART to send interrupts - RX only
-    uart_set_irq_enables(UART_ID, true, false);
-    
-   // second dac for CV
-    i2c_init(PMP_DAC_DEVICE, 400 * 1000);
-    gpio_set_function(0, GPIO_FUNC_I2C);
-    gpio_set_function(1, GPIO_FUNC_I2C);
-    gpio_pull_up(0);
-    gpio_pull_up(1);
-    bi_decl(bi_2pins_with_func(0, 1, GPIO_FUNC_I2C));
-    sendCutoff = 127;
-    sendCutoff = false;
-
-    isGate1 = true;
-    isGate2 = true;
-
-    bool isMidiMounted = false;
-    // sets table for the MPC DAC
-    setupVoltageTable();
-
-    // LED on
-    gpio_put(LED_PIN, 1);
-
-    float counter = 0.0;
-
-    isGate1 = true;
-    isGate2 = true;
-    lastCutOff = 127;
-    i2c_writeDac2(mpc_voltages[lastCutOff]); 
-
-    testScreen();
-
-    //testSD();
-
-//    board_init();
-
-   // printf("Starting USB init");
-   // tusb_init();
-  //  printf("Done USB init");
-   // tud_connect();
-    bool isMidiConnected;
-
-    // Main Loop ===========================================================================================
-    while (true) {
-        absolute_time_t tStart = get_absolute_time();
-
-        // tud_task(); // tinyusb device task
+void scan(){
+ // tud_task(); // tinyusb device task
         // isMidiMounted =  tud_mounted();
         // isMidiConnected =  tud_cdc_connected();
+            midiTimeOut++;
+            if(midiTimeOut > 500){
+                bcount = 0;
+                midiTimeOut = 0;
+                printf("miditimeout");
+            }
 
         // setup LEDs
         isMidiLight = false;
@@ -541,12 +467,12 @@ int main() {
         if (c >= 0) {
             if (c == 'q') {
                 gpio_put(LED_PIN, 0);
-                break;
+                return;
             }
             if (c == 't') {
                 printf("FLash Test T\n");
                 checkFlash();
-                continue;
+                return;
             }
             
             if (c == 'f') {
@@ -556,7 +482,7 @@ int main() {
                if((Result != 0 ) || (sb.st_mode & S_IFDIR )) {
                     printf("File Test  does not exist \n");
                }
-               continue;
+               return;
             }
              if (c == 'd') {
                 printf("==========================================\n");
@@ -573,7 +499,7 @@ int main() {
         }
 
         // Render All Audio
-        renderAudio();
+        // renderAudio();
 
         // read USB Midi
          /*
@@ -588,6 +514,117 @@ int main() {
             }
         }
         */
+
+       sleep_ms(10);
+}
+
+// ================================================================== Main ================================================================================
+int main() {
+
+    setupWavetable();
+    initVoices();
+
+    stdio_init_all();
+
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    gpio_init(LED_PIN_MIDI);
+    gpio_set_dir(LED_PIN_MIDI, GPIO_OUT);
+
+    gpio_init(SWITCH_PIN);
+    gpio_set_dir(SWITCH_PIN, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN);
+
+    gpio_init(SWITCH_PIN2);
+    gpio_set_dir(SWITCH_PIN2, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN2);
+
+    gpio_init(SD_INSERT_PIN);
+    gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
+    gpio_pull_up(SD_INSERT_PIN);
+    
+    gpio_init(ENCOCDER_PIN_1);
+    gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_1);
+
+    gpio_init(ENCOCDER_PIN_2);
+    gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_2);
+
+    gpio_init(GATE_PIN1);
+    gpio_set_dir(GATE_PIN1, GPIO_OUT);
+    gpio_pull_up(GATE_PIN1);
+
+    gpio_init(GATE_PIN2);
+    gpio_set_dir(GATE_PIN2, GPIO_OUT);
+    gpio_pull_up(GATE_PIN2);
+
+    
+   // second dac for CV
+    i2c_init(PMP_DAC_DEVICE, 400 * 1000);
+    gpio_set_function(0, GPIO_FUNC_I2C);
+    gpio_set_function(1, GPIO_FUNC_I2C);
+
+    gpio_pull_up(0);
+    gpio_pull_up(1);
+    bi_decl(bi_2pins_with_func(0, 1, GPIO_FUNC_I2C));
+    sendCutoff = 127;
+    sendCutoff = false;
+
+    isGate1 = true;
+    isGate2 = true;
+
+    // sets table for the MPC DAC
+    setupVoltageTable();
+
+    // LED on
+    gpio_put(LED_PIN, 1);
+
+    isGate1 = true;
+    isGate2 = true;
+    lastCutOff = 127;
+    i2c_writeDac2(mpc_voltages[lastCutOff]); 
+
+    testScreen();
+
+    //testSD();
+
+//    board_init();
+
+   // printf("Starting USB init");
+   // tusb_init();
+  //  printf("Done USB init");
+   // tud_connect();
+
+   // start new Thread
+    multicore_launch_core1(renderAudio);
+
+        // Midi UART
+    uart_init(UART_ID, BAUD_RATE);
+    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
+    uart_set_hw_flow(UART_ID, false, false);
+    uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
+    uart_set_fifo_enabled(UART_ID, false);
+
+     // Set up a RX interrupt
+    // We need to set up the handler first
+    // Select correct interrupt for the UART we are using
+    int UART_IRQ = UART_ID == uart0 ? UART0_IRQ : UART1_IRQ;
+
+    // And set up and enable the interrupt handlers
+    irq_set_exclusive_handler(UART_IRQ, on_uart_rx);
+    irq_set_enabled(UART_IRQ, true);
+
+    // Now enable the UART to send interrupts - RX only
+    uart_set_irq_enables(UART_ID, true, false);
+
+    // Main Loop ===========================================================================================
+    while (true) {
+        absolute_time_t tStart = get_absolute_time();
+
+       scan();
 
        // calculate time
         absolute_time_t tEnd = get_absolute_time();

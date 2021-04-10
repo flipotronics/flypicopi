@@ -99,6 +99,9 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h
  ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
  /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/crt0.S
+CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj
+ /home/mdietric/flypicopi/src/MidiParser.c
+ /home/mdietric/flypicopi/src/MidiParser.h
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj
  ../pico-extras/src/common/pico_util_buffer/include/pico/util/buffer.h
  ../pico-sdk/src/common/pico_base/include/pico.h
@@ -2062,6 +2065,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
  /home/mdietric/flypicopi/src/Def.h
  /home/mdietric/flypicopi/src/Engine.h
+ /home/mdietric/flypicopi/src/MidiParser.h
  /home/mdietric/flypicopi/src/Renderer.h
  /home/mdietric/flypicopi/src/main.cpp
  /home/mdietric/flypicopi/src/oled.h

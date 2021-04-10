@@ -99,6 +99,9 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: ../pico-sdk/src/rp2_common/pico_standard_link/crt0.S
 
+CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj: ../MidiParser.c
+CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj: ../MidiParser.h
+
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj: ../pico-extras/src/common/pico_util_buffer/include/pico/util/buffer.h
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj: ../pico-sdk/src/common/pico_base/include/pico.h
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj: ../pico-sdk/src/common/pico_base/include/pico/assert.h
@@ -2061,6 +2064,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/include/tusb_config.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Def.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Engine.h
+CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../MidiParser.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Renderer.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../oled.h

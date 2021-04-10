@@ -80,7 +80,7 @@ struct audio_buffer_pool *init_audio() {
         panic("PicoAudio: Unable to open audio device.\n");
     }
 
-    ok = audio_i2s_connect(producer_pool);
+    bool ok = audio_i2s_connect(producer_pool);
     assert(ok);
     audio_i2s_set_enabled(true);
     return producer_pool;
@@ -127,28 +127,30 @@ void setupWavetable(){
 }
 
 void renderAudio(){
-    struct audio_buffer *buffer = take_audio_buffer(ap, true);
-    int32_t *samples = (int32_t *) buffer->buffer->bytes;
+    while(true){
+        struct audio_buffer *buffer = take_audio_buffer(ap, true);
+        int32_t *samples = (int32_t *) buffer->buffer->bytes;
 
-    // AUDIO LOOP
-    for (uint i = 0; i < buffer->max_sample_count ; ++i) {
-        samples[i] = 0;//2048 >> 8u; 
+        // AUDIO LOOP
+        for (uint i = 0; i < buffer->max_sample_count ; ++i) {
+            samples[i] = 0;//2048 >> 8u; 
 
-        for(uint y=0; y < MAXVOICES; ++y){
-            if(voices[y].isPlaying){
-                samples[i] += (((int)sine_wave_table[voices[y].phase >> 16u]) >>3); 
+            for(uint y=0; y < MAXVOICES; ++y){
+                if(voices[y].isPlaying){
+                    samples[i] += (((int)sine_wave_table[voices[y].phase >> 16u]) >>3); 
 
-                //samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
-                // int r = ( ((int)saw_wave_table[voices[y].phase >> 16u]))  >> 9u;
-                // samples[i] += r;
+                    //samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+                    // int r = ( ((int)saw_wave_table[voices[y].phase >> 16u]))  >> 9u;
+                    // samples[i] += r;
 
-                voices[y].phase += voices[y].step;
-                if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
+                    voices[y].phase += voices[y].step;
+                    if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
+                }
             }
         }
+        buffer->sample_count = buffer->max_sample_count;
+        give_audio_buffer(ap, buffer);
     }
-    buffer->sample_count = buffer->max_sample_count;
-    give_audio_buffer(ap, buffer);
 }
 
 uint8_t  findVoice( uint8_t midiNote){
@@ -181,7 +183,7 @@ void noteOff(uint8_t midiNote){
     uint8_t vid = findVoice(midiNote);
     voices[vid].isPlaying = false;
     voices[vid].isUsed = false;
-    printf("note Off %i  %i  \n",vid , midiNote);
+    printf("note Off %i  %i  \n", vid , midiNote);
 }
 
 void setTuning(uint8_t  freq){

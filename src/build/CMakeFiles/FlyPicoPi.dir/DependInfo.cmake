@@ -112,6 +112,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../pico-sdk/src/rp2_common/hardware_adc/include"
   )
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/mdietric/flypicopi/src/MidiParser.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_util_buffer/buffer.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"

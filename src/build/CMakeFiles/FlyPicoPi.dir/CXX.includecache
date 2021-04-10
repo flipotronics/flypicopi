@@ -672,6 +672,12 @@ Def.h
 Renderer.h
 /home/mdietric/flypicopi/src/Renderer.h
 
+/home/mdietric/flypicopi/src/MidiParser.h
+stdint.h
+-
+stddef.h
+-
+
 /home/mdietric/flypicopi/src/Renderer.h
 Def.h
 /home/mdietric/flypicopi/src/Def.h
@@ -701,6 +707,8 @@ hardware/adc.h
 /home/mdietric/flypicopi/src/hardware/adc.h
 hardware/dma.h
 /home/mdietric/flypicopi/src/hardware/dma.h
+hardware/timer.h
+/home/mdietric/flypicopi/src/hardware/timer.h
 pico/stdlib.h
 /home/mdietric/flypicopi/src/pico/stdlib.h
 pico/audio_i2s.h
@@ -719,6 +727,8 @@ tusb.h
 /home/mdietric/flypicopi/src/tusb.h
 Engine.h
 /home/mdietric/flypicopi/src/Engine.h
+MidiParser.h
+/home/mdietric/flypicopi/src/MidiParser.h
 
 /home/mdietric/flypicopi/src/oled.h
 stdint.h
