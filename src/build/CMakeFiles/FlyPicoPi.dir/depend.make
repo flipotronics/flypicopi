@@ -2065,6 +2065,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Def.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Engine.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../MidiParser.h
+CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../ParamLoader.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Renderer.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../oled.h

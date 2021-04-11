@@ -678,6 +678,18 @@ stdint.h
 stddef.h
 -
 
+/home/mdietric/flypicopi/src/ParamLoader.h
+stdio.h
+-
+math.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+Def.h
+/home/mdietric/flypicopi/src/Def.h
+
 /home/mdietric/flypicopi/src/Renderer.h
 Def.h
 /home/mdietric/flypicopi/src/Def.h
@@ -690,6 +702,14 @@ math.h
 sys/stat.h
 -
 fcntl.h
+-
+iostream
+-
+string
+-
+string.h
+/home/mdietric/flypicopi/src/string.h
+stdlib.h
 -
 hardware/clocks.h
 /home/mdietric/flypicopi/src/hardware/clocks.h
@@ -729,6 +749,8 @@ Engine.h
 /home/mdietric/flypicopi/src/Engine.h
 MidiParser.h
 /home/mdietric/flypicopi/src/MidiParser.h
+ParamLoader.h
+/home/mdietric/flypicopi/src/ParamLoader.h
 
 /home/mdietric/flypicopi/src/oled.h
 stdint.h

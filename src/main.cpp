@@ -1,12 +1,18 @@
 /**
  * author: mat@flipotronics.com
  minicom -b 115200 -o -D /dev/ttyACM0
+
+ https://github.com/njazz/MIDIMessageParser/blob/master/src/MIDIParser.h
  */
 
 #include <stdio.h>
 #include <math.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <iostream>
+#include <string>
+#include "string.h"
+#include <stdlib.h>
 
 #include "hardware/clocks.h"
 #include "hardware/structs/clocks.h"
@@ -29,7 +35,9 @@
 #include "tusb.h"
 #include "Engine.h"
 #include "MidiParser.h"
+#include "ParamLoader.h"
 
+using namespace std;
 // ================================================ DEFINE =========================================================================
 #define SYNTH_VERSION 3
 
@@ -51,7 +59,7 @@
 #define SPI_BUS 1  // 1
 #define PICO_SD_CLK_PIN 14 // CLK
 #define PICO_SD_DATI_PIN  15 // MOSI
-#define PICO_SD_DAT0_PIN 12  // MISO
+#define PICO_SD_DATO_PIN 12  // MISO
 #define PICO_SD_CMD_PIN 13 // CS
 #define SD_INSERT_PIN 18 // CD
 
@@ -91,12 +99,13 @@ uint16_t mpc_voltages[128];
 
 uint8_t midibuffer[32];
 uint8_t buf[3];
-uint8_t lastCutOff = 127;
 uint8_t bcount = 0;
 uint8_t b0;
 uint8_t b1;
 uint8_t b2;
 uint8_t midiLightCounter = 0;
+
+int8_t lastShown = -1;
 
 bool sendCutoff = false;
 bool isSwitchPressed;
@@ -178,9 +187,6 @@ const  uint16_t DACLookup_FullSine_9Bit[512] =
   1847, 1872, 1897, 1922, 1948, 1973, 1998, 2023
 };
 
-
-
-
 //=========================== Methods ======================================================================================================
 void i2c_writeDac1(uint16_t val) {
     printf ("Sending cutoff %i \n" ,val);
@@ -239,7 +245,7 @@ void checkFlash(){
 }
 
 void tud_mount_cb(void) {
-  printf("tud_mount_cb");
+    printf("tud_mount_cb");
 }
 
 // Invoked when device is unmounted
@@ -251,8 +257,8 @@ void tud_umount_cb(void){
 // remote_wakeup_en : if host allow us  to perform remote wakeup
 // Within 7ms, device must draw an average of current less than 2.5 mA from bus
 void tud_suspend_cb(bool remote_wakeup_en){
-  (void) remote_wakeup_en;
-  printf("tud_suspend_cb");
+   (void) remote_wakeup_en;
+   printf("tud_suspend_cb");
 }
 
 // Invoked when usb bus is resumed
@@ -260,40 +266,45 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
+void printDisplay(string text){
+	setCursorx(0);
+    setCursory(0);
+    fill_scr(0);
+    ssd1306_print(text.c_str(), 1); // demonstrate some text
+	show_scr();
+}
+
 void control(uint8_t cc, uint8_t value){
     midiLightCounter = 100;
-    // Volume
-    if(cc==7){
-        volume = value;
-    }
+    printf("cc: %i value: %i", cc, value);
 
+    controls[cc] = value;
+    
     // Cutoff Freq
     if(cc==74){
-        if(lastCutOff != value){
-            lastCutOff = value;
-             i2c_writeDac2(mpc_voltages[value]); 
-        }
+        i2c_writeDac1(mpc_voltages[value]); 
     }
+     lastShown = cc;
 }
 
 midi_message_parser_t *midiParser = new midi_message_parser_t();
 
-inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max)
-{
+inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
     return (v >= min) && (v < max);
 };
 
 int midiTimeOut = 0;
 void handleMidiByte2(u_int8_t ch){
     midiTimeOut = 0;
-
-
     midiLightCounter = 100;
     chars_rxed++;
     printf("%i %i %i %i %i\n", ch, bcount, b0, b1, b2);
     if(bcount==0){
+        if( MIDIByteInRange(ch, 144, 160) || MIDIByteInRange(ch, 128, 144) || MIDIByteInRange(ch, 176, 192) ){
         b0 = ch;
         bcount = 1;
+        return;
+        }
         return;
     }
     if(bcount==1){
@@ -303,6 +314,7 @@ void handleMidiByte2(u_int8_t ch){
     }
     if(bcount==2){
         bcount = 0;
+        b2 = ch;
         if ( MIDIByteInRange(b0, 144, 160)) {
             u_int8_t channel = b0 - 144 + 1;
             noteOn(b1,b2);
@@ -313,27 +325,11 @@ void handleMidiByte2(u_int8_t ch){
             noteOff(b1);
             return ;
         }
-    /*
 
-        b2 = ch;
-        bcount = 0;
-        if(b0==128){
-            if(b2 == 0){
-                noteOff(b1);
-                return;
-            }
-            noteOn(b1,b2);
-            return;
-        }
-        if(b0==192){
-            noteOff(b1);
-            return;
-        }
-        if(b0==176){
+         if (MIDIByteInRange(b0, 176, 192)) {
             control(b1,b2);
-            return;
-        }
-        */
+            return ;
+         }
     }
     bcount = 0; // reset state maschine
 }
@@ -378,14 +374,6 @@ void testScreen() {
 	ssd1306_print("Overwritten   ");
 	show_scr();
     */
-}
-
-void testSD(){
-    if (sd_init_1pin() < 0) {
-        printf("error");
-    } else {
-        printf("cool");
-    }
 }
 
 void scan(){
@@ -448,15 +436,18 @@ void scan(){
             printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
 
             if(isSEnc_a){
-                if(lastCutOff < 127){
-                    lastCutOff++;
+                if(controls[74] < 127){
+                    controls[74]++;
+                     lastShown = 74;
+                     ;
                 }
             }
-            if(isSEnc_b && lastCutOff>0){
-                lastCutOff--;
+            if(isSEnc_b && controls[74]>0){
+                controls[74]--;
+                lastShown = 74;
             }
-            i2c_writeDac2(mpc_voltages[lastCutOff]); 
-            printf("Cutoff is: %d\n", lastCutOff);
+            i2c_writeDac1(mpc_voltages[controls[74]]); 
+            printf("Cutoff is: %d\n", controls[74]);
         }
 
         isSEnc_a = a;
@@ -494,6 +485,7 @@ void scan(){
                 printf("Time taken  = %u \n", us_to_ms(taken));
                 printf("Midi Mounted = %i \n", isMidiMounted);
                 printf("Midi isMidiConnected = %i \n", isMidiConnected);
+                //testSD();
                 //setupVoltageTable();
             }
         }
@@ -515,12 +507,22 @@ void scan(){
         }
         */
 
+lastShown = 0;
+        if(lastShown > 0){
+            printf("going fo print");
+            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
+            printDisplay(msg); 
+            lastShown = -1;
+        }
+  
+
        sleep_ms(10);
 }
 
 // ================================================================== Main ================================================================================
 int main() {
 
+    loadPatch(0);
     setupWavetable();
     initVoices();
 
@@ -560,7 +562,7 @@ int main() {
     gpio_set_dir(GATE_PIN2, GPIO_OUT);
     gpio_pull_up(GATE_PIN2);
 
-    
+
    // second dac for CV
     i2c_init(PMP_DAC_DEVICE, 400 * 1000);
     gpio_set_function(0, GPIO_FUNC_I2C);
@@ -583,12 +585,9 @@ int main() {
 
     isGate1 = true;
     isGate2 = true;
-    lastCutOff = 127;
-    i2c_writeDac2(mpc_voltages[lastCutOff]); 
+    i2c_writeDac1(mpc_voltages[controls[74]]); 
 
     testScreen();
-
-    //testSD();
 
 //    board_init();
 

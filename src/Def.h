@@ -23,4 +23,9 @@
 static int sine_wave_table[SINE_WAVE_TABLE_LEN];
 static int saw_wave_table[SINE_WAVE_TABLE_LEN];
 
+static uint8_t  lastParam;
+static uint8_t  lastValue;
+
+static uint8_t controls[128];
+
 #endif /* Def_h */

@@ -50,6 +50,7 @@ struct V{
     uint32_t step ;
     uint8_t velocity = 64;
     uint8_t midiNote = 0;
+    absolute_time_t tStart;
 };
 
 struct audio_buffer_pool *init_audio() {
@@ -137,11 +138,9 @@ void renderAudio(){
 
             for(uint y=0; y < MAXVOICES; ++y){
                 if(voices[y].isPlaying){
-                    samples[i] += (((int)sine_wave_table[voices[y].phase >> 16u]) >>3); 
-
-                    //samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
-                    // int r = ( ((int)saw_wave_table[voices[y].phase >> 16u]))  >> 9u;
-                    // samples[i] += r;
+                    samples[i] += (controls[7] * ((int)sine_wave_table[voices[y].phase >> 16u]) >> 10); 
+                    int r = ( controls[7] *((int)saw_wave_table[voices[y].phase >> 16u]))  >> 10u;
+                    samples[i] += r;
 
                     voices[y].phase += voices[y].step;
                     if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
@@ -164,7 +163,16 @@ uint8_t  findVoice( uint8_t midiNote){
             return y;
         }
     }
-    return 0;// make better - different algos
+    // find oldest voice
+    uint8_t oldestId = 0;
+    absolute_time_t last = voices[0].tStart;
+    for(int y=1;y < MAXVOICES;y++){
+        if(voices[y].tStart < last){
+            last = voices[y].tStart;
+            oldestId = y;
+        }
+    }
+    return oldestId; // 
 }  
 
 void noteOn(uint8_t midiNote, uint8_t velocity){
@@ -176,6 +184,7 @@ void noteOn(uint8_t midiNote, uint8_t velocity){
     voices[vid].phase = 0;
     voices[vid].velocity = velocity;
     voices[vid].midiNote = midiNote;
+    voices[vid].tStart = get_absolute_time();
     printf("note On %i %i %i  \n",vid, midiNote, velocity);
 }
 

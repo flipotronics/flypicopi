@@ -2066,6 +2066,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  /home/mdietric/flypicopi/src/Def.h
  /home/mdietric/flypicopi/src/Engine.h
  /home/mdietric/flypicopi/src/MidiParser.h
+ /home/mdietric/flypicopi/src/ParamLoader.h
  /home/mdietric/flypicopi/src/Renderer.h
  /home/mdietric/flypicopi/src/main.cpp
  /home/mdietric/flypicopi/src/oled.h
