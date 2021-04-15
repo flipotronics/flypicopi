@@ -1,6 +1,12 @@
 #pragma once
 
+#include <string.h>
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
+
 #include <stdint.h>
+#include <time.h>
+#include <unistd.h>
 
 void init_display(int h);
 void setCursorx(int x);

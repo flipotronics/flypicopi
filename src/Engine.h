@@ -12,6 +12,7 @@
 #include <string.h>
 #include <ostream>
 #include <iostream>
+#include "time.h"
 
 #include "Def.h"
 #include "Renderer.h"
@@ -19,6 +20,8 @@
 // =================================================== DEFINE ====================================================================
 #define I2C_DATAPIN 9
 #define I2C_CLOCKPIN 10
+
+using namespace std;
 
 // =================================================== Enums Structs====================================================================
 enum VoiceMode{
@@ -109,6 +112,8 @@ float tuning = 440.0;
 // Audio Buffer
 struct audio_buffer_pool *ap = init_audio();
 
+
+
 // =================================================== Methods ====================================================================
 uint32_t calcStep(float freq){
     int multi = 1 << 16;
@@ -127,8 +132,57 @@ void setupWavetable(){
     }
 }
 
+void setupDisplay() {
+	int h = 64;
+	init_display(h);
+    const char * welcome = "Fly Pico Pi\nMicro Synthesizer\nFliptronics V1.0\nMade with Love\nFrankurt/M\n1 Another line\n2 Another line\n3 Another line";
+	ssd1306_print(welcome,1); // demonstrate some text
+	show_scr();
+	//sleep_ms(2000);
+	//fill_scr(0); // empty the screen
+
+	//drawBitmap(0, 0, splash1_data, 128, 64, 1);
+	//show_scr();
+/*
+	sleep_ms(2000);
+	fill_scr(0);
+	setCursorx(0);
+	setCursory(0);
+	ssd1306_print("Testing cursor");
+	show_scr();
+	sleep_ms(2000);
+	setCursorx(0);
+	ssd1306_print("Overwritten   ");
+	show_scr();
+    */
+}
+
+void setupThread2(){
+    setupDisplay();
+}
+
+void printDisplay(string text){
+	setCursorx(0);
+    setCursory(0);
+    fill_scr(0);
+    ssd1306_print(text.c_str(), 1); 
+	show_scr();
+}
+
 void renderAudio(){
+    setupThread2();
+    int  freq = 10;
+
     while(true){
+
+         freq--;
+        if(freq < 0 && lastShown > 0){
+            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
+            printDisplay(msg); 
+            lastShown = -1;
+            freq = 10;
+        }
+
         struct audio_buffer *buffer = take_audio_buffer(ap, true);
         int32_t *samples = (int32_t *) buffer->buffer->bytes;
 

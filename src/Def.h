@@ -27,5 +27,6 @@ static uint8_t  lastParam;
 static uint8_t  lastValue;
 
 static uint8_t controls[128];
+static int lastShown = -1;
 
 #endif /* Def_h */

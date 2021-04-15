@@ -105,8 +105,6 @@ uint8_t b1;
 uint8_t b2;
 uint8_t midiLightCounter = 0;
 
-int8_t lastShown = -1;
-
 bool sendCutoff = false;
 bool isSwitchPressed;
 bool isSwitchPressed2;
@@ -266,14 +264,6 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
-void printDisplay(string text){
-	setCursorx(0);
-    setCursory(0);
-    fill_scr(0);
-    ssd1306_print(text.c_str(), 1); // demonstrate some text
-	show_scr();
-}
-
 void control(uint8_t cc, uint8_t value){
     midiLightCounter = 100;
     printf("cc: %i value: %i", cc, value);
@@ -281,10 +271,10 @@ void control(uint8_t cc, uint8_t value){
     controls[cc] = value;
     
     // Cutoff Freq
-    if(cc==74){
-        i2c_writeDac1(mpc_voltages[value]); 
+    if(cc == 74){
+        i2c_writeDac2(mpc_voltages[value]); 
     }
-     lastShown = cc;
+    lastShown = cc;
 }
 
 midi_message_parser_t *midiParser = new midi_message_parser_t();
@@ -351,31 +341,9 @@ void setupVoltageTable(){
     }
 }
 
-void testScreen() {
-	int h = 64;
-	init_display(h);
-    const char * welcome = "Fly Pico Pi\nMicro Synthesizer\nFliptronics V1.0\nMade with Love\nFrankurt/M\n1 Another line\n2 Another line\n3 Another line";
-	ssd1306_print(welcome,1); // demonstrate some text
-	show_scr();
-	//sleep_ms(2000);
-	//fill_scr(0); // empty the screen
 
-	//drawBitmap(0, 0, splash1_data, 128, 64, 1);
-	//show_scr();
-/*
-	sleep_ms(2000);
-	fill_scr(0);
-	setCursorx(0);
-	setCursory(0);
-	ssd1306_print("Testing cursor");
-	show_scr();
-	sleep_ms(2000);
-	setCursorx(0);
-	ssd1306_print("Overwritten   ");
-	show_scr();
-    */
-}
 
+// =========================================================== SCAN ===========================================================================
 void scan(){
  // tud_task(); // tinyusb device task
         // isMidiMounted =  tud_mounted();
@@ -430,26 +398,19 @@ void scan(){
             haveMove = true;
         }
 
-        if(haveMove&& a==0 && b==0){
+        if(haveMove && a==0 && b==0){
             haveMove = false;
             printf("a is: %d b is: %d\n", a, b);
             printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
 
-            if(isSEnc_a){
-                if(controls[74] < 127){
-                    controls[74]++;
-                     lastShown = 74;
-                     ;
-                }
+            if(isSEnc_a && controls[74] < 127){
+                controls[74]++;
             }
-            if(isSEnc_b && controls[74]>0){
+            if(isSEnc_b && controls[74] > 0){
                 controls[74]--;
-                lastShown = 74;
             }
-            i2c_writeDac1(mpc_voltages[controls[74]]); 
-            printf("Cutoff is: %d\n", controls[74]);
+            control(74, controls[74]);
         }
-
         isSEnc_a = a;
         isSEnc_b = b;
 
@@ -485,13 +446,12 @@ void scan(){
                 printf("Time taken  = %u \n", us_to_ms(taken));
                 printf("Midi Mounted = %i \n", isMidiMounted);
                 printf("Midi isMidiConnected = %i \n", isMidiConnected);
+
+                 printf("CC = %i \n",  controls[74]);
                 //testSD();
                 //setupVoltageTable();
             }
         }
-
-        // Render All Audio
-        // renderAudio();
 
         // read USB Midi
          /*
@@ -500,28 +460,15 @@ void scan(){
             int count = tud_midi_read(midibuffer, 32);
             if(count>0){
                 midiLightCounter = 100;
-                for(int i =0; i < count;++i){
-                    handleMidiByte(midibuffer[i]);
-                }
+                
+
             }
         }
         */
-
-lastShown = 0;
-        if(lastShown > 0){
-            printf("going fo print");
-            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
-            printDisplay(msg); 
-            lastShown = -1;
-        }
-  
-
        sleep_ms(10);
 }
 
-// ================================================================== Main ================================================================================
-int main() {
-
+void setupMain(){
     loadPatch(0);
     setupWavetable();
     initVoices();
@@ -562,7 +509,6 @@ int main() {
     gpio_set_dir(GATE_PIN2, GPIO_OUT);
     gpio_pull_up(GATE_PIN2);
 
-
    // second dac for CV
     i2c_init(PMP_DAC_DEVICE, 400 * 1000);
     gpio_set_function(0, GPIO_FUNC_I2C);
@@ -585,9 +531,7 @@ int main() {
 
     isGate1 = true;
     isGate2 = true;
-    i2c_writeDac1(mpc_voltages[controls[74]]); 
-
-    testScreen();
+    //i2c_writeDac1(mpc_voltages[controls[74]]); 
 
 //    board_init();
 
@@ -596,28 +540,27 @@ int main() {
   //  printf("Done USB init");
    // tud_connect();
 
-   // start new Thread
-    multicore_launch_core1(renderAudio);
-
-        // Midi UART
+    // Midi UART
     uart_init(UART_ID, BAUD_RATE);
     gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
     uart_set_hw_flow(UART_ID, false, false);
     uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
     uart_set_fifo_enabled(UART_ID, false);
-
-     // Set up a RX interrupt
-    // We need to set up the handler first
-    // Select correct interrupt for the UART we are using
     int UART_IRQ = UART_ID == uart0 ? UART0_IRQ : UART1_IRQ;
-
-    // And set up and enable the interrupt handlers
     irq_set_exclusive_handler(UART_IRQ, on_uart_rx);
     irq_set_enabled(UART_IRQ, true);
-
-    // Now enable the UART to send interrupts - RX only
     uart_set_irq_enables(UART_ID, true, false);
+}
+
+
+// ================================================================== Main ================================================================================
+int main() {
+
+    setupMain();
+
+       // start new Thread
+    multicore_launch_core1(renderAudio);
 
     // Main Loop ===========================================================================================
     while (true) {

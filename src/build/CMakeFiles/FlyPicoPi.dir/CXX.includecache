@@ -667,6 +667,8 @@ ostream
 -
 iostream
 -
+time.h
+/home/mdietric/flypicopi/src/time.h
 Def.h
 /home/mdietric/flypicopi/src/Def.h
 Renderer.h
@@ -753,7 +755,17 @@ ParamLoader.h
 /home/mdietric/flypicopi/src/ParamLoader.h
 
 /home/mdietric/flypicopi/src/oled.h
+string.h
+-
+pico/stdlib.h
+/home/mdietric/flypicopi/src/pico/stdlib.h
+hardware/i2c.h
+/home/mdietric/flypicopi/src/hardware/i2c.h
 stdint.h
+-
+time.h
+-
+unistd.h
 -
 
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
