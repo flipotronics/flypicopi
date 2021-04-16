@@ -673,6 +673,8 @@ Def.h
 /home/mdietric/flypicopi/src/Def.h
 Renderer.h
 /home/mdietric/flypicopi/src/Renderer.h
+queue.h
+/home/mdietric/flypicopi/src/queue.h
 
 /home/mdietric/flypicopi/src/MidiParser.h
 stdint.h
@@ -769,6 +771,14 @@ unistd.h
 -
 
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+
+/home/mdietric/flypicopi/src/queue.h
+assert.h
+-
+stdio.h
+-
+Def.h
+/home/mdietric/flypicopi/src/Def.h
 
 generated/pico_base/pico/config_autogen.h
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h

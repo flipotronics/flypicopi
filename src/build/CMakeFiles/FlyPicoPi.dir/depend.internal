@@ -2071,6 +2071,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj
  /home/mdietric/flypicopi/src/main.cpp
  /home/mdietric/flypicopi/src/oled.h
  /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
+ /home/mdietric/flypicopi/src/queue.h
  generated/pico_base/pico/config_autogen.h
  generated/pico_base/pico/version.h
 CMakeFiles/FlyPicoPi.dir/oled.cc.obj

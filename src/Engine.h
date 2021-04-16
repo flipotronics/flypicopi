@@ -16,6 +16,7 @@
 
 #include "Def.h"
 #include "Renderer.h"
+#include "queue.h"
 
 // =================================================== DEFINE ====================================================================
 #define I2C_DATAPIN 9
@@ -175,10 +176,16 @@ void renderAudio(){
 
     while(true){
 
+        MidiEvent * ev = queue_read(queue);
+        while(ev != NULL){
+          //  printf("Event %i %i %i \n", ev->b0, ev->b1 , ev->b2);
+            ev = queue_read(queue);
+        }
+
          freq--;
         if(freq < 0 && lastShown > 0){
             std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
-            printDisplay(msg); 
+            //printDisplay(msg); 
             lastShown = -1;
             freq = 10;
         }

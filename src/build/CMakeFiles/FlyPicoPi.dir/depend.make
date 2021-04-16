@@ -2070,6 +2070,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../Renderer.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../oled.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/boards/include/boards/pico.h
+CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../queue.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: generated/pico_base/pico/config_autogen.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: generated/pico_base/pico/version.h
 

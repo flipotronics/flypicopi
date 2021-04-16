@@ -29,4 +29,10 @@ static uint8_t  lastValue;
 static uint8_t controls[128];
 static int lastShown = -1;
 
+struct MidiEvent{
+    uint8_t b0;
+    uint8_t b1;
+    uint8_t b2;
+};
+
 #endif /* Def_h */

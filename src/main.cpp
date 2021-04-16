@@ -305,6 +305,14 @@ void handleMidiByte2(u_int8_t ch){
     if(bcount==2){
         bcount = 0;
         b2 = ch;
+
+        // send to Queue
+        MidiEvent * e = new MidiEvent();
+        e->b0 = b0;
+        e->b1 = b1;
+        e->b2 = b2;
+        queue_write(queue,e);
+
         if ( MIDIByteInRange(b0, 144, 160)) {
             u_int8_t channel = b0 - 144 + 1;
             noteOn(b1,b2);
@@ -447,7 +455,9 @@ void scan(){
                 printf("Midi Mounted = %i \n", isMidiMounted);
                 printf("Midi isMidiConnected = %i \n", isMidiConnected);
 
-                 printf("CC = %i \n",  controls[74]);
+                printf("CC = %i \n",  controls[74]);
+                printf("queue Size = %i \n",   queue->size);
+                
                 //testSD();
                 //setupVoltageTable();
             }
