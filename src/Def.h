@@ -65,6 +65,8 @@
 #define ENCOCDER_PIN_1 17
 #define ENCOCDER_PIN_2 16
 
+#define DEBUG_SHOW_MIDI 0
+
 static uint8_t buf[3];
 static int sine_wave_table[SINE_WAVE_TABLE_LEN];
 static int saw_wave_table[SINE_WAVE_TABLE_LEN];

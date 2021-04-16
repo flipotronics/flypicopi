@@ -217,7 +217,9 @@ void handleMidiByte2(u_int8_t ch){
     midiTimeOut = 0;
     midiLightCounter = 100;
     chars_rxed++;
+    #if DEBUG_SHOW_MIDI
     printf("%i %i %i %i %i\n", ch, bcount, b0, b1, b2);
+    #endif 
     if(bcount==0){
         if( MIDIByteInRange(ch, 144, 160) || MIDIByteInRange(ch, 128, 144) || MIDIByteInRange(ch, 176, 192) ){
         b0 = ch;
@@ -279,8 +281,6 @@ void setupVoltageTable(){
         printf( "%i \n", mpc_voltages[i]);
     }
 }
-
-
 
 // =========================================================== SCAN ===========================================================================
 void scan(){
@@ -492,7 +492,6 @@ void setupMain(){
     irq_set_enabled(UART_IRQ, true);
     uart_set_irq_enables(UART_ID, true, false);
 }
-
 
 // ================================================================== Main ================================================================================
 int main() {

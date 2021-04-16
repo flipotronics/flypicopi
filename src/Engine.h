@@ -208,19 +208,25 @@ void noteOn(uint8_t midiNote, uint8_t velocity){
     voices[vid].velocity = velocity;
     voices[vid].midiNote = midiNote;
     voices[vid].tStart = get_absolute_time();
+    #if DEBUG_SHOW_MIDI
     printf("note On %i %i %i  \n",vid, midiNote, velocity);
+    #endif 
 }
 
 void noteOff(uint8_t midiNote){
     uint8_t vid = findVoice(midiNote);
     voices[vid].isPlaying = false;
     voices[vid].isUsed = false;
+    #if DEBUG_SHOW_MIDI
     printf("note Off %i  %i  \n", vid , midiNote);
+    #endif
 }
 
 void control(uint8_t cc, uint8_t value){
     midiLightCounter = 100;
+     #if DEBUG_SHOW_MIDI
     printf("cc: %i value: %i", cc, value);
+    #endif
 
     controls[cc] = value;
     
