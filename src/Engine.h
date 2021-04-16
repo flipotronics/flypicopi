@@ -113,8 +113,6 @@ float tuning = 440.0;
 // Audio Buffer
 struct audio_buffer_pool *ap = init_audio();
 
-
-
 // =================================================== Methods ====================================================================
 uint32_t calcStep(float freq){
     int multi = 1 << 16;
@@ -170,49 +168,6 @@ void printDisplay(string text){
 	show_scr();
 }
 
-void renderAudio(){
-    setupThread2();
-    int  freq = 10;
-
-    while(true){
-
-        MidiEvent * ev = queue_read(queue);
-        while(ev != NULL){
-          //  printf("Event %i %i %i \n", ev->b0, ev->b1 , ev->b2);
-            ev = queue_read(queue);
-        }
-
-         freq--;
-        if(freq < 0 && lastShown > 0){
-            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
-            //printDisplay(msg); 
-            lastShown = -1;
-            freq = 10;
-        }
-
-        struct audio_buffer *buffer = take_audio_buffer(ap, true);
-        int32_t *samples = (int32_t *) buffer->buffer->bytes;
-
-        // AUDIO LOOP
-        for (uint i = 0; i < buffer->max_sample_count ; ++i) {
-            samples[i] = 0;//2048 >> 8u; 
-
-            for(uint y=0; y < MAXVOICES; ++y){
-                if(voices[y].isPlaying){
-                    samples[i] += (controls[7] * ((int)sine_wave_table[voices[y].phase >> 16u]) >> 10); 
-                    int r = ( controls[7] *((int)saw_wave_table[voices[y].phase >> 16u]))  >> 10u;
-                    samples[i] += r;
-
-                    voices[y].phase += voices[y].step;
-                    if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
-                }
-            }
-        }
-        buffer->sample_count = buffer->max_sample_count;
-        give_audio_buffer(ap, buffer);
-    }
-}
-
 uint8_t  findVoice( uint8_t midiNote){
     for(int y=0;y < MAXVOICES;y++){
         if(voices[y].midiNote ==  midiNote){
@@ -235,6 +190,13 @@ uint8_t  findVoice( uint8_t midiNote){
     }
     return oldestId; // 
 }  
+void i2c_writeDac2(uint16_t val) {
+    printf ("Sending adsr %i \n" ,val);
+    buf[0] = MCP4725_CMD_WRITEDAC;
+    buf[1] = val / 16;
+    buf[2] = (val % 16) << 4 ;
+    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_2, buf, 3, false);
+}
 
 void noteOn(uint8_t midiNote, uint8_t velocity){
     uint8_t vid = findVoice(midiNote);
@@ -254,6 +216,19 @@ void noteOff(uint8_t midiNote){
     voices[vid].isPlaying = false;
     voices[vid].isUsed = false;
     printf("note Off %i  %i  \n", vid , midiNote);
+}
+
+void control(uint8_t cc, uint8_t value){
+    midiLightCounter = 100;
+    printf("cc: %i value: %i", cc, value);
+
+    controls[cc] = value;
+    
+    // Cutoff Freq
+    if(cc == 74){
+        i2c_writeDac2(mpc_voltages[value]); 
+    }
+    lastShown = cc;
 }
 
 void setTuning(uint8_t  freq){
@@ -286,4 +261,70 @@ void printTime(){
     // std::cout << "Render Time " << ms_renderTime << std::endl;
 }
 
+
+inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
+    return (v >= min) && (v < max);
+};
+
+void renderAudio(){
+    setupThread2();
+    int  freq = 10;
+
+    while(true){
+
+        // Midi Parser
+        while(true){
+            MidiEvent  ev = queue_read();
+            if(ev.isActive ){
+                ev.isActive = false;
+               // printf("Event %i %i %i \n", ev.b0, ev.b1 , ev.b2);
+                if ( MIDIByteInRange(ev.b0, 144, 160)) {
+                    u_int8_t channel = ev.b0 - 144 + 1;
+                    noteOn(ev.b1,ev.b2);
+                    continue;
+                }
+                if (MIDIByteInRange(ev.b0, 128, 144)) {
+                    noteOff(ev.b1);
+                    continue;
+                }
+                if (MIDIByteInRange(ev.b0, 176, 192)) {
+                    control(ev.b1,ev.b2);
+                    continue;
+                }
+            }else{
+                break;
+            }
+        }
+
+        freq--;
+        if(freq < 0 && lastShown > 0){
+            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
+            printDisplay(msg); 
+            lastShown = -1;
+            freq = 10;
+        }
+
+
+        struct audio_buffer *buffer = take_audio_buffer(ap, true);
+        int32_t *samples = (int32_t *) buffer->buffer->bytes;
+
+        // AUDIO LOOP
+        for (uint i = 0; i < buffer->max_sample_count ; ++i) {
+            samples[i] = 0;//2048 >> 8u; 
+
+            for(uint y=0; y < MAXVOICES; ++y){
+                if(voices[y].isPlaying){
+                    samples[i] += (controls[7] * ((int)sine_wave_table[voices[y].phase >> 16u]) >> 10); 
+                    int r = ( controls[7] *((int)saw_wave_table[voices[y].phase >> 16u]))  >> 10u;
+                    samples[i] += r;
+
+                    voices[y].phase += voices[y].step;
+                    if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
+                }
+            }
+        }
+        buffer->sample_count = buffer->max_sample_count;
+        give_audio_buffer(ap, buffer);
+    }
+}
 #endif 

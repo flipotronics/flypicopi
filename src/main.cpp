@@ -39,50 +39,7 @@
 
 using namespace std;
 // ================================================ DEFINE =========================================================================
-#define SYNTH_VERSION 3
 
-#define MPC0_ID 0x60    // ADA 0x62 or 0x63   - Sparkfun 0x60   
-#define MPC1_ID 0x61
-
-#define UART_ID uart1
-#define BAUD_RATE 31250
-
-// We are using pins 0 and 1, but see the GPIO function select table in the
-// datasheet for information on which other pins can be used.
-#define UART_TX_PIN 4
-#define UART_RX_PIN 5
-#define PARITY    UART_PARITY_NONE
-#define DATA_BITS 8
-#define STOP_BITS 1
-
-// SD Card Pins
-#define SPI_BUS 1  // 1
-#define PICO_SD_CLK_PIN 14 // CLK
-#define PICO_SD_DATI_PIN  15 // MOSI
-#define PICO_SD_DATO_PIN 12  // MISO
-#define PICO_SD_CMD_PIN 13 // CS
-#define SD_INSERT_PIN 18 // CD
-
-#define FLASH_TARGET_OFFSET (256 * 1024)
-#define FLASH_PAGE_SIZE (1u << 8)
-#define FLASH_SECTOR_SIZE (1u << 12)
-#define FLASH_BLOCK_SIZE (1u << 16)
-
-#define MCP4725_I2CADDR_DEFAULT (0x60) ///< Default i2c address
-#define MCP4725_I2CADDR_2 (0x61)
-#define MCP4725_CMD_WRITEDAC (0x40)    ///< Writes data to the DAC
-#define MCP4725_CMD_WRITEDACEEPROM (0x60)
-#define PMP_DAC_DEVICE i2c0
-#define DSIPLAY_ADDR 0x3C
-
-#define SWITCH_PIN 22 
-#define SWITCH_PIN2 21
-
-#define GATE_PIN1 20
-#define GATE_PIN2 19
-
-#define ENCOCDER_PIN_1 17
-#define ENCOCDER_PIN_2 16
 
 // ================================================ Member =========================================================================
 
@@ -94,16 +51,13 @@ const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGE
 static int chars_rxed = 0;
 
 absolute_time_t taken;
-
-uint16_t mpc_voltages[128];
-
 uint8_t midibuffer[32];
-uint8_t buf[3];
+
 uint8_t bcount = 0;
 uint8_t b0;
 uint8_t b1;
 uint8_t b2;
-uint8_t midiLightCounter = 0;
+
 
 bool sendCutoff = false;
 bool isSwitchPressed;
@@ -194,13 +148,7 @@ void i2c_writeDac1(uint16_t val) {
     i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_DEFAULT, buf, 3, false);
 }
 
-void i2c_writeDac2(uint16_t val) {
-    printf ("Sending adsr %i \n" ,val);
-    buf[0] = MCP4725_CMD_WRITEDAC;
-    buf[1] = val / 16;
-    buf[2] = (val % 16) << 4 ;
-    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_2, buf, 3, false);
-}
+
 
 void print_buf(const uint8_t *buf, size_t len) {
     for (size_t i = 0; i < len; ++i) {
@@ -264,25 +212,6 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
-void control(uint8_t cc, uint8_t value){
-    midiLightCounter = 100;
-    printf("cc: %i value: %i", cc, value);
-
-    controls[cc] = value;
-    
-    // Cutoff Freq
-    if(cc == 74){
-        i2c_writeDac2(mpc_voltages[value]); 
-    }
-    lastShown = cc;
-}
-
-midi_message_parser_t *midiParser = new midi_message_parser_t();
-
-inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
-    return (v >= min) && (v < max);
-};
-
 int midiTimeOut = 0;
 void handleMidiByte2(u_int8_t ch){
     midiTimeOut = 0;
@@ -307,11 +236,12 @@ void handleMidiByte2(u_int8_t ch){
         b2 = ch;
 
         // send to Queue
-        MidiEvent * e = new MidiEvent();
-        e->b0 = b0;
-        e->b1 = b1;
-        e->b2 = b2;
-        queue_write(queue,e);
+        MidiEvent e;
+        e.b0 = b0;
+        e.b1 = b1;
+        e.b2 = b2;
+        queue_write(e);
+        /*
 
         if ( MIDIByteInRange(b0, 144, 160)) {
             u_int8_t channel = b0 - 144 + 1;
@@ -328,6 +258,7 @@ void handleMidiByte2(u_int8_t ch){
             control(b1,b2);
             return ;
          }
+         */
     }
     bcount = 0; // reset state maschine
 }
@@ -456,7 +387,6 @@ void scan(){
                 printf("Midi isMidiConnected = %i \n", isMidiConnected);
 
                 printf("CC = %i \n",  controls[74]);
-                printf("queue Size = %i \n",   queue->size);
                 
                 //testSD();
                 //setupVoltageTable();
