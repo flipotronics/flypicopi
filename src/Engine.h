@@ -191,7 +191,9 @@ uint8_t  findVoice( uint8_t midiNote){
     return oldestId; // 
 }  
 void i2c_writeDac2(uint16_t val) {
+    #if DEBUG_SHOW_MIDI
     printf ("Sending adsr %i \n" ,val);
+    #endif
     buf[0] = MCP4725_CMD_WRITEDAC;
     buf[1] = val / 16;
     buf[2] = (val % 16) << 4 ;
