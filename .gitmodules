@@ -4,3 +4,6 @@
 [submodule "src/pico-sdk"]
 	path = src/pico-sdk
 	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "src/no-OS-FatFS-SD-SPI-RPi-Pico"]
+	path = src/no-OS-FatFS-SD-SPI-RPi-Pico
+	url = https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico.git

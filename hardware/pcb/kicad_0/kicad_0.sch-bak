@@ -1,0 +1,18 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Fly Pico Pi"
+Date "6.4.2021"
+Rev "1.0"
+Comp "Flipotronics"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 7400 7500 0    50   ~ 0
+Fly Pico Pi
+$EndSCHEMATC
