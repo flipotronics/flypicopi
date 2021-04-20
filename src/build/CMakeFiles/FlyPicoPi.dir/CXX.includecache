@@ -14,10 +14,6 @@ pico/util/buffer.h
 hardware/sync.h
 ../pico-extras/src/common/pico_audio/include/pico/hardware/sync.h
 
-../pico-extras/src/common/pico_sd_card/include/pico/sd_card.h
-pico.h
-../pico-extras/src/common/pico_sd_card/include/pico/pico.h
-
 ../pico-extras/src/common/pico_util_buffer/include/pico/util/buffer.h
 pico/types.h
 ../pico-extras/src/common/pico_util_buffer/include/pico/util/pico/types.h
@@ -446,6 +442,10 @@ pico.h
 hardware/timer.h
 ../pico-sdk/src/common/pico_time/include/pico/hardware/timer.h
 
+../pico-sdk/src/common/pico_util/include/pico/util/datetime.h
+pico.h
+../pico-sdk/src/common/pico_util/include/pico/util/pico.h
+
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
@@ -468,7 +468,11 @@ hardware/platform_defs.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h
 
+../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/rtc.h
+
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h
+
+../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h
 
@@ -520,6 +524,14 @@ hardware/platform_defs.h
 hardware/regs/pads_bank0.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/pads_bank0.h
 
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/rtc.h
+hardware/address_mapped.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
+hardware/platform_defs.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/platform_defs.h
+hardware/regs/rtc.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/rtc.h
+
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h
 hardware/address_mapped.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
@@ -527,6 +539,12 @@ hardware/regs/sio.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/sio.h
 hardware/structs/interp.h
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/structs/interp.h
+
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h
+hardware/address_mapped.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/address_mapped.h
+hardware/regs/spi.h
+../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/hardware/regs/spi.h
 
 ../pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h
 hardware/address_mapped.h
@@ -608,6 +626,20 @@ hardware/regs/intctrl.h
 hardware/regs/m0plus.h
 ../pico-sdk/src/rp2_common/hardware_irq/include/hardware/hardware/regs/m0plus.h
 
+../pico-sdk/src/rp2_common/hardware_rtc/include/hardware/rtc.h
+pico.h
+../pico-sdk/src/rp2_common/hardware_rtc/include/hardware/pico.h
+hardware/structs/rtc.h
+../pico-sdk/src/rp2_common/hardware_rtc/include/hardware/hardware/structs/rtc.h
+
+../pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h
+pico.h
+../pico-sdk/src/rp2_common/hardware_spi/include/hardware/pico.h
+pico/time.h
+../pico-sdk/src/rp2_common/hardware_spi/include/hardware/pico/time.h
+hardware/structs/spi.h
+../pico-sdk/src/rp2_common/hardware_spi/include/hardware/hardware/structs/spi.h
+
 ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
 pico.h
 ../pico-sdk/src/rp2_common/hardware_sync/include/hardware/pico.h
@@ -671,30 +703,66 @@ time.h
 /home/mdietric/flypicopi/src/time.h
 Def.h
 /home/mdietric/flypicopi/src/Def.h
-Renderer.h
-/home/mdietric/flypicopi/src/Renderer.h
 queue.h
 /home/mdietric/flypicopi/src/queue.h
-
-/home/mdietric/flypicopi/src/MidiParser.h
-stdint.h
--
-stddef.h
--
+lfo.h
+/home/mdietric/flypicopi/src/lfo.h
 
 /home/mdietric/flypicopi/src/ParamLoader.h
+ctype.h
+-
+stdbool.h
+-
 stdio.h
 -
-math.h
+stdlib.h
 -
-sys/stat.h
+string.h
 -
-fcntl.h
+time.h
 -
-Def.h
-/home/mdietric/flypicopi/src/Def.h
+hardware/adc.h
+/home/mdietric/flypicopi/src/hardware/adc.h
+pico/stdlib.h
+/home/mdietric/flypicopi/src/pico/stdlib.h
+hardware/rtc.h
+/home/mdietric/flypicopi/src/hardware/rtc.h
+pico/util/datetime.h
+/home/mdietric/flypicopi/src/pico/util/datetime.h
+sdlib/ff.h
+/home/mdietric/flypicopi/src/sdlib/ff.h
+sdlib/sd_card.h
+/home/mdietric/flypicopi/src/sdlib/sd_card.h
+sdlib/f_util.h
+/home/mdietric/flypicopi/src/sdlib/f_util.h
+sdlib/spi.h
+/home/mdietric/flypicopi/src/sdlib/spi.h
+sdlib/f_util.h
+/home/mdietric/flypicopi/src/sdlib/f_util.h
+sdlib/ff.h
+/home/mdietric/flypicopi/src/sdlib/ff.h
+sdlib/hw_config.h
+/home/mdietric/flypicopi/src/sdlib/hw_config.h
+sdlib/my_debug.h
+/home/mdietric/flypicopi/src/sdlib/my_debug.h
+sdlib/rtc.h
+/home/mdietric/flypicopi/src/sdlib/rtc.h
+sdlib/sd_card.h
+/home/mdietric/flypicopi/src/sdlib/sd_card.h
 
-/home/mdietric/flypicopi/src/Renderer.h
+/home/mdietric/flypicopi/src/lfo.h
+string.h
+-
+pico/stdlib.h
+/home/mdietric/flypicopi/src/pico/stdlib.h
+hardware/i2c.h
+/home/mdietric/flypicopi/src/hardware/i2c.h
+stdint.h
+-
+time.h
+-
+unistd.h
+-
 Def.h
 /home/mdietric/flypicopi/src/Def.h
 
@@ -733,6 +801,8 @@ hardware/dma.h
 /home/mdietric/flypicopi/src/hardware/dma.h
 hardware/timer.h
 /home/mdietric/flypicopi/src/hardware/timer.h
+hardware/spi.h
+/home/mdietric/flypicopi/src/hardware/spi.h
 pico/stdlib.h
 /home/mdietric/flypicopi/src/pico/stdlib.h
 pico/audio_i2s.h
@@ -741,8 +811,6 @@ pico/multicore.h
 /home/mdietric/flypicopi/src/pico/multicore.h
 pico/binary_info.h
 /home/mdietric/flypicopi/src/pico/binary_info.h
-pico/sd_card.h
-/home/mdietric/flypicopi/src/pico/sd_card.h
 bsp/board.h
 /home/mdietric/flypicopi/src/bsp/board.h
 oled.h
@@ -751,8 +819,6 @@ tusb.h
 /home/mdietric/flypicopi/src/tusb.h
 Engine.h
 /home/mdietric/flypicopi/src/Engine.h
-MidiParser.h
-/home/mdietric/flypicopi/src/MidiParser.h
 ParamLoader.h
 /home/mdietric/flypicopi/src/ParamLoader.h
 
@@ -777,8 +843,72 @@ assert.h
 -
 stdio.h
 -
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+pthread.h
+-
 Def.h
 /home/mdietric/flypicopi/src/Def.h
+queue.h
+/home/mdietric/flypicopi/src/queue.h
+pico/stdlib.h
+/home/mdietric/flypicopi/src/pico/stdlib.h
+pico/multicore.h
+/home/mdietric/flypicopi/src/pico/multicore.h
+
+/home/mdietric/flypicopi/src/sdlib/f_util.h
+ff.h
+/home/mdietric/flypicopi/src/sdlib/ff.h
+
+/home/mdietric/flypicopi/src/sdlib/ff.h
+ffconf.h
+/home/mdietric/flypicopi/src/sdlib/ffconf.h
+windows.h
+-
+stdint.h
+-
+
+/home/mdietric/flypicopi/src/sdlib/ffconf.h
+
+/home/mdietric/flypicopi/src/sdlib/hw_config.h
+sd_card.h
+/home/mdietric/flypicopi/src/sdlib/sd_card.h
+
+/home/mdietric/flypicopi/src/sdlib/my_debug.h
+stdio.h
+-
+
+/home/mdietric/flypicopi/src/sdlib/rtc.h
+time.h
+-
+
+/home/mdietric/flypicopi/src/sdlib/sd_card.h
+stdint.h
+-
+hardware/gpio.h
+/home/mdietric/flypicopi/src/sdlib/hardware/gpio.h
+spi.h
+/home/mdietric/flypicopi/src/sdlib/spi.h
+
+/home/mdietric/flypicopi/src/sdlib/spi.h
+stdbool.h
+-
+hardware/dma.h
+/home/mdietric/flypicopi/src/sdlib/hardware/dma.h
+hardware/irq.h
+/home/mdietric/flypicopi/src/sdlib/hardware/irq.h
+hardware/spi.h
+/home/mdietric/flypicopi/src/sdlib/hardware/spi.h
+pico/types.h
+/home/mdietric/flypicopi/src/sdlib/pico/types.h
+pico/sem.h
+/home/mdietric/flypicopi/src/sdlib/pico/sem.h
+hardware/gpio.h
+/home/mdietric/flypicopi/src/sdlib/hardware/gpio.h
 
 generated/pico_base/pico/config_autogen.h
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h

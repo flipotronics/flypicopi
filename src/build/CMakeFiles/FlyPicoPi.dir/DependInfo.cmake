@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_CHECK_ASM
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/crt0.S" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
   )
+set(CMAKE_ASM_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
@@ -107,19 +108,16 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "../pico-sdk/src/rp2_common/hardware_pio/include"
   "../pico-extras/src/common/pico_audio/include"
   "../pico-extras/src/common/pico_util_buffer/include"
-  "pico_extras/src/rp2_common/pico_sd_card"
-  "../pico-extras/src/rp2_common/pico_sd_card/include"
-  "../pico-extras/src/common/pico_sd_card/include"
   "../pico-sdk/src/rp2_common/pico_multicore/include"
   "../pico-sdk/src/rp2_common/hardware_flash/include"
   "../pico-sdk/src/rp2_common/hardware_i2c/include"
   "../pico-sdk/src/rp2_common/hardware_adc/include"
+  "../pico-sdk/src/rp2_common/hardware_spi/include"
+  "../pico-sdk/src/rp2_common/hardware_rtc/include"
   )
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/mdietric/flypicopi/src/MidiParser.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_util_buffer/buffer.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
   "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
-  "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
@@ -154,6 +152,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_irq/irq.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_pio/pio.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_pll/pll.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj"
+  "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/rtc.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj"
+  "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/spi.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_sync/sync.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_timer/timer.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_uart/uart.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj"
@@ -177,6 +177,17 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
   "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/crc.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/diskio.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/f_util.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/ff.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/ff_stdio.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/ffsystem.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/ffunicode.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/hw_config.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/rtc.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/sd_card.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj"
+  "/home/mdietric/flypicopi/src/sdlib/sd_spi.c" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -267,13 +278,12 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../pico-sdk/src/rp2_common/hardware_pio/include"
   "../pico-extras/src/common/pico_audio/include"
   "../pico-extras/src/common/pico_util_buffer/include"
-  "pico_extras/src/rp2_common/pico_sd_card"
-  "../pico-extras/src/rp2_common/pico_sd_card/include"
-  "../pico-extras/src/common/pico_sd_card/include"
   "../pico-sdk/src/rp2_common/pico_multicore/include"
   "../pico-sdk/src/rp2_common/hardware_flash/include"
   "../pico-sdk/src/rp2_common/hardware_i2c/include"
   "../pico-sdk/src/rp2_common/hardware_adc/include"
+  "../pico-sdk/src/rp2_common/hardware_spi/include"
+  "../pico-sdk/src/rp2_common/hardware_rtc/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/mdietric/flypicopi/src/font.cc" "/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir/font.cc.obj"
@@ -372,13 +382,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../pico-sdk/src/rp2_common/hardware_pio/include"
   "../pico-extras/src/common/pico_audio/include"
   "../pico-extras/src/common/pico_util_buffer/include"
-  "pico_extras/src/rp2_common/pico_sd_card"
-  "../pico-extras/src/rp2_common/pico_sd_card/include"
-  "../pico-extras/src/common/pico_sd_card/include"
   "../pico-sdk/src/rp2_common/pico_multicore/include"
   "../pico-sdk/src/rp2_common/hardware_flash/include"
   "../pico-sdk/src/rp2_common/hardware_i2c/include"
   "../pico-sdk/src/rp2_common/hardware_adc/include"
+  "../pico-sdk/src/rp2_common/hardware_spi/include"
+  "../pico-sdk/src/rp2_common/hardware_rtc/include"
   )
 
 # Targets to which this target links.

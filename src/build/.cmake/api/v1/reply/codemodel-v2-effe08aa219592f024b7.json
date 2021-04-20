@@ -21,7 +21,7 @@
 					[
 						0,
 						1,
-						6
+						2
 					]
 				},
 				{
@@ -525,9 +525,9 @@
 					"source" : "pico-sdk/src/rp2_common/boot_stage2",
 					"targetIndexes" : 
 					[
-						3,
 						4,
-						5
+						5,
+						6
 					]
 				},
 				{
@@ -853,7 +853,7 @@
 					"source" : "pico-extras/src/common/pico_scanvideo",
 					"targetIndexes" : 
 					[
-						2,
+						3,
 						11
 					]
 				},
@@ -1070,7 +1070,7 @@
 					[
 						0,
 						1,
-						6
+						2
 					]
 				},
 				{
@@ -1105,7 +1105,7 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						2,
+						3,
 						7,
 						8,
 						9,
@@ -1189,9 +1189,9 @@
 					"parentIndex" : 1,
 					"targetIndexes" : 
 					[
-						3,
 						4,
-						5
+						5,
+						6
 					]
 				}
 			],
@@ -1200,15 +1200,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ELF2UF2Build::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ELF2UF2Build-Debug-e88e8678c03dd3781f7c.json",
+					"jsonFile" : "target-ELF2UF2Build-Debug-41e5d609149853d816d0.json",
 					"name" : "ELF2UF2Build",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "FlyPicoPi::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FlyPicoPi-Debug-62109c4dee7751a9520f.json",
+					"jsonFile" : "target-FlyPicoPi-Debug-059a429f554f2cf1e3b5.json",
 					"name" : "FlyPicoPi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "FlyPicoPiDeploy::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-FlyPicoPiDeploy-Debug-6f7db430e82005e47833.json",
+					"name" : "FlyPicoPiDeploy",
 					"projectIndex" : 0
 				},
 				{
@@ -1238,13 +1245,6 @@
 					"jsonFile" : "target-bs2_default_padded_checksummed_asm-Debug-6a2250059e42cad06b83.json",
 					"name" : "bs2_default_padded_checksummed_asm",
 					"projectIndex" : 2
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "flash::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-flash-Debug-ea86a71c49f029e2e504.json",
-					"name" : "flash",
-					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 80,

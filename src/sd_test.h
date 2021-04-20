@@ -8,9 +8,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "pico/stdlib.h"
-#include "pico/sd_card.h"
-
+/*
 
 #define BLOCK_COUNT 2
 
@@ -66,3 +64,4 @@ void testSD() {
         }
     }
 }
+*/

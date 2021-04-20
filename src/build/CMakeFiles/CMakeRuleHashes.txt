@@ -1,7 +1,7 @@
 # Hashes of file build rules.
 bbef7cce437ed53d40b65fa1f7f3f9d6 CMakeFiles/ELF2UF2Build
 078b85b449a62dc1f9dae1ceffb7f39d CMakeFiles/ELF2UF2Build-complete
-259e55b7a6bf0fbfad8ec8ec41863da6 CMakeFiles/flash
+b10390132e454c1a3ad1418188550963 CMakeFiles/FlyPicoPiDeploy
 9372c5fa4712d6796f1227415f8e9872 elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build
 891135f26df933ba4ac000e5c75deaba elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure
 6e9edff86b362acd638402d629ad0d88 elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download

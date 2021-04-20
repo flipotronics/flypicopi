@@ -109,22 +109,152 @@ CMakeFiles/FlyPicoPi.dir/splash.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FlyPicoPi.dir/splash.cc.s"
 	/usr/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mdietric/flypicopi/src/splash.cc -o CMakeFiles/FlyPicoPi.dir/splash.cc.s
 
-CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
-CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj: ../MidiParser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj   -c /home/mdietric/flypicopi/src/MidiParser.c
+CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj: ../sdlib/crc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj   -c /home/mdietric/flypicopi/src/sdlib/crc.c
 
-CMakeFiles/FlyPicoPi.dir/MidiParser.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/MidiParser.c.i"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/MidiParser.c > CMakeFiles/FlyPicoPi.dir/MidiParser.c.i
+CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/crc.c > CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.i
 
-CMakeFiles/FlyPicoPi.dir/MidiParser.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/MidiParser.c.s"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/MidiParser.c -o CMakeFiles/FlyPicoPi.dir/MidiParser.c.s
+CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/crc.c -o CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj: ../sdlib/diskio.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj   -c /home/mdietric/flypicopi/src/sdlib/diskio.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/diskio.c > CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/diskio.c -o CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj: ../sdlib/f_util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj   -c /home/mdietric/flypicopi/src/sdlib/f_util.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/f_util.c > CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/f_util.c -o CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj: ../sdlib/ff_stdio.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj   -c /home/mdietric/flypicopi/src/sdlib/ff_stdio.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/ff_stdio.c > CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/ff_stdio.c -o CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj: ../sdlib/ff.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj   -c /home/mdietric/flypicopi/src/sdlib/ff.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/ff.c > CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/ff.c -o CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj: ../sdlib/ffsystem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj   -c /home/mdietric/flypicopi/src/sdlib/ffsystem.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/ffsystem.c > CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/ffsystem.c -o CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj: ../sdlib/ffunicode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj   -c /home/mdietric/flypicopi/src/sdlib/ffunicode.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/ffunicode.c > CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/ffunicode.c -o CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj: ../sdlib/rtc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj   -c /home/mdietric/flypicopi/src/sdlib/rtc.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/rtc.c > CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/rtc.c -o CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj: ../sdlib/sd_card.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj   -c /home/mdietric/flypicopi/src/sdlib/sd_card.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/sd_card.c > CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/sd_card.c -o CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj: ../sdlib/hw_config.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj   -c /home/mdietric/flypicopi/src/sdlib/hw_config.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/hw_config.c > CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/hw_config.c -o CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.s
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj: ../sdlib/sd_spi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj   -c /home/mdietric/flypicopi/src/sdlib/sd_spi.c
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/sdlib/sd_spi.c > CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.i
+
+CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/sdlib/sd_spi.c -o CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.s
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj: ../pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i: cmake_force
@@ -137,7 +267,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj: ../pico-sdk/src/rp2_common/hardware_gpio/gpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_gpio/gpio.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i: cmake_force
@@ -150,7 +280,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj: ../pico-sdk/src/rp2_common/hardware_claim/claim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_claim/claim.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.i: cmake_force
@@ -163,7 +293,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj: ../pico-sdk/src/rp2_common/hardware_sync/sync.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_sync/sync.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.i: cmake_force
@@ -176,7 +306,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: ../pico-sdk/src/rp2_common/pico_platform/platform.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_platform/platform.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.i: cmake_force
@@ -189,7 +319,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.s: cma
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj: ../pico-sdk/src/rp2_common/hardware_uart/uart.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_uart/uart.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.i: cmake_force
@@ -202,12 +332,12 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_uart/uart.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj: ../pico-sdk/src/rp2_common/hardware_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_divider/divider.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.obj: ../pico-sdk/src/common/pico_time/time.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_time/time.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.i: cmake_force
@@ -220,7 +350,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/time.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.obj: ../pico-sdk/src/common/pico_time/timeout_helper.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_time/timeout_helper.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.i: cmake_force
@@ -233,7 +363,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_time/timeout_helper.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj: ../pico-sdk/src/rp2_common/hardware_timer/timer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_timer/timer.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.i: cmake_force
@@ -246,7 +376,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.obj: ../pico-sdk/src/common/pico_sync/sem.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_sync/sem.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.i: cmake_force
@@ -259,7 +389,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/sem.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj: ../pico-sdk/src/common/pico_sync/lock_core.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_sync/lock_core.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.i: cmake_force
@@ -272,7 +402,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/lock_core.c.s: cmake_forc
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.obj: ../pico-sdk/src/common/pico_sync/mutex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_sync/mutex.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.i: cmake_force
@@ -285,7 +415,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/mutex.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj: ../pico-sdk/src/common/pico_sync/critical_section.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_sync/critical_section.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.i: cmake_force
@@ -298,7 +428,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_sync/critical_section.c.s: cma
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.obj: ../pico-sdk/src/common/pico_util/datetime.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_util/datetime.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.i: cmake_force
@@ -311,7 +441,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/datetime.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.obj: ../pico-sdk/src/common/pico_util/pheap.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_util/pheap.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.i: cmake_force
@@ -324,7 +454,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/pheap.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj: ../pico-sdk/src/common/pico_util/queue.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/common/pico_util/queue.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.i: cmake_force
@@ -337,7 +467,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/common/pico_util/queue.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj: ../pico-sdk/src/rp2_common/pico_runtime/runtime.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_runtime/runtime.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i: cmake_force
@@ -350,7 +480,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj: ../pico-sdk/src/rp2_common/hardware_clocks/clocks.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_clocks/clocks.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i: cmake_force
@@ -363,7 +493,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s: cma
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj: ../pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i: cmake_force
@@ -376,7 +506,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s:
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj: ../pico-sdk/src/rp2_common/hardware_xosc/xosc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_xosc/xosc.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i: cmake_force
@@ -389,7 +519,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj: ../pico-sdk/src/rp2_common/hardware_pll/pll.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_pll/pll.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.i: cmake_force
@@ -402,7 +532,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj: ../pico-sdk/src/rp2_common/hardware_vreg/vreg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_vreg/vreg.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i: cmake_force
@@ -415,7 +545,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj: ../pico-sdk/src/rp2_common/hardware_irq/irq.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_irq/irq.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.i: cmake_force
@@ -428,12 +558,12 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj: ../pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj: ../pico-sdk/src/rp2_common/pico_printf/printf.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_printf/printf.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.i: cmake_force
@@ -446,12 +576,12 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.s: cmake_f
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj: ../pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj: ../pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i: cmake_force
@@ -464,17 +594,17 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj: ../pico-sdk/src/rp2_common/pico_divider/divider.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_divider/divider.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj: ../pico-sdk/src/rp2_common/pico_double/double_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_double/double_aeabi.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj: ../pico-sdk/src/rp2_common/pico_double/double_init_rom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_double/double_init_rom.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i: cmake_force
@@ -487,7 +617,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.obj: ../pico-sdk/src/rp2_common/pico_double/double_math.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_double/double_math.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.i: cmake_force
@@ -500,22 +630,22 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_math.c.s: cm
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj: ../pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj: ../pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj: ../pico-sdk/src/rp2_common/pico_float/float_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_float/float_aeabi.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj: ../pico-sdk/src/rp2_common/pico_float/float_init_rom.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_float/float_init_rom.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i: cmake_force
@@ -528,7 +658,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s: 
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.obj: ../pico-sdk/src/rp2_common/pico_float/float_math.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_float/float_math.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.i: cmake_force
@@ -541,12 +671,12 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_math.c.s: cmak
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj: ../pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj: ../pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i: cmake_force
@@ -559,17 +689,17 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s: cm
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj: ../pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj: ../pico-sdk/src/rp2_common/pico_standard_link/crt0.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/crt0.S
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj: ../pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj"
 	/usr/bin/arm-none-eabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i: cmake_force
@@ -582,7 +712,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/new_delete.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj: ../pico-sdk/src/rp2_common/pico_standard_link/binary_info.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i: cmake_force
@@ -595,7 +725,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj: ../pico-sdk/src/rp2_common/pico_stdio/stdio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio/stdio.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i: cmake_force
@@ -608,7 +738,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.i: cmake_force
@@ -621,7 +751,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.i: cmake_force
@@ -634,7 +764,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.s: c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj: ../pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.i: cmake_force
@@ -647,7 +777,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descri
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj: ../pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.i: cmake_force
@@ -660,7 +790,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dc
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj: ../pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.i: cmake_force
@@ -673,7 +803,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj: ../pico-sdk/lib/tinyusb/src/device/usbd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/device/usbd.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.i: cmake_force
@@ -686,7 +816,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj: ../pico-sdk/lib/tinyusb/src/device/usbd_control.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/device/usbd_control.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.i: cmake_force
@@ -699,7 +829,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.i: cmake_force
@@ -712,7 +842,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.s: 
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.i: cmake_force
@@ -725,7 +855,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.s: cmak
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.i: cmake_force
@@ -738,7 +868,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.s: c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.i: cmake_force
@@ -751,7 +881,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.s: cmak
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.i: cmake_force
@@ -764,7 +894,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.s: cm
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.i: cmake_force
@@ -777,7 +907,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.s: cmak
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/net/net_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/net/net_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.i: cmake_force
@@ -790,7 +920,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/net/net_device.c.s: cmak
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.i: cmake_force
@@ -803,7 +933,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.s
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj: ../pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.i: cmake_force
@@ -816,7 +946,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.s
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj: ../pico-sdk/lib/tinyusb/src/tusb.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/tusb.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.i: cmake_force
@@ -829,7 +959,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/tusb.c.s: cmake_force
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj: ../pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.i: cmake_force
@@ -842,7 +972,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.s: cmake_fo
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj: ../pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.i: cmake_force
@@ -855,7 +985,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enum
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj: ../pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.obj   -c /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.i: cmake_force
@@ -868,7 +998,7 @@ CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_audio_i2s/audio_i2s.c.s
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj: ../pico-sdk/src/rp2_common/hardware_dma/dma.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_dma/dma.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.i: cmake_force
@@ -881,7 +1011,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_dma/dma.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj: ../pico-sdk/src/rp2_common/hardware_pio/pio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_pio/pio.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.i: cmake_force
@@ -894,7 +1024,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj: ../pico-extras/src/common/pico_audio/audio.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj"
 	/usr/bin/arm-none-eabi-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj -c /home/mdietric/flypicopi/src/pico-extras/src/common/pico_audio/audio.cpp
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.i: cmake_force
@@ -907,12 +1037,12 @@ CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.s: cmake_fo
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj: ../pico-extras/src/common/pico_audio/audio_utils.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building ASM object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj"
 	/usr/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj   -c /home/mdietric/flypicopi/src/pico-extras/src/common/pico_audio/audio_utils.S
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj: ../pico-extras/src/common/pico_util_buffer/buffer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj   -c /home/mdietric/flypicopi/src/pico-extras/src/common/pico_util_buffer/buffer.c
 
 CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.i: cmake_force
@@ -923,22 +1053,9 @@ CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.s"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/pico-extras/src/common/pico_util_buffer/buffer.c -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.s
 
-CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
-CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj: ../pico-extras/src/rp2_common/pico_sd_card/sd_card.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj   -c /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c
-
-CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c > CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.i
-
-CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s"
-	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/sd_card.c -o CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.s
-
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: ../pico-sdk/src/rp2_common/pico_multicore/multicore.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_multicore/multicore.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
@@ -951,7 +1068,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s: c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj: ../pico-sdk/src/rp2_common/hardware_flash/flash.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_flash/flash.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.i: cmake_force
@@ -964,7 +1081,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.s: cmake
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj: ../pico-sdk/src/rp2_common/hardware_i2c/i2c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_i2c/i2c.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.i: cmake_force
@@ -977,7 +1094,7 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.s: cmake_for
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj: ../pico-sdk/src/rp2_common/hardware_adc/adc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/adc.c
 
 CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.i: cmake_force
@@ -988,13 +1105,49 @@ CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.s"
 	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/adc.c -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
 
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj: ../pico-sdk/src/rp2_common/hardware_spi/spi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/spi.c
+
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/spi.c > CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/spi.c -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
+
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: CMakeFiles/FlyPicoPi.dir/flags.make
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj: ../pico-sdk/src/rp2_common/hardware_rtc/rtc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj   -c /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/rtc.c
+
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/rtc.c > CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+
+CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s"
+	/bin/arm-none-eabi-gcc-9.2.1 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/rtc.c -o CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+
 # Object files for target FlyPicoPi
 FlyPicoPi_OBJECTS = \
 "CMakeFiles/FlyPicoPi.dir/main.cpp.obj" \
 "CMakeFiles/FlyPicoPi.dir/font.cc.obj" \
 "CMakeFiles/FlyPicoPi.dir/oled.cc.obj" \
 "CMakeFiles/FlyPicoPi.dir/splash.cc.obj" \
-"CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj" \
@@ -1064,11 +1217,12 @@ FlyPicoPi_OBJECTS = \
 "CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj" \
-"CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj" \
 "CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj" \
-"CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj"
+"CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj" \
+"CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj"
 
 # External object files for target FlyPicoPi
 FlyPicoPi_EXTERNAL_OBJECTS =
@@ -1077,7 +1231,17 @@ FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/main.cpp.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/font.cc.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/oled.cc.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/splash.cc.obj
-FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/MidiParser.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/crc.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/diskio.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/f_util.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/ff_stdio.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/ff.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/ffsystem.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/ffunicode.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/rtc.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/sd_card.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/hw_config.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/sdlib/sd_spi.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
@@ -1147,15 +1311,16 @@ FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_pio/pio
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio.cpp.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_audio/audio_utils.S.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-extras/src/common/pico_util_buffer/buffer.c.obj
-FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-extras/src/rp2_common/pico_sd_card/sd_card.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_i2c/i2c.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/build.make
 FlyPicoPi.elf: pico_extras/pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S
 FlyPicoPi.elf: CMakeFiles/FlyPicoPi.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Linking CXX executable FlyPicoPi.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mdietric/flypicopi/src/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Linking CXX executable FlyPicoPi.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlyPicoPi.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/arm-none-eabi-objcopy -Oihex FlyPicoPi.elf FlyPicoPi.hex
 	/usr/bin/arm-none-eabi-objcopy -Obinary FlyPicoPi.elf FlyPicoPi.bin

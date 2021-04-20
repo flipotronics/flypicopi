@@ -18,7 +18,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 67,
+				"line" : 92,
 				"parent" : 0
 			}
 		]
@@ -29,8 +29,8 @@
 			"id" : "FlyPicoPi::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "flash::@6890427a1f51a3e7e1df",
-	"name" : "flash",
+	"id" : "FlyPicoPiDeploy::@6890427a1f51a3e7e1df",
+	"name" : "FlyPicoPiDeploy",
 	"paths" : 
 	{
 		"build" : ".",
@@ -58,13 +58,13 @@
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/flash",
+			"path" : "build/CMakeFiles/FlyPicoPiDeploy",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/flash.rule",
+			"path" : "build/CMakeFiles/FlyPicoPiDeploy.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

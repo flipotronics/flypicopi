@@ -1,3 +1,6 @@
+
+Succesfull Python Test for the SD Card in Circuit Python!
+
 from board import *
 from time import *
 import busio

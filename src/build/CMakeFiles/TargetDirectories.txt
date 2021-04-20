@@ -1,6 +1,6 @@
 /home/mdietric/flypicopi/src/build/CMakeFiles/rebuild_cache.dir
 /home/mdietric/flypicopi/src/build/CMakeFiles/edit_cache.dir
-/home/mdietric/flypicopi/src/build/CMakeFiles/flash.dir
+/home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPiDeploy.dir
 /home/mdietric/flypicopi/src/build/CMakeFiles/ELF2UF2Build.dir
 /home/mdietric/flypicopi/src/build/CMakeFiles/FlyPicoPi.dir
 /home/mdietric/flypicopi/src/build/pico_extras/CMakeFiles/rebuild_cache.dir

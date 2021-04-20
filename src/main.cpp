@@ -23,18 +23,18 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 #include "hardware/timer.h"
+#include "hardware/spi.h"
 
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
 #include "pico/multicore.h"
 #include "pico/binary_info.h"
-#include "pico/sd_card.h"
+
 #include "bsp/board.h"
 
 #include "oled.h"
 #include "tusb.h"
 #include "Engine.h"
-#include "MidiParser.h"
 #include "ParamLoader.h"
 
 using namespace std;
@@ -52,12 +52,10 @@ static int chars_rxed = 0;
 
 absolute_time_t taken;
 uint8_t midibuffer[32];
-
 uint8_t bcount = 0;
 uint8_t b0;
 uint8_t b1;
 uint8_t b2;
-
 
 bool sendCutoff = false;
 bool isSwitchPressed;
@@ -70,85 +68,6 @@ bool isGate2;
 bool audioOk = false;
 bool isMidiConnected;
 bool isMidiMounted;
-
-const  uint16_t DACLookup_FullSine_9Bit[512] =
-{
-  2048, 2073, 2098, 2123, 2148, 2174, 2199, 2224,
-  2249, 2274, 2299, 2324, 2349, 2373, 2398, 2423,
-  2448, 2472, 2497, 2521, 2546, 2570, 2594, 2618,
-  2643, 2667, 2690, 2714, 2738, 2762, 2785, 2808,
-  2832, 2855, 2878, 2901, 2924, 2946, 2969, 2991,
-  3013, 3036, 3057, 3079, 3101, 3122, 3144, 3165,
-  3186, 3207, 3227, 3248, 3268, 3288, 3308, 3328,
-  3347, 3367, 3386, 3405, 3423, 3442, 3460, 3478,
-  3496, 3514, 3531, 3548, 3565, 3582, 3599, 3615,
-  3631, 3647, 3663, 3678, 3693, 3708, 3722, 3737,
-  3751, 3765, 3778, 3792, 3805, 3817, 3830, 3842,
-  3854, 3866, 3877, 3888, 3899, 3910, 3920, 3930,
-  3940, 3950, 3959, 3968, 3976, 3985, 3993, 4000,
-  4008, 4015, 4022, 4028, 4035, 4041, 4046, 4052,
-  4057, 4061, 4066, 4070, 4074, 4077, 4081, 4084,
-  4086, 4088, 4090, 4092, 4094, 4095, 4095, 4095,
-  4095, 4095, 4095, 4095, 4094, 4092, 4090, 4088,
-  4086, 4084, 4081, 4077, 4074, 4070, 4066, 4061,
-  4057, 4052, 4046, 4041, 4035, 4028, 4022, 4015,
-  4008, 4000, 3993, 3985, 3976, 3968, 3959, 3950,
-  3940, 3930, 3920, 3910, 3899, 3888, 3877, 3866,
-  3854, 3842, 3830, 3817, 3805, 3792, 3778, 3765,
-  3751, 3737, 3722, 3708, 3693, 3678, 3663, 3647,
-  3631, 3615, 3599, 3582, 3565, 3548, 3531, 3514,
-  3496, 3478, 3460, 3442, 3423, 3405, 3386, 3367,
-  3347, 3328, 3308, 3288, 3268, 3248, 3227, 3207,
-  3186, 3165, 3144, 3122, 3101, 3079, 3057, 3036,
-  3013, 2991, 2969, 2946, 2924, 2901, 2878, 2855,
-  2832, 2808, 2785, 2762, 2738, 2714, 2690, 2667,
-  2643, 2618, 2594, 2570, 2546, 2521, 2497, 2472,
-  2448, 2423, 2398, 2373, 2349, 2324, 2299, 2274,
-  2249, 2224, 2199, 2174, 2148, 2123, 2098, 2073,
-  2048, 2023, 1998, 1973, 1948, 1922, 1897, 1872,
-  1847, 1822, 1797, 1772, 1747, 1723, 1698, 1673,
-  1648, 1624, 1599, 1575, 1550, 1526, 1502, 1478,
-  1453, 1429, 1406, 1382, 1358, 1334, 1311, 1288,
-  1264, 1241, 1218, 1195, 1172, 1150, 1127, 1105,
-  1083, 1060, 1039, 1017,  995,  974,  952,  931,
-   910,  889,  869,  848,  828,  808,  788,  768,
-   749,  729,  710,  691,  673,  654,  636,  618,
-   600,  582,  565,  548,  531,  514,  497,  481,
-   465,  449,  433,  418,  403,  388,  374,  359,
-   345,  331,  318,  304,  291,  279,  266,  254,
-   242,  230,  219,  208,  197,  186,  176,  166,
-   156,  146,  137,  128,  120,  111,  103,   96,
-    88,   81,   74,   68,   61,   55,   50,   44,
-    39,   35,   30,   26,   22,   19,   15,   12,
-    10,    8,    6,    4,    2,    1,    1,    0,
-     0,    0,    1,    1,    2,    4,    6,    8,
-    10,   12,   15,   19,   22,   26,   30,   35,
-    39,   44,   50,   55,   61,   68,   74,   81,
-    88,   96,  103,  111,  120,  128,  137,  146,
-   156,  166,  176,  186,  197,  208,  219,  230,
-   242,  254,  266,  279,  291,  304,  318,  331,
-   345,  359,  374,  388,  403,  418,  433,  449,
-   465,  481,  497,  514,  531,  548,  565,  582,
-   600,  618,  636,  654,  673,  691,  710,  729,
-   749,  768,  788,  808,  828,  848,  869,  889,
-   910,  931,  952,  974,  995, 1017, 1039, 1060,
-  1083, 1105, 1127, 1150, 1172, 1195, 1218, 1241,
-  1264, 1288, 1311, 1334, 1358, 1382, 1406, 1429,
-  1453, 1478, 1502, 1526, 1550, 1575, 1599, 1624,
-  1648, 1673, 1698, 1723, 1747, 1772, 1797, 1822,
-  1847, 1872, 1897, 1922, 1948, 1973, 1998, 2023
-};
-
-//=========================== Methods ======================================================================================================
-void i2c_writeDac1(uint16_t val) {
-    printf ("Sending cutoff %i \n" ,val);
-    buf[0] = MCP4725_CMD_WRITEDAC;
-    buf[1] = val / 16;
-    buf[2] = (val % 16) << 4 ;
-    i2c_write_blocking(PMP_DAC_DEVICE, MCP4725_I2CADDR_DEFAULT, buf, 3, false);
-}
-
-
 
 void print_buf(const uint8_t *buf, size_t len) {
     for (size_t i = 0; i < len; ++i) {
@@ -239,28 +158,39 @@ void handleMidiByte2(u_int8_t ch){
 
         // send to Queue
         MidiEvent e;
+        if ( MIDIByteInRange(b0, 144, 160)) {
+           // u_int8_t channel = ev.b0 - 144 + 1;
+            e.type = NOTEON;
+            e.channel = b0 - 144 + 1;
+        }
+        if (MIDIByteInRange(b0, 128, 144)) {
+            e.type = NOTEOFF;
+            e.channel = b0 - 144 + 1;
+        }
+        if (MIDIByteInRange(b0, 176, 192)) {
+            e.type = CONTROL;
+            e.channel = b0 - 144 + 1;
+        }
         e.b0 = b0;
         e.b1 = b1;
         e.b2 = b2;
         queue_write(e);
-        /*
 
-        if ( MIDIByteInRange(b0, 144, 160)) {
-            u_int8_t channel = b0 - 144 + 1;
-            noteOn(b1,b2);
-            return ;
-        }
-    
-        if (MIDIByteInRange(b0, 128, 144)) {
-            noteOff(b1);
-            return ;
-        }
+/*
+        switch(e.type){
+            case NOTEON:
+            printDisplay("Note On");
+            break;
 
-         if (MIDIByteInRange(b0, 176, 192)) {
-            control(b1,b2);
-            return ;
-         }
-         */
+            case NOTEOFF:
+            printDisplay("Note Off");
+            break;
+
+            case CONTROL:
+            printDisplay("Control");
+            break;
+        }
+        */
     }
     bcount = 0; // reset state maschine
 }
@@ -284,134 +214,145 @@ void setupVoltageTable(){
 
 // =========================================================== SCAN ===========================================================================
 void scan(){
- // tud_task(); // tinyusb device task
-        // isMidiMounted =  tud_mounted();
-        // isMidiConnected =  tud_cdc_connected();
-            midiTimeOut++;
-            if(midiTimeOut > 500){
-                bcount = 0;
-                midiTimeOut = 0;
-                printf("miditimeout");
+    // tud_task(); // tinyusb device task
+    // isMidiMounted =  tud_mounted();
+    // isMidiConnected =  tud_cdc_connected();
+        midiTimeOut++;
+        if(midiTimeOut > 500){
+            bcount = 0;
+            midiTimeOut = 0;
+            // printf("miditimeout");
+        }
+
+    // setup LEDs
+    isMidiLight = false;
+    if(midiLightCounter > 0){
+        midiLightCounter--;
+        isMidiLight = true;
+    }
+
+    gpio_put(LED_PIN_MIDI, isMidiLight);
+    gpio_put(GATE_PIN1, isGate1);
+    gpio_put(GATE_PIN2, isGate2);
+
+    // scan the buttons
+    bool isPressedNow = gpio_get(SWITCH_PIN);
+    if(isSwitchPressed && !isPressedNow){
+        // printf("Switch1 fires \n");
+        isMidiLight = true;
+    }
+    isSwitchPressed = isPressedNow;
+
+    isPressedNow = gpio_get(SWITCH_PIN2);
+    if(isSwitchPressed2 && !isPressedNow){
+        // printf("Switch2 fires \n");
+            isMidiLight = false;
+    }
+    isSwitchPressed2 = isPressedNow;
+
+    // Scan the encoder =====================================================================
+    bool a = gpio_get(ENCOCDER_PIN_1);
+    bool b = gpio_get(ENCOCDER_PIN_2);
+
+    bool haveMove = false;
+    if(isSEnc_a && !a){
+        // printf("isSEnc_a fires \n");
+        // printf("a is: %d b is: %d\n", a, b);
+        haveMove = true;
+    }
+
+    if(isSEnc_b && !b){
+        // printf("isSEnc_b fires \n");
+        //printf("a is: %d b is: %d\n", a, b);
+        haveMove = true;
+    }
+
+    if(haveMove && a==0 && b==0){
+        haveMove = false;
+        // printf("a is: %d b is: %d\n", a, b);
+        //printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
+
+        if(isSEnc_a && controls[74] < 127){
+            controls[74]++;
+        }
+        if(isSEnc_b && controls[74] > 0){
+            controls[74]--;
+        }
+        control(74, controls[74]);
+    }
+    isSEnc_a = a;
+    isSEnc_b = b;
+    // Scan the encoder END =====================================================================
+
+    // Scan keyboard
+    int c = getchar_timeout_us(0);
+    if (c >= 0) {
+        if (c == 'q') {
+            gpio_put(LED_PIN, 0);
+            return;
+        }
+        if (c == 'f') {
+            // printf("FLash Test T\n");
+            checkFlash();
+            return;
+        }
+        
+        if (c == 'f') {
+            struct stat sb;
+            int Result = stat("/test.txt", &sb);
+            printf("File Test   = %i \n", Result);
+            if((Result != 0 ) || (sb.st_mode & S_IFDIR )) {
+                printf("File Test  does not exist \n");
             }
-
-        // setup LEDs
-        isMidiLight = false;
-        if(midiLightCounter > 0){
-            midiLightCounter--;
-            isMidiLight = true;
+            return;
         }
-
-        gpio_put(LED_PIN_MIDI, isMidiLight);
-        gpio_put(GATE_PIN1, isGate1);
-        gpio_put(GATE_PIN2, isGate2);
-
-        // scan the buttons
-        bool isPressedNow = gpio_get(SWITCH_PIN);
-        if(isSwitchPressed && !isPressedNow){
-            printf("Switch1 fires \n");
-            isMidiLight = true;
-        }
-        isSwitchPressed = isPressedNow;
-
-        isPressedNow = gpio_get(SWITCH_PIN2);
-        if(isSwitchPressed2 && !isPressedNow){
-            printf("Switch2 fires \n");
-             isMidiLight = false;
-        }
-        isSwitchPressed2 = isPressedNow;
-
-        // Scan the encoder
-        bool a = gpio_get(ENCOCDER_PIN_1);
-        bool b = gpio_get(ENCOCDER_PIN_2);
-
-        bool haveMove = false;
-        if(isSEnc_a && !a){
-           // printf("isSEnc_a fires \n");
-           // printf("a is: %d b is: %d\n", a, b);
-            haveMove = true;
-        }
-
-        if(isSEnc_b && !b){
-           // printf("isSEnc_b fires \n");
-           //printf("a is: %d b is: %d\n", a, b);
-            haveMove = true;
-        }
-
-        if(haveMove && a==0 && b==0){
-            haveMove = false;
-            printf("a is: %d b is: %d\n", a, b);
-            printf("isSEnc_a is: %d isSEnc_bis: %d\n", isSEnc_a, isSEnc_b);
-
-            if(isSEnc_a && controls[74] < 127){
-                controls[74]++;
-            }
-            if(isSEnc_b && controls[74] > 0){
-                controls[74]--;
-            }
-            control(74, controls[74]);
-        }
-        isSEnc_a = a;
-        isSEnc_b = b;
-
-        // Scan keyboard
-        int c = getchar_timeout_us(0);
-        if (c >= 0) {
-            if (c == 'q') {
-                gpio_put(LED_PIN, 0);
-                return;
-            }
-            if (c == 't') {
-                printf("FLash Test T\n");
-                checkFlash();
-                return;
-            }
+            if (c == 'd') {
+            printf("==========================================\n");
+            printf("Version: %i \n", SYNTH_VERSION );
+            printf("Audio Setup %d \n", audioOk);
+            printf("vol = %d \n", volume);
             
-            if (c == 'f') {
-               struct stat sb;
-               int Result = stat("/test.txt", &sb);
-               printf("File Test   = %i \n", Result);
-               if((Result != 0 ) || (sb.st_mode & S_IFDIR )) {
-                    printf("File Test  does not exist \n");
-               }
-               return;
-            }
-             if (c == 'd') {
-                printf("==========================================\n");
-                printf("Version: %i \n", SYNTH_VERSION );
-                printf("Audio Setup %d \n", audioOk);
-                printf("vol = %d \n", volume);
-               
-                printf("UART Received = %i \n", chars_rxed);
-                printf("Time taken  = %u \n", us_to_ms(taken));
-                printf("Midi Mounted = %i \n", isMidiMounted);
-                printf("Midi isMidiConnected = %i \n", isMidiConnected);
+            printf("UART Received = %i \n", chars_rxed);
+            printf("Time taken  = %u \n", us_to_ms(taken));
+            printf("Midi Mounted = %i \n", isMidiMounted);
+            printf("Midi isMidiConnected = %i \n", isMidiConnected);
 
-                printf("CC = %i \n",  controls[74]);
-                
-                //testSD();
-                //setupVoltageTable();
+            printf("CC = %i \n",  controls[74]);
+            
+            //setupVoltageTable();
+        }
+        if(c == 't'){
+            testSD();
+        }
+        if (c == 'l') {
+            lfo_Freq0 = 1.0;
+            for(int i=0;i<44100;i=i+100){
+                printf("LFO %i    %f \n", i,  lfo_Value0);
+                        lfo_calcNext(100);
             }
         }
+    }
 
-        // read USB Midi
-         /*
-        int bytCount = tud_midi_available ();
-        if(bytCount > 0){
-            int count = tud_midi_read(midibuffer, 32);
-            if(count>0){
-                midiLightCounter = 100;
-                
-
-            }
+    /*
+    // read USB Midi
+    int bytCount = tud_midi_available ();
+    if(bytCount > 0){
+        int count = tud_midi_read(midibuffer, 32);
+        if(count>0){
+            midiLightCounter = 100;
         }
-        */
-       sleep_ms(10);
+    }
+    */
 }
 
 void setupMain(){
     loadPatch(0);
     setupWavetable();
     initVoices();
+
+    lfo_init();
+    lfo_Freq0 = 3.5;
+    lfo_Sync0 = true;
 
     stdio_init_all();
 
@@ -498,19 +439,29 @@ int main() {
 
     setupMain();
 
-       // start new Thread
+    // start Auddio Render Thread
     multicore_launch_core1(renderAudio);
 
-    // Main Loop ===========================================================================================
-    while (true) {
-        absolute_time_t tStart = get_absolute_time();
+    // Delay Display code
+    const int16_t WAITIME = 300;
+    int16_t waittimer = WAITIME;
 
+    // Main Loop ==================================================================================================================================
+    while (true) {
        scan();
 
-       // calculate time
-        absolute_time_t tEnd = get_absolute_time();
-        taken = tEnd - tStart;
+        // Display Code
+         if(waittimer < 1 && lastShown > 0){
+            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
+            printDisplay(msg); 
+            lastShown = -1;
+            waittimer = WAITIME;
+        }
+        waittimer--;
+       // sleep_ms(1);
     }
+
+    // We never get here
     puts("\n");
     return 0;
 }

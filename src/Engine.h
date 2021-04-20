@@ -15,8 +15,8 @@
 #include "time.h"
 
 #include "Def.h"
-#include "Renderer.h"
 #include "queue.h"
+#include "lfo.h"
 
 // =================================================== DEFINE ====================================================================
 #define I2C_DATAPIN 9
@@ -168,13 +168,13 @@ void printDisplay(string text){
 	show_scr();
 }
 
-uint8_t  findVoice( uint8_t midiNote){
-    for(int y=0;y < MAXVOICES;y++){
+uint8_t findVoice( uint8_t midiNote){
+    for(int y=0;y < MAXVOICES; ++y){
         if(voices[y].midiNote ==  midiNote){
             return y;
         }
     }
-    for(int y=0; y < MAXVOICES; y++){
+    for(int y=0; y < MAXVOICES; ++y){
         if(!voices[y].isUsed){
             return y;
         }
@@ -182,7 +182,7 @@ uint8_t  findVoice( uint8_t midiNote){
     // find oldest voice
     uint8_t oldestId = 0;
     absolute_time_t last = voices[0].tStart;
-    for(int y=1;y < MAXVOICES;y++){
+    for(int y=1;y < MAXVOICES; ++y){
         if(voices[y].tStart < last){
             last = voices[y].tStart;
             oldestId = y;
@@ -210,18 +210,20 @@ void noteOn(uint8_t midiNote, uint8_t velocity){
     voices[vid].velocity = velocity;
     voices[vid].midiNote = midiNote;
     voices[vid].tStart = get_absolute_time();
+    lfo_noteOn();
     #if DEBUG_SHOW_MIDI
     printf("note On %i %i %i  \n",vid, midiNote, velocity);
     #endif 
 }
 
 void noteOff(uint8_t midiNote){
-    uint8_t vid = findVoice(midiNote);
-    voices[vid].isPlaying = false;
-    voices[vid].isUsed = false;
-    #if DEBUG_SHOW_MIDI
-    printf("note Off %i  %i  \n", vid , midiNote);
-    #endif
+    for(int y=0;y < MAXVOICES; ++y){
+        if(voices[y].midiNote ==  midiNote){
+          voices[y].isPlaying = false;
+          voices[y].isUsed = false;
+          return;
+        }
+    }
 }
 
 void control(uint8_t cc, uint8_t value){
@@ -276,9 +278,9 @@ inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
 
 void renderAudio(){
     setupThread2();
-    int  freq = 10;
-
     while(true){
+
+        //absolute_time_t tStart = get_absolute_time();
 
         // Midi Parser
         while(true){
@@ -286,16 +288,33 @@ void renderAudio(){
             if(ev.isActive ){
                 ev.isActive = false;
                // printf("Event %i %i %i \n", ev.b0, ev.b1 , ev.b2);
-                if ( MIDIByteInRange(ev.b0, 144, 160)) {
-                    u_int8_t channel = ev.b0 - 144 + 1;
-                    noteOn(ev.b1,ev.b2);
+                if (ev.type == NOTEON) {
+                    uint8_t vid = findVoice(ev.b1);
+                    float freq = freqFromNoteNumber(ev.b1, 440.0);
+                    voices[vid].step = calcStep(freq);
+                    voices[vid].isPlaying = true;
+                    voices[vid].isUsed = true;
+                    voices[vid].phase = 0;
+                    voices[vid].velocity = ev.b2;
+                    voices[vid].midiNote = ev.b1;
+                    voices[vid].tStart = get_absolute_time();
+                    lfo_noteOn();
+                    #if DEBUG_SHOW_MIDI
+                    printf("note On %i %i %i  \n",vid, midiNote, velocity);
+                    #endif 
                     continue;
                 }
-                if (MIDIByteInRange(ev.b0, 128, 144)) {
-                    noteOff(ev.b1);
+                if (ev.type == NOTEOFF) {
+                    for(int y=0;y < MAXVOICES; ++y){
+                        if(voices[y].midiNote ==  ev.b1){
+                        voices[y].isPlaying = false;
+                        voices[y].isUsed = false;
+                        continue;
+                        }
+                    }
                     continue;
                 }
-                if (MIDIByteInRange(ev.b0, 176, 192)) {
+               if (ev.type == CONTROL) {
                     control(ev.b1,ev.b2);
                     continue;
                 }
@@ -304,19 +323,12 @@ void renderAudio(){
             }
         }
 
-        freq--;
-        if(freq < 0 && lastShown > 0){
-            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
-            printDisplay(msg); 
-            lastShown = -1;
-            freq = 10;
-        }
-
-
         struct audio_buffer *buffer = take_audio_buffer(ap, true);
         int32_t *samples = (int32_t *) buffer->buffer->bytes;
 
         // AUDIO LOOP
+        uint bufSize = buffer->max_sample_count;
+       
         for (uint i = 0; i < buffer->max_sample_count ; ++i) {
             samples[i] = 0;//2048 >> 8u; 
 
@@ -331,8 +343,15 @@ void renderAudio(){
                 }
             }
         }
-        buffer->sample_count = buffer->max_sample_count;
+     
+        buffer->sample_count = bufSize;
         give_audio_buffer(ap, buffer);
+
+
+       // calculate time
+       // absolute_time_t tEnd = get_absolute_time();
+       //taken = tEnd - tStart;
+       
     }
 }
 #endif 

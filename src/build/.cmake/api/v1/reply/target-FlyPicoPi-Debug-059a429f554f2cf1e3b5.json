@@ -27,8 +27,7 @@
 			"pico-sdk/tools/CMakeLists.txt",
 			"pico-sdk/src/rp2_common.cmake",
 			"pico-sdk/src/rp2_common/boot_stage2/CMakeLists.txt",
-			"pico-extras/src/rp2_common/pico_audio_i2s/CMakeLists.txt",
-			"pico-extras/src/rp2_common/pico_sd_card/CMakeLists.txt"
+			"pico-extras/src/rp2_common/pico_audio_i2s/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -38,19 +37,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 17,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 20,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 64,
+				"line" : 89,
 				"parent" : 0
 			},
 			{
@@ -106,24 +105,9 @@
 				"parent" : 12
 			},
 			{
-				"file" : 6
-			},
-			{
-				"command" : 7,
-				"file" : 6,
-				"line" : 4,
-				"parent" : 14
-			},
-			{
-				"command" : 2,
-				"file" : 2,
-				"line" : 28,
-				"parent" : 15
-			},
-			{
 				"command" : 8,
 				"file" : 0,
-				"line" : 36,
+				"line" : 61,
 				"parent" : 0
 			},
 			{
@@ -173,19 +157,19 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_AUDIO=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_RX_BUFSIZE=64"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_TX_BUFSIZE=64"
 				},
 				{
@@ -201,11 +185,11 @@
 					"define" : "CFG_TUSB_OS=OPT_OS_PICO"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_INPUT=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_OUTPUT=0"
 				},
 				{
@@ -281,19 +265,19 @@
 					"define" : "PICO_PRINTF_PICO=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CLK_PIN=14"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CMD_PIN=13"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DAT0_PIN=12"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DATI_PIN=15"
 				},
 				{
@@ -301,7 +285,7 @@
 					"define" : "PICO_STDIO_USB=1"
 				},
 				{
-					"backtrace" : 18,
+					"backtrace" : 15,
 					"define" : "PICO_TARGET_NAME=\"FlyPicoPi\""
 				},
 				{
@@ -309,7 +293,7 @@
 					"define" : "PICO_USE_BLOCKED_RAM=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "USE_AUDIO_I2S=1"
 				}
 			],
@@ -501,18 +485,6 @@
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/build/pico_extras/src/rp2_common/pico_sd_card"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_multicore/include"
 				},
 				{
@@ -526,6 +498,14 @@
 				{
 					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/include"
 				}
 			],
 			"language" : "CXX",
@@ -535,8 +515,8 @@
 				1,
 				2,
 				3,
-				46,
-				71
+				56,
+				81
 			]
 		},
 		{
@@ -560,19 +540,19 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_AUDIO=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_RX_BUFSIZE=64"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_TX_BUFSIZE=64"
 				},
 				{
@@ -588,11 +568,11 @@
 					"define" : "CFG_TUSB_OS=OPT_OS_PICO"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_INPUT=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_OUTPUT=0"
 				},
 				{
@@ -668,19 +648,19 @@
 					"define" : "PICO_PRINTF_PICO=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CLK_PIN=14"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CMD_PIN=13"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DAT0_PIN=12"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DATI_PIN=15"
 				},
 				{
@@ -688,7 +668,7 @@
 					"define" : "PICO_STDIO_USB=1"
 				},
 				{
-					"backtrace" : 18,
+					"backtrace" : 15,
 					"define" : "PICO_TARGET_NAME=\"FlyPicoPi\""
 				},
 				{
@@ -696,7 +676,7 @@
 					"define" : "PICO_USE_BLOCKED_RAM=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "USE_AUDIO_I2S=1"
 				}
 			],
@@ -888,18 +868,6 @@
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/build/pico_extras/src/rp2_common/pico_sd_card"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_multicore/include"
 				},
 				{
@@ -913,6 +881,14 @@
 				{
 					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/include"
 				}
 			],
 			"language" : "C",
@@ -925,6 +901,7 @@
 				8,
 				9,
 				10,
+				11,
 				12,
 				13,
 				14,
@@ -934,7 +911,6 @@
 				18,
 				19,
 				20,
-				21,
 				22,
 				23,
 				24,
@@ -942,23 +918,23 @@
 				26,
 				27,
 				28,
+				29,
 				30,
+				31,
 				32,
+				33,
+				34,
 				35,
 				36,
+				37,
+				38,
 				40,
-				41,
-				43,
-				47,
-				48,
-				49,
+				42,
+				45,
+				46,
 				50,
 				51,
-				52,
 				53,
-				54,
-				55,
-				56,
 				57,
 				58,
 				59,
@@ -973,12 +949,23 @@
 				68,
 				69,
 				70,
+				71,
+				72,
 				73,
 				74,
 				75,
 				76,
 				77,
-				78
+				78,
+				79,
+				80,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89
 			]
 		},
 		{
@@ -999,19 +986,19 @@
 			"defines" : 
 			[
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_AUDIO=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_RX_BUFSIZE=64"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "CFG_TUD_MIDI_TX_BUFSIZE=64"
 				},
 				{
@@ -1027,11 +1014,11 @@
 					"define" : "CFG_TUSB_OS=OPT_OS_PICO"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_INPUT=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_AUDIO_I2S_MONO_OUTPUT=0"
 				},
 				{
@@ -1107,19 +1094,19 @@
 					"define" : "PICO_PRINTF_PICO=1"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CLK_PIN=14"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_CMD_PIN=13"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DAT0_PIN=12"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "PICO_SD_DATI_PIN=15"
 				},
 				{
@@ -1127,7 +1114,7 @@
 					"define" : "PICO_STDIO_USB=1"
 				},
 				{
-					"backtrace" : 18,
+					"backtrace" : 15,
 					"define" : "PICO_TARGET_NAME=\"FlyPicoPi\""
 				},
 				{
@@ -1135,7 +1122,7 @@
 					"define" : "PICO_USE_BLOCKED_RAM=0"
 				},
 				{
-					"backtrace" : 17,
+					"backtrace" : 14,
 					"define" : "USE_AUDIO_I2S=1"
 				}
 			],
@@ -1327,18 +1314,6 @@
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/build/pico_extras/src/rp2_common/pico_sd_card"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/rp2_common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/mdietric/flypicopi/src/pico-extras/src/common/pico_sd_card/include"
-				},
-				{
-					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/pico_multicore/include"
 				},
 				{
@@ -1352,23 +1327,31 @@
 				{
 					"backtrace" : 2,
 					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_adc/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_spi/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/mdietric/flypicopi/src/pico-sdk/src/rp2_common/hardware_rtc/include"
 				}
 			],
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				11,
-				29,
-				31,
-				33,
-				34,
-				37,
-				38,
+				21,
 				39,
-				42,
+				41,
+				43,
 				44,
-				45,
-				72
+				47,
+				48,
+				49,
+				52,
+				54,
+				55,
+				82
 			]
 		}
 	],
@@ -1385,10 +1368,6 @@
 		{
 			"backtrace" : 13,
 			"id" : "pico_audio_i2s_audio_i2s_pio_h::@54354557063177904464"
-		},
-		{
-			"backtrace" : 16,
-			"id" : "pico_sd_card_sd_card_pio_h::@0b1f3129c9fb6ae3f142"
 		}
 	],
 	"id" : "FlyPicoPi::@6890427a1f51a3e7e1df",
@@ -2235,6 +2214,7 @@
 				8,
 				9,
 				10,
+				11,
 				12,
 				13,
 				14,
@@ -2244,7 +2224,6 @@
 				18,
 				19,
 				20,
-				21,
 				22,
 				23,
 				24,
@@ -2252,23 +2231,23 @@
 				26,
 				27,
 				28,
+				29,
 				30,
+				31,
 				32,
+				33,
+				34,
 				35,
 				36,
+				37,
+				38,
 				40,
-				41,
-				43,
+				42,
+				45,
 				46,
-				47,
-				48,
-				49,
 				50,
 				51,
-				52,
 				53,
-				54,
-				55,
 				56,
 				57,
 				58,
@@ -2285,30 +2264,41 @@
 				69,
 				70,
 				71,
+				72,
 				73,
 				74,
 				75,
 				76,
 				77,
-				78
+				78,
+				79,
+				80,
+				81,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				11,
-				29,
-				31,
-				33,
-				34,
-				37,
-				38,
+				21,
 				39,
-				42,
+				41,
+				43,
 				44,
-				45,
-				72
+				47,
+				48,
+				49,
+				52,
+				54,
+				55,
+				82
 			]
 		}
 	],
@@ -2341,7 +2331,67 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
-			"path" : "MidiParser.c",
+			"path" : "sdlib/crc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/diskio.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/f_util.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/ff_stdio.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/ff.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/ffsystem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/ffunicode.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/rtc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/sd_card.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/hw_config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "sdlib/sd_spi.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -2761,12 +2811,6 @@
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 1,
-			"path" : "pico-extras/src/rp2_common/pico_sd_card/sd_card.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 2,
-			"compileGroupIndex" : 1,
 			"path" : "pico-sdk/src/rp2_common/pico_multicore/multicore.c",
 			"sourceGroupIndex" : 0
 		},
@@ -2786,6 +2830,18 @@
 			"backtrace" : 2,
 			"compileGroupIndex" : 1,
 			"path" : "pico-sdk/src/rp2_common/hardware_adc/adc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 1,
+			"path" : "pico-sdk/src/rp2_common/hardware_spi/spi.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 1,
+			"path" : "pico-sdk/src/rp2_common/hardware_rtc/rtc.c",
 			"sourceGroupIndex" : 0
 		}
 	],
