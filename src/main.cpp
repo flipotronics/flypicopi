@@ -50,7 +50,6 @@ const uint LED_PIN_MIDI = 28;
 const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
 static int chars_rxed = 0;
 
-absolute_time_t taken;
 uint8_t midibuffer[32];
 uint8_t bcount = 0;
 uint8_t b0;

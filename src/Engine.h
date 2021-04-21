@@ -102,6 +102,7 @@ bool __unused ok;
 
 const int16_t WAITIME = 300;
 int16_t waittimer = WAITIME;
+absolute_time_t taken;
 
 static queue_t thequeue ; 
 
@@ -276,10 +277,6 @@ void allNotesOff(){
         voices[i].isUsed = false;
     }
 }
-    
-void printTime(){
-    // std::cout << "Render Time " << ms_renderTime << std::endl;
-}
 
 inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
     return (v >= min) && (v < max);
@@ -291,7 +288,7 @@ void renderAudio(){
     // Audio Thread
     while(true){
 
-        //absolute_time_t tStart = get_absolute_time();
+       // absolute_time_t tStart = get_absolute_time();
 
         // Midi Parser
         while(!queue_is_empty(&thequeue)){
@@ -312,9 +309,9 @@ void renderAudio(){
                 voices[vid].midiNote = ev.b1;
                 voices[vid].tStart = get_absolute_time();
                 lfo_noteOn();
-                #if DEBUG_SHOW_MIDI
-                printf("note On %i %i %i  \n",vid, midiNote, velocity);
-                #endif 
+               // #if DEBUG_SHOW_MIDI
+                printf("note On %i %i %i  \n",vid, ev.b1, ev.b2);
+               // #endif 
                 continue;
             }
             if (ev.type == NOTEOFF) {
@@ -365,10 +362,12 @@ void renderAudio(){
         }
         waittimer--;
        // sleep_ms(1);
-
        // calculate time
-       // absolute_time_t tEnd = get_absolute_time();
-       //taken = tEnd - tStart;
+      // absolute_time_t tEnd = get_absolute_time();
+      // absolute_time_t dif = tEnd - tStart;
+      // if(dif > taken){
+           // taken = dif;
+      // }
     }
 }
 #endif 
