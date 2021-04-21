@@ -446,6 +446,12 @@ hardware/timer.h
 pico.h
 ../pico-sdk/src/common/pico_util/include/pico/util/pico.h
 
+../pico-sdk/src/common/pico_util/include/pico/util/queue.h
+pico.h
+../pico-sdk/src/common/pico_util/include/pico/util/pico.h
+hardware/sync.h
+../pico-sdk/src/common/pico_util/include/pico/util/hardware/sync.h
+
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
 
 ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
@@ -701,10 +707,10 @@ iostream
 -
 time.h
 /home/mdietric/flypicopi/src/time.h
+pico/util/queue.h
+/home/mdietric/flypicopi/src/pico/util/queue.h
 Def.h
 /home/mdietric/flypicopi/src/Def.h
-queue.h
-/home/mdietric/flypicopi/src/queue.h
 lfo.h
 /home/mdietric/flypicopi/src/lfo.h
 
@@ -811,6 +817,8 @@ pico/multicore.h
 /home/mdietric/flypicopi/src/pico/multicore.h
 pico/binary_info.h
 /home/mdietric/flypicopi/src/pico/binary_info.h
+pico/util/queue.h
+/home/mdietric/flypicopi/src/pico/util/queue.h
 bsp/board.h
 /home/mdietric/flypicopi/src/bsp/board.h
 oled.h
@@ -837,28 +845,6 @@ unistd.h
 -
 
 /home/mdietric/flypicopi/src/pico-sdk/src/boards/include/boards/pico.h
-
-/home/mdietric/flypicopi/src/queue.h
-assert.h
--
-stdio.h
--
-string.h
--
-stdlib.h
--
-unistd.h
--
-pthread.h
--
-Def.h
-/home/mdietric/flypicopi/src/Def.h
-queue.h
-/home/mdietric/flypicopi/src/queue.h
-pico/stdlib.h
-/home/mdietric/flypicopi/src/pico/stdlib.h
-pico/multicore.h
-/home/mdietric/flypicopi/src/pico/multicore.h
 
 /home/mdietric/flypicopi/src/sdlib/f_util.h
 ff.h

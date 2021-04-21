@@ -13,8 +13,7 @@
 // Synth
 #define VERSION "1.0.0"
 #define BUILDDATE "3rd. March 2021"
-#define MAXVOICES 12
-#define MAXZONES 1
+#define MAXVOICES 4
 
 #define SINE_WAVE_TABLE_LEN 2048
 #define SAMPLES_PER_BUFFER 256
@@ -159,13 +158,12 @@ enum MidiEventType{
   NOTEON, NOTEOFF, CONTROL
 };
 
-struct MidiEvent{
+typedef struct {
     MidiEventType type;
     uint8_t channel;
     uint8_t b0;
     uint8_t b1;
     uint8_t b2;
-    bool isActive;
-};
+} MidiEvent;
 
 #endif /* Def_h */

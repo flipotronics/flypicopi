@@ -14,8 +14,11 @@
 #include <iostream>
 #include "time.h"
 
+extern "C" {
+#include "pico/util/queue.h"
+}
+
 #include "Def.h"
-#include "queue.h"
 #include "lfo.h"
 
 // =================================================== DEFINE ====================================================================
@@ -94,6 +97,13 @@ struct audio_buffer_pool *init_audio() {
 // =================================================== Member ====================================================================
 
 bool __unused ok;
+
+// Delay Display code
+
+const int16_t WAITIME = 300;
+int16_t waittimer = WAITIME;
+
+static queue_t thequeue ; 
 
 VoiceMode voiceMode = POLY;
 PlayMode voiceMplayModeode = RETRIGGER;
@@ -271,55 +281,53 @@ void printTime(){
     // std::cout << "Render Time " << ms_renderTime << std::endl;
 }
 
-
 inline static int MIDIByteInRange(uint8_t v, uint8_t min, uint8_t max) {
     return (v >= min) && (v < max);
 };
 
 void renderAudio(){
     setupThread2();
+
+    // Audio Thread
     while(true){
 
         //absolute_time_t tStart = get_absolute_time();
 
         // Midi Parser
-        while(true){
-            MidiEvent  ev = queue_read();
-            if(ev.isActive ){
-                ev.isActive = false;
-               // printf("Event %i %i %i \n", ev.b0, ev.b1 , ev.b2);
-                if (ev.type == NOTEON) {
-                    uint8_t vid = findVoice(ev.b1);
-                    float freq = freqFromNoteNumber(ev.b1, 440.0);
-                    voices[vid].step = calcStep(freq);
-                    voices[vid].isPlaying = true;
-                    voices[vid].isUsed = true;
-                    voices[vid].phase = 0;
-                    voices[vid].velocity = ev.b2;
-                    voices[vid].midiNote = ev.b1;
-                    voices[vid].tStart = get_absolute_time();
-                    lfo_noteOn();
-                    #if DEBUG_SHOW_MIDI
-                    printf("note On %i %i %i  \n",vid, midiNote, velocity);
-                    #endif 
-                    continue;
-                }
-                if (ev.type == NOTEOFF) {
-                    for(int y=0;y < MAXVOICES; ++y){
-                        if(voices[y].midiNote ==  ev.b1){
+        while(!queue_is_empty(&thequeue)){
+            MidiEvent  ev ;
+            bool r = queue_try_remove(&thequeue, &ev);      
+            if(!r){
+                break;
+            }
+
+            if (ev.type == NOTEON) {
+                uint8_t vid = findVoice(ev.b1);
+                float freq = freqFromNoteNumber(ev.b1, 440.0);
+                voices[vid].step = calcStep(freq);
+                voices[vid].isPlaying = true;
+                voices[vid].isUsed = true;
+                voices[vid].phase = 0;
+                voices[vid].velocity = ev.b2;
+                voices[vid].midiNote = ev.b1;
+                voices[vid].tStart = get_absolute_time();
+                lfo_noteOn();
+                #if DEBUG_SHOW_MIDI
+                printf("note On %i %i %i  \n",vid, midiNote, velocity);
+                #endif 
+                continue;
+            }
+            if (ev.type == NOTEOFF) {
+                for(int y=0;y < MAXVOICES; ++y){
+                    if(voices[y].midiNote ==  ev.b1){
                         voices[y].isPlaying = false;
                         voices[y].isUsed = false;
-                        continue;
-                        }
                     }
-                    continue;
                 }
-               if (ev.type == CONTROL) {
-                    control(ev.b1,ev.b2);
-                    continue;
-                }
-            }else{
-                break;
+                continue;
+            }
+            if (ev.type == CONTROL) {
+                control(ev.b1, ev.b2);
             }
         }
 
@@ -334,10 +342,11 @@ void renderAudio(){
 
             for(uint y=0; y < MAXVOICES; ++y){
                 if(voices[y].isPlaying){
-                    samples[i] += (controls[7] * ((int)sine_wave_table[voices[y].phase >> 16u]) >> 10); 
-                    int r = ( controls[7] *((int)saw_wave_table[voices[y].phase >> 16u]))  >> 10u;
-                    samples[i] += r;
-
+                    float s = sine_wave_table[voices[y].phase >> 16u]; 
+                    s += saw_wave_table[voices[y].phase >> 16u];
+                    samples[i] += (int(s * controls[7])) >> 10; 
+   
+                    // Move Phase
                     voices[y].phase += voices[y].step;
                     if (voices[y].phase >= pos_max) voices[y].phase -= pos_max;
                 }
@@ -347,11 +356,19 @@ void renderAudio(){
         buffer->sample_count = bufSize;
         give_audio_buffer(ap, buffer);
 
+        // Display Code
+         if(waittimer < 1 && lastShown > 0){
+            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
+            printDisplay(msg); 
+            lastShown = -1;
+            waittimer = WAITIME;
+        }
+        waittimer--;
+       // sleep_ms(1);
 
        // calculate time
        // absolute_time_t tEnd = get_absolute_time();
        //taken = tEnd - tStart;
-       
     }
 }
 #endif 

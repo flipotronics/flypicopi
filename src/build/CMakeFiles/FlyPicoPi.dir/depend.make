@@ -2219,6 +2219,7 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/common/pico_sync/include/
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/common/pico_sync/include/pico/sync.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/common/pico_time/include/pico/time.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/common/pico_util/include/pico/util/datetime.h
+CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/common/pico_util/include/pico/util/queue.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/adc.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h
@@ -2272,7 +2273,6 @@ CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../lfo.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../oled.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../pico-sdk/src/boards/include/boards/pico.h
-CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../queue.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../sdlib/f_util.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../sdlib/ff.h
 CMakeFiles/FlyPicoPi.dir/main.cpp.obj: ../sdlib/ffconf.h

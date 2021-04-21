@@ -29,6 +29,9 @@
 #include "pico/audio_i2s.h"
 #include "pico/multicore.h"
 #include "pico/binary_info.h"
+extern "C" {
+#include "pico/util/queue.h"
+}
 
 #include "bsp/board.h"
 
@@ -38,16 +41,13 @@
 #include "ParamLoader.h"
 
 using namespace std;
-// ================================================ DEFINE =========================================================================
-
-
 // ================================================ Member =========================================================================
 
 extern "C" const uint8_t splash1_data[];
+
 const uint LED_PIN = 25;
 const uint LED_PIN_MIDI = 28;
 const uint8_t *flash_target_contents = (const uint8_t *) (XIP_BASE + FLASH_TARGET_OFFSET);
-// RX interrupt handler
 static int chars_rxed = 0;
 
 absolute_time_t taken;
@@ -79,6 +79,7 @@ void print_buf(const uint8_t *buf, size_t len) {
     }
 }
 
+/*
 void checkFlash(){
     uint8_t random_data[FLASH_PAGE_SIZE];
     for (int i = 0; i < FLASH_PAGE_SIZE; ++i)
@@ -108,6 +109,7 @@ void checkFlash(){
     else
         printf("Programming successful!\n");
 }
+*/
 
 void tud_mount_cb(void) {
     printf("tud_mount_cb");
@@ -131,7 +133,11 @@ void tud_resume_cb(void){
   printf("tud_resume_cb");
 }
 
+ //MidiEvent ev ;
 int midiTimeOut = 0;
+MidiEvent ev[10];
+ uint8_t eventPos = 0;
+
 void handleMidiByte2(u_int8_t ch){
     midiTimeOut = 0;
     midiLightCounter = 100;
@@ -139,60 +145,44 @@ void handleMidiByte2(u_int8_t ch){
     #if DEBUG_SHOW_MIDI
     printf("%i %i %i %i %i\n", ch, bcount, b0, b1, b2);
     #endif 
-    if(bcount==0){
-        if( MIDIByteInRange(ch, 144, 160) || MIDIByteInRange(ch, 128, 144) || MIDIByteInRange(ch, 176, 192) ){
-        b0 = ch;
-        bcount = 1;
-        return;
+
+    if(bcount==2){
+        ev[eventPos].channel = b0 - 144 + 1;
+        ev[eventPos].b0 = b0;
+        ev[eventPos].b1 = b1;
+        ev[eventPos].b2 = ch;
+        if ( MIDIByteInRange(b0, 144, 160)) {
+            ev[eventPos].type = NOTEON;
+        }else if (MIDIByteInRange(b0, 128, 144)) {
+            ev[eventPos].type = NOTEOFF;
+        }else if (MIDIByteInRange(b0, 176, 192)) {
+            ev[eventPos].type = CONTROL;
         }
+
+        queue_try_add(&thequeue, &ev[eventPos]);  
+        eventPos++;
+        if(eventPos==10){
+            eventPos = 0;
+        }
+        bcount = 0;
         return;
-    }
-    if(bcount==1){
+    } else if(bcount==1){
         b1 = ch;
         bcount = 2;
         return;
     }
-    if(bcount==2){
-        bcount = 0;
-        b2 = ch;
-
-        // send to Queue
-        MidiEvent e;
-        if ( MIDIByteInRange(b0, 144, 160)) {
-           // u_int8_t channel = ev.b0 - 144 + 1;
-            e.type = NOTEON;
-            e.channel = b0 - 144 + 1;
+    else if(bcount==0){
+        if( MIDIByteInRange(ch, 144, 160) || MIDIByteInRange(ch, 128, 144) || MIDIByteInRange(ch, 176, 192) ){
+            b0 = ch;
+            bcount = 1;
+            return;
+        }else{
+            bcount = 0;
+            return;
         }
-        if (MIDIByteInRange(b0, 128, 144)) {
-            e.type = NOTEOFF;
-            e.channel = b0 - 144 + 1;
-        }
-        if (MIDIByteInRange(b0, 176, 192)) {
-            e.type = CONTROL;
-            e.channel = b0 - 144 + 1;
-        }
-        e.b0 = b0;
-        e.b1 = b1;
-        e.b2 = b2;
-        queue_write(e);
-
-/*
-        switch(e.type){
-            case NOTEON:
-            printDisplay("Note On");
-            break;
-
-            case NOTEOFF:
-            printDisplay("Note Off");
-            break;
-
-            case CONTROL:
-            printDisplay("Control");
-            break;
-        }
-        */
+    }else{ // to many bytes
+        bcount = 0; // reset state maschine
     }
-    bcount = 0; // reset state maschine
 }
 
 void on_uart_rx() {
@@ -213,8 +203,147 @@ void setupVoltageTable(){
 }
 
 // =========================================================== SCAN ===========================================================================
-void scan(){
-    // tud_task(); // tinyusb device task
+
+void setupMain(){
+
+    stdio_init_all();
+   // set_sys_clock_khz(131000, true);
+    set_sys_clock_khz(270000, true);
+
+/*
+       clock_configure(clk_sys,
+                    CLOCKS_CLK_SYS_CTRL_SRC_VALUE_CLKSRC_CLK_SYS_AUX,
+                    CLOCKS_CLK_SYS_CTRL_AUXSRC_VALUE_CLKSRC_PLL_USB,
+                    48 * MHZ,
+                    48 * MHZ);
+                    */
+
+    stdio_init_all();
+
+    loadPatch(0);
+    setupWavetable();
+    initVoices();
+
+    lfo_init();
+    lfo_Freq0 = 3.5;
+    lfo_Sync0 = true;
+
+
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    gpio_init(LED_PIN_MIDI);
+    gpio_set_dir(LED_PIN_MIDI, GPIO_OUT);
+
+    gpio_init(SWITCH_PIN);
+    gpio_set_dir(SWITCH_PIN, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN);
+
+    gpio_init(SWITCH_PIN2);
+    gpio_set_dir(SWITCH_PIN2, GPIO_IN);
+    gpio_pull_up(SWITCH_PIN2);
+
+    gpio_init(SD_INSERT_PIN);
+    gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
+    gpio_pull_up(SD_INSERT_PIN);
+    
+    gpio_init(ENCOCDER_PIN_1);
+    gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_1);
+
+    gpio_init(ENCOCDER_PIN_2);
+    gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
+    gpio_pull_up(ENCOCDER_PIN_2);
+
+    gpio_init(GATE_PIN1);
+    gpio_set_dir(GATE_PIN1, GPIO_OUT);
+    gpio_pull_up(GATE_PIN1);
+
+    gpio_init(GATE_PIN2);
+    gpio_set_dir(GATE_PIN2, GPIO_OUT);
+    gpio_pull_up(GATE_PIN2);
+
+   // second dac for CV
+    i2c_init(PMP_DAC_DEVICE, 400 * 1000);
+    gpio_set_function(0, GPIO_FUNC_I2C);
+    gpio_set_function(1, GPIO_FUNC_I2C);
+
+    gpio_pull_up(0);
+    gpio_pull_up(1);
+    bi_decl(bi_2pins_with_func(0, 1, GPIO_FUNC_I2C));
+    sendCutoff = 127;
+    sendCutoff = false;
+
+    isGate1 = true;
+    isGate2 = true;
+
+    // sets table for the MPC DAC
+    setupVoltageTable();
+
+    // LED on
+    gpio_put(LED_PIN, 1);
+
+    isGate1 = true;
+    isGate2 = true;
+    //i2c_writeDac1(mpc_voltages[controls[74]]); 
+
+//    board_init();
+
+   // printf("Starting USB init");
+   // tusb_init();
+  //  printf("Done USB init");
+   // tud_connect();
+
+    // Init the Midi Event  Queue
+     queue_init_with_spinlock(&thequeue, sizeof(MidiEvent), 10,0); // initialize
+
+    // Midi UART
+    uart_init(UART_ID, BAUD_RATE);
+    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
+    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
+    uart_set_hw_flow(UART_ID, false, false);
+    uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
+    uart_set_fifo_enabled(UART_ID, false);
+    int UART_IRQ = UART_ID == uart0 ? UART0_IRQ : UART1_IRQ;
+    irq_set_exclusive_handler(UART_IRQ, on_uart_rx);
+    irq_set_enabled(UART_IRQ, true);
+    uart_set_irq_enables(UART_ID, true, false);
+}
+
+void measure_freqs(void) {
+    uint f_pll_sys = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_PLL_SYS_CLKSRC_PRIMARY);
+    uint f_pll_usb = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_PLL_USB_CLKSRC_PRIMARY);
+    uint f_rosc = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_ROSC_CLKSRC);
+    uint f_clk_sys = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_SYS);
+    uint f_clk_peri = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_PERI);
+    uint f_clk_usb = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_USB);
+    uint f_clk_adc = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_ADC);
+    uint f_clk_rtc = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_CLK_RTC);
+
+    printf("pll_sys  = %dkHz\n", f_pll_sys);
+    printf("pll_usb  = %dkHz\n", f_pll_usb);
+    printf("rosc     = %dkHz\n", f_rosc);
+    printf("clk_sys  = %dkHz\n", f_clk_sys);
+    printf("clk_peri = %dkHz\n", f_clk_peri);
+    printf("clk_usb  = %dkHz\n", f_clk_usb);
+    printf("clk_adc  = %dkHz\n", f_clk_adc);
+    printf("clk_rtc  = %dkHz\n", f_clk_rtc);
+
+    // Can't measure clk_ref / xosc as it is the ref
+}
+
+
+// ================================================================== Main ================================================================================
+int main() {
+
+    setupMain();
+
+    // start Auddio Render Thread
+    multicore_launch_core1(renderAudio);
+
+    // Main Loop ==================================================================================================================================
+    while (true) {
+      // tud_task(); // tinyusb device task
     // isMidiMounted =  tud_mounted();
     // isMidiConnected =  tud_cdc_connected();
         midiTimeOut++;
@@ -289,24 +418,10 @@ void scan(){
     if (c >= 0) {
         if (c == 'q') {
             gpio_put(LED_PIN, 0);
-            return;
-        }
-        if (c == 'f') {
-            // printf("FLash Test T\n");
-            checkFlash();
-            return;
+            continue;
         }
         
-        if (c == 'f') {
-            struct stat sb;
-            int Result = stat("/test.txt", &sb);
-            printf("File Test   = %i \n", Result);
-            if((Result != 0 ) || (sb.st_mode & S_IFDIR )) {
-                printf("File Test  does not exist \n");
-            }
-            return;
-        }
-            if (c == 'd') {
+        if (c == 'd') {
             printf("==========================================\n");
             printf("Version: %i \n", SYNTH_VERSION );
             printf("Audio Setup %d \n", audioOk);
@@ -318,17 +433,17 @@ void scan(){
             printf("Midi isMidiConnected = %i \n", isMidiConnected);
 
             printf("CC = %i \n",  controls[74]);
-            
-            //setupVoltageTable();
+            measure_freqs();
         }
         if(c == 't'){
             testSD();
         }
+
         if (c == 'l') {
             lfo_Freq0 = 1.0;
             for(int i=0;i<44100;i=i+100){
                 printf("LFO %i    %f \n", i,  lfo_Value0);
-                        lfo_calcNext(100);
+                lfo_calcNext(100);
             }
         }
     }
@@ -343,122 +458,7 @@ void scan(){
         }
     }
     */
-}
-
-void setupMain(){
-    loadPatch(0);
-    setupWavetable();
-    initVoices();
-
-    lfo_init();
-    lfo_Freq0 = 3.5;
-    lfo_Sync0 = true;
-
-    stdio_init_all();
-
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
-
-    gpio_init(LED_PIN_MIDI);
-    gpio_set_dir(LED_PIN_MIDI, GPIO_OUT);
-
-    gpio_init(SWITCH_PIN);
-    gpio_set_dir(SWITCH_PIN, GPIO_IN);
-    gpio_pull_up(SWITCH_PIN);
-
-    gpio_init(SWITCH_PIN2);
-    gpio_set_dir(SWITCH_PIN2, GPIO_IN);
-    gpio_pull_up(SWITCH_PIN2);
-
-    gpio_init(SD_INSERT_PIN);
-    gpio_set_dir(SD_INSERT_PIN, GPIO_IN);
-    gpio_pull_up(SD_INSERT_PIN);
-    
-    gpio_init(ENCOCDER_PIN_1);
-    gpio_set_dir(ENCOCDER_PIN_1, GPIO_IN);
-    gpio_pull_up(ENCOCDER_PIN_1);
-
-    gpio_init(ENCOCDER_PIN_2);
-    gpio_set_dir(ENCOCDER_PIN_2, GPIO_IN);
-    gpio_pull_up(ENCOCDER_PIN_2);
-
-    gpio_init(GATE_PIN1);
-    gpio_set_dir(GATE_PIN1, GPIO_OUT);
-    gpio_pull_up(GATE_PIN1);
-
-    gpio_init(GATE_PIN2);
-    gpio_set_dir(GATE_PIN2, GPIO_OUT);
-    gpio_pull_up(GATE_PIN2);
-
-   // second dac for CV
-    i2c_init(PMP_DAC_DEVICE, 400 * 1000);
-    gpio_set_function(0, GPIO_FUNC_I2C);
-    gpio_set_function(1, GPIO_FUNC_I2C);
-
-    gpio_pull_up(0);
-    gpio_pull_up(1);
-    bi_decl(bi_2pins_with_func(0, 1, GPIO_FUNC_I2C));
-    sendCutoff = 127;
-    sendCutoff = false;
-
-    isGate1 = true;
-    isGate2 = true;
-
-    // sets table for the MPC DAC
-    setupVoltageTable();
-
-    // LED on
-    gpio_put(LED_PIN, 1);
-
-    isGate1 = true;
-    isGate2 = true;
-    //i2c_writeDac1(mpc_voltages[controls[74]]); 
-
-//    board_init();
-
-   // printf("Starting USB init");
-   // tusb_init();
-  //  printf("Done USB init");
-   // tud_connect();
-
-    // Midi UART
-    uart_init(UART_ID, BAUD_RATE);
-    gpio_set_function(UART_TX_PIN, GPIO_FUNC_UART);
-    gpio_set_function(UART_RX_PIN, GPIO_FUNC_UART);
-    uart_set_hw_flow(UART_ID, false, false);
-    uart_set_format(UART_ID, DATA_BITS, STOP_BITS, PARITY);
-    uart_set_fifo_enabled(UART_ID, false);
-    int UART_IRQ = UART_ID == uart0 ? UART0_IRQ : UART1_IRQ;
-    irq_set_exclusive_handler(UART_IRQ, on_uart_rx);
-    irq_set_enabled(UART_IRQ, true);
-    uart_set_irq_enables(UART_ID, true, false);
-}
-
-// ================================================================== Main ================================================================================
-int main() {
-
-    setupMain();
-
-    // start Auddio Render Thread
-    multicore_launch_core1(renderAudio);
-
-    // Delay Display code
-    const int16_t WAITIME = 300;
-    int16_t waittimer = WAITIME;
-
-    // Main Loop ==================================================================================================================================
-    while (true) {
-       scan();
-
-        // Display Code
-         if(waittimer < 1 && lastShown > 0){
-            std::string msg = "Control: " + std::to_string(lastShown) + " \nValue: " + std::to_string(controls[lastShown]);
-            printDisplay(msg); 
-            lastShown = -1;
-            waittimer = WAITIME;
-        }
-        waittimer--;
-       // sleep_ms(1);
+       //(5);
     }
 
     // We never get here

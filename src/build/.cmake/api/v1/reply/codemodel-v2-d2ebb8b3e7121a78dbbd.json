@@ -1200,21 +1200,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ELF2UF2Build::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ELF2UF2Build-Debug-41e5d609149853d816d0.json",
+					"jsonFile" : "target-ELF2UF2Build-Debug-a9efe8d1614105b3fb5b.json",
 					"name" : "ELF2UF2Build",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "FlyPicoPi::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FlyPicoPi-Debug-059a429f554f2cf1e3b5.json",
+					"jsonFile" : "target-FlyPicoPi-Debug-0870495aa17d9134458e.json",
 					"name" : "FlyPicoPi",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "FlyPicoPiDeploy::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FlyPicoPiDeploy-Debug-6f7db430e82005e47833.json",
+					"jsonFile" : "target-FlyPicoPiDeploy-Debug-8355fd4fa9cf5b932a4e.json",
 					"name" : "FlyPicoPiDeploy",
 					"projectIndex" : 0
 				},

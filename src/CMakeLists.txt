@@ -44,6 +44,7 @@ target_link_libraries(FlyPicoPi PRIVATE
 pico_stdlib
 pico_audio_i2s
 pico_multicore 
+pico_util 
 
 hardware_uart
 hardware_flash
