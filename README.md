@@ -21,3 +21,6 @@ Fritzing Wiring diagram https://fritzing.org/ is coming soon...
 <img src="img/ui.png" />
 
 
+git submodule update --init --recursive
+
+
