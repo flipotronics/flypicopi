@@ -20,7 +20,10 @@ Fritzing Wiring diagram https://fritzing.org/ is coming soon...
 <img src="img/testsetup.png" />
 <img src="img/ui.png" />
 
-
+# Install
+Install the C++ toolchain for Rasspberry Pico Pi depending on your environment
+git clone https://github.com/flipotronics/flypicopi.git
+cd flipotronics/src
 git submodule update --init --recursive
 
 
